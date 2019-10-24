@@ -1,3 +1,13 @@
+<?php
+session_start();
+include('../../../conn/verifica_login.php');
+
+	$idX = $_SESSION['usuarioId'];
+	$nomeX = $_SESSION['usuarioNome'];
+	$sobrenomeX = $_SESSION['usuarioSobrenome'];
+	$emailX = $_SESSION['usuarioEmail'];
+
+?>
 <!DOCTYPE html>
 
 
@@ -7,13 +17,14 @@
 	<head>
 
 
-		<base href="../../">
+		<base href="../../../">
 
 
 		<meta charset="utf-8" />
-		<title>iCompanion | Mudar senha</title>
-		<meta name="description" content="User profile change password example">
+		<title>iCompanion | Informações pessoais</title>
+		<meta name="description" content="User profile personal information example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 		<script>
@@ -27,7 +38,9 @@
 			});
 		</script>
 
+
 		<link href="./assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+
 
 		<link href="./assets/vendors/general/tether/dist/css/tether.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/vendors/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
@@ -55,7 +68,6 @@
 		<link href="./assets/vendors/custom/vendors/flaticon2/flaticon.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/vendors/general/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 
-
 		<link href="./assets/css/demo1/style.bundle.css" rel="stylesheet" type="text/css" />
 
 
@@ -64,9 +76,9 @@
 		<link href="./assets/css/demo1/skins/brand/dark.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />
 
+
 		<link rel="shortcut icon" href="./assets/media/logos/favicon.ico" />
 	</head>
-
 
 	<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
@@ -84,7 +96,7 @@
 			</div>
 		</div>
 
-		<!-- end:: Header Mobile -->
+
 		<div class="kt-grid kt-grid--hor kt-grid--root">
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
 
@@ -122,9 +134,7 @@
 						</div>
 					</div>
 
-					<!-- end:: Aside -->
 
-					<!-- begin:: Aside Menu -->
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
@@ -162,9 +172,9 @@
 															<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 																<ul class="kt-menu__subnav">
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/overview.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Overview</span></a></li>
-																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/personal-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Personal Information</span></a></li>
+																	<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/personal-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Personal Information</span></a></li>
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/account-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Account Information</span></a></li>
-																	<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/change-password.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Change Password</span></a></li>
+																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/change-password.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Change Password</span></a></li>
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/email-settings.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Email Settings</span></a></li>
 																</ul>
 															</div>
@@ -1670,14 +1680,14 @@
 							<div class="kt-header__topbar-item kt-header__topbar-item--langs">
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
 									<span class="kt-header__topbar-icon">
-										<img class="" src="./assets/media/flags/020-flag.svg" alt="" />
+										<img class="" src="./assets/media/flags/011-brazil.svg" alt="" />
 									</span>
 								</div>
 								<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
 									<ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
 										<li class="kt-nav__item kt-nav__item--active">
 											<a href="#" class="kt-nav__link">
-												<span class="kt-nav__link-icon"><img src="./assets/media/flags/020-flag.svg" alt="" /></span>
+												<span class="kt-nav__link-icon"><img src="./assets/media/flags/011-brazil.svg" alt="" /></span>
 												<span class="kt-nav__link-text">English</span>
 											</a>
 										</li>
@@ -1703,8 +1713,8 @@
 							<div class="kt-header__topbar-item kt-header__topbar-item--user">
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 									<div class="kt-header__topbar-user">
-										<span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-										<span class="kt-header__topbar-username kt-hidden-mobile">Sean</span>
+									<span class="kt-header__topbar-welcome kt-hidden-mobile">Olá,</span>
+										<span class="kt-header__topbar-username kt-hidden-mobile"><?php echo "$nomeX"; ?></span>
 										<img class="kt-hidden" alt="Pic" src="./assets/media/users/300_25.jpg" />
 
 										<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
@@ -1722,7 +1732,7 @@
 											<span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
 										</div>
 										<div class="kt-user-card__name">
-											Sean Stone
+										<?php echo ucwords($nomeX)."&nbsp".ucwords($sobrenomeX);?>
 										</div>
 										<div class="kt-user-card__badge">
 											<span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
@@ -1733,7 +1743,7 @@
 
 									<!--begin: Navigation -->
 									<div class="kt-notification">
-										<a href="#" class="kt-notification__item">
+										<a href="painel/" class="kt-notification__item">
 											<div class="kt-notification__item-icon">
 												<i class="flaticon2-calendar-3 kt-font-success"></i>
 											</div>
@@ -1799,8 +1809,8 @@
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="demo1/custom/user/login-v2.html" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
-											<a href="demo1/custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
+											<a href="painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+											<a href="demo1/custom/user/login-v2.html" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
 										</div>
 									</div>
 
@@ -1838,7 +1848,7 @@
 											Profile 1 </a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
 										<a href="" class="kt-subheader__breadcrumbs-link">
-											Change Password </a>
+											Personal Information </a>
 
 										<!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
 									</div>
@@ -1932,7 +1942,7 @@
 								<div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
 
 									<!--begin:: Widgets/Applications/User/Profile1-->
-									<div class="kt-portlet kt-portlet--height-fluid-">
+									<div class="kt-portlet ">
 										<div class="kt-portlet__head  kt-portlet__head--noborder">
 											<div class="kt-portlet__head-label">
 												<h3 class="kt-portlet__head-title">
@@ -2008,11 +2018,11 @@
 													<div class="kt-widget__content">
 														<div class="kt-widget__section">
 															<a href="#" class="kt-widget__username">
-																Jason Muller
+															<?php echo "$nomeX $sobrenomeX"; ?>
 																<i class="flaticon2-correct kt-font-success"></i>
 															</a>
 															<span class="kt-widget__subtitle">
-																Head of Development
+																Informação sobre trabalho etc
 															</span>
 														</div>
 														<div class="kt-widget__action">
@@ -2025,19 +2035,19 @@
 													<div class="kt-widget__content">
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Email:</span>
-															<a href="#" class="kt-widget__data">matt@fifestudios.com</a>
+															<a href="#" class="kt-widget__data"><?php echo "$emailX"; ?></a>
 														</div>
 														<div class="kt-widget__info">
-															<span class="kt-widget__label">Phone:</span>
+															<span class="kt-widget__label">Telefone:</span>
 															<a href="#" class="kt-widget__data">44(76)34254578</a>
 														</div>
 														<div class="kt-widget__info">
-															<span class="kt-widget__label">Location:</span>
+															<span class="kt-widget__label">Localização:</span>
 															<span class="kt-widget__data">Melbourne</span>
 														</div>
 													</div>
 													<div class="kt-widget__items">
-														<a href="painel/index.html" class="kt-widget__item ">
+														<a href="painel" class="kt-widget__item ">
 															<span class="kt-widget__section">
 																<span class="kt-widget__icon">
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -2052,7 +2062,7 @@
 																</span>
 															</span>
 														</a>
-														<a href="painel/perfil/informacoes-pessoais.html" class="kt-widget__item ">
+														<a href="painel/perfil/informacoes-pessoais/" class="kt-widget__item kt-widget__item--active">
 															<span class="kt-widget__section">
 																<span class="kt-widget__icon">
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -2067,7 +2077,8 @@
 																</span>
 															</span>
 														</a>
-														<a href="painel/perfil/mudar-senha.html" class="kt-widget__item kt-widget__item--active">
+													
+														<a href="painel/perfil/mudar-senha/" class="kt-widget__item ">
 															<span class="kt-widget__section">
 																<span class="kt-widget__icon">
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -2082,9 +2093,9 @@
 																	Mudar Senha
 																</span>
 															</span>
-															<!-- <span class="kt-badge kt-badge--unified-danger kt-badge--sm kt-badge--rounded kt-badge--bolder">5</span> -->
+														<!--	<span class="kt-badge kt-badge--unified-danger kt-badge--sm kt-badge--rounded kt-badge--bolder">5</span> -->
 														</a>
-													
+												
 													</div>
 												</div>
 											</div>
@@ -2102,51 +2113,50 @@
 								<div class="kt-grid__item kt-grid__item--fluid kt-app__content">
 									<div class="row">
 										<div class="col-xl-12">
-											<div class="kt-portlet kt-portlet--height-fluid">
+											<div class="kt-portlet">
 												<div class="kt-portlet__head">
 													<div class="kt-portlet__head-label">
-														<h3 class="kt-portlet__head-title">Mudar senha<small>
-															alterar ou redefinir a senha da sua conta</small></h3>
+														<h3 class="kt-portlet__head-title">Informações Pessoais <small>atualizar suas informações pessoais</small></h3>
 													</div>
-													<div class="kt-portlet__head-toolbar kt-hidden">
-														<div class="kt-portlet__head-toolbar">
+													<div class="kt-portlet__head-toolbar">
+														<div class="kt-portlet__head-wrapper">
 															<div class="dropdown dropdown-inline">
-																<button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																	<i class="la la-sellsy"></i>
+																<button type="button" class="btn btn-label-brand btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																	<i class="flaticon2-gear"></i>
 																</button>
 																<div class="dropdown-menu dropdown-menu-right">
 																	<ul class="kt-nav">
 																		<li class="kt-nav__section kt-nav__section--first">
-																			<span class="kt-nav__section-text">Quick Actions</span>
+																			<span class="kt-nav__section-text">Export Tools</span>
 																		</li>
 																		<li class="kt-nav__item">
 																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon flaticon2-graph-1"></i>
-																				<span class="kt-nav__link-text">Statistics</span>
+																				<i class="kt-nav__link-icon la la-print"></i>
+																				<span class="kt-nav__link-text">Print</span>
 																			</a>
 																		</li>
 																		<li class="kt-nav__item">
 																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon flaticon2-calendar-4"></i>
-																				<span class="kt-nav__link-text">Events</span>
+																				<i class="kt-nav__link-icon la la-copy"></i>
+																				<span class="kt-nav__link-text">Copy</span>
 																			</a>
 																		</li>
 																		<li class="kt-nav__item">
 																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon flaticon2-layers-1"></i>
-																				<span class="kt-nav__link-text">Reports</span>
+																				<i class="kt-nav__link-icon la la-file-excel-o"></i>
+																				<span class="kt-nav__link-text">Excel</span>
 																			</a>
 																		</li>
 																		<li class="kt-nav__item">
 																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon flaticon2-bell-1o"></i>
-																				<span class="kt-nav__link-text">Notifications</span>
+																				<i class="kt-nav__link-icon la la-file-text-o"></i>
+																				<span class="kt-nav__link-text">CSV</span>
 																			</a>
 																		</li>
 																		<li class="kt-nav__item">
 																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon flaticon2-file-1"></i>
-																				<span class="kt-nav__link-text">Files</span>
+																				<i class="kt-nav__link-icon la la-file-pdf-o"></i>
+																				<span class="kt-nav__link-text">PDF</span>
 																			</a>
 																		</li>
 																	</ul>
@@ -2159,41 +2169,67 @@
 													<div class="kt-portlet__body">
 														<div class="kt-section kt-section--first">
 															<div class="kt-section__body">
-																<div class="alert alert-solid-danger alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
-																	<div class="alert-icon"><i class="fa fa-exclamation-triangle"></i></div>
-																	<div class="alert-text">Nunca compartilhe a sua senha com ninguém!</div>
-																	<div class="alert-close">
-																		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-																			<span aria-hidden="true"><i class="la la-close"></i></span>
-																		</button>
-																	</div>
-																</div>
 																<div class="row">
 																	<label class="col-xl-3"></label>
 																	<div class="col-lg-9 col-xl-6">
-																		<h3 class="kt-section__title kt-section__title-sm">Alterar ou recuperar sua senha:</h3>
+																		<h3 class="kt-section__title kt-section__title-sm">Informações do usuário:</h3>
 																	</div>
 																</div>
 																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Senha Atual</label>
+																	<label class="col-xl-3 col-lg-3 col-form-label">Foto</label>
 																	<div class="col-lg-9 col-xl-6">
-																		<input type="password" class="form-control" value="" placeholder="Senha Atual">
-																		<a href="#" class="kt-link kt-font-sm kt-font-bold kt-margin-t-5">Esqueceu sua senha ?</a>
+																		<div class="kt-avatar kt-avatar--outline kt-avatar--circle" id="kt_apps_user_add_avatar">
+																			<div class="kt-avatar__holder" style="background-image: url(&quot;http://keenthemes.com/metronic/preview/default/custom/user/assets/media/users/100_1.jpg&quot;);"></div>
+																			<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
+																				<i class="fa fa-pen"></i>
+																				<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">
+																			</label>
+																			<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
+																				<i class="fa fa-times"></i>
+																			</span>
+																		</div>
 																	</div>
 																</div>
 																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Nova senha</label>
+																	<label class="col-xl-3 col-lg-3 col-form-label">Nome:</label>
 																	<div class="col-lg-9 col-xl-6">
-																		<input type="password" class="form-control" value="" placeholder="Nova senha">
+																		<input class="form-control" type="text" value="<?php echo "$nomeX"?>">
 																	</div>
 																</div>
-																<div class="form-group form-group-last row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Repita sua nova senha</label>
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Sobrenome:</label>
 																	<div class="col-lg-9 col-xl-6">
-																		<input type="password" class="form-control" value="" placeholder="Repita sua nova senha">
+																		<input class="form-control" type="text" value="<?php echo "$sobrenomeX"?>">
 																	</div>
 																</div>
-															</div>
+																
+																<div class="row">
+																	<label class="col-xl-3"></label>
+																	<div class="col-lg-9 col-xl-6">
+																		<h3 class="kt-section__title kt-section__title-sm">Informações de contato:</h3>
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Telefone</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
+																			<input type="text" class="form-control" value="+35278953712" placeholder="Phone" aria-describedby="basic-addon1">
+																		</div>
+																		<span class="form-text text-muted">
+																			Nunca compartilharemos seu email com mais ninguém.</span>
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
+																			<input type="text" class="form-control" value="<?php echo "$emailX"?>" placeholder="Email" aria-describedby="basic-addon1">
+																		</div>
+																	</div>
+																</div>
+															
 														</div>
 													</div>
 													<div class="kt-portlet__foot">
@@ -2202,7 +2238,7 @@
 																<div class="col-lg-3 col-xl-3">
 																</div>
 																<div class="col-lg-9 col-xl-9">
-																	<button type="reset" class="btn btn-brand btn-bold">Mudar senha</button>&nbsp;
+																	<button type="reset" class="btn btn-success">Salvar</button>&nbsp;
 																	<button type="reset" class="btn btn-secondary">Cancelar</button>
 																</div>
 															</div>
@@ -2852,7 +2888,7 @@
 								<div class="kt-chat__head ">
 									<div class="kt-chat__left">
 										<div class="kt-chat__label">
-											<a href="#" class="kt-chat__title">Jason Muller</a>
+											<a href="#" class="kt-chat__title">Nome Cliente</a>
 											<span class="kt-chat__status">
 												<span class="kt-badge kt-badge--dot kt-badge--success"></span> Active
 											</span>
@@ -3046,9 +3082,6 @@
 			</div>
 		</div>
 
-		<!--ENd:: Chat-->
-
-		<!-- begin::Global Config(global config for global JS sciprts) -->
 		<script>
 			var KTAppOptions = {
 				"colors": {
@@ -3070,9 +3103,7 @@
 			};
 		</script>
 
-		<!-- end::Global Config -->
 
-		<!--begin:: Global Mandatory Vendors -->
 		<script src="./assets/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
@@ -3083,9 +3114,7 @@
 		<script src="./assets/vendors/general/sticky-js/dist/sticky.min.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/wnumb/wNumb.js" type="text/javascript"></script>
 
-		<!--end:: Global Mandatory Vendors -->
 
-		<!--begin:: Global Optional Vendors -->
 		<script src="./assets/vendors/general/jquery-form/dist/jquery.form.min.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/block-ui/jquery.blockUI.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
@@ -3137,11 +3166,11 @@
 		<script src="./assets/vendors/general/jquery.repeater/src/repeater.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/dompurify/dist/purify.js" type="text/javascript"></script>
 
+
 		<script src="./assets/js/demo1/scripts.bundle.js" type="text/javascript"></script>
 
 		<script src="./assets/js/demo1/pages/dashboard.js" type="text/javascript"></script>
 		<script src="./assets/js/demo1/pages/custom/user/profile.js" type="text/javascript"></script>
-
 
 	</body>
 

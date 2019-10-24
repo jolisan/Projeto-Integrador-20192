@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -6,7 +9,7 @@
 	<head>
 
 
-		<base href="../"> <!-- ../ volta um diretorio -->
+		<base href=""> <!-- ../ volta um diretorio -->
 
 		<meta charset="utf-8" />
 		<title>iCompanion | Login e Cadastro</title>
@@ -93,12 +96,12 @@
 											<h3 class="kt-login__title">Faça login</h3>
 										</div>
 										<div class="kt-login__form">
-											<form class="kt-form" action="">
+											<form class="kt-form" method="POST" action="conn/valida.php">
 												<div class="form-group">
-													<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+													<input class="form-control" id="email" type="text" placeholder="Email" name="email" autocomplete="off">
 												</div>
 												<div class="form-group">
-													<input class="form-control form-control-last" type="password" placeholder="Senha" name="password">
+													<input class="form-control form-control-last" id="senha" type="password" placeholder="Senha" name="senha">
 												</div>
 												<div class="kt-login__extra">
 													<label class="kt-checkbox">
@@ -108,9 +111,52 @@
 													<a href="javascript:;" id="kt_login_forgot">Esqueceu sua senha ?</a>
 												</div>
 												<div class="kt-login__actions">
-													<button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Entrar</button>
+													<button id="btaodelogin" class="btn btn-brand btn-pill btn-elevate">Entrar</button>
 												</div>
 											</form>
+
+											<p class="text-center text-danger">
+													<?php 
+													if(isset($_SESSION['loginErro'])){
+														echo $_SESSION['loginErro'];
+														unset($_SESSION['loginErro']);
+														}
+													?>
+												</p>
+
+												<p class="text-center text-success">
+													<?php 
+													if(isset($_SESSION['logindeslogado'])){
+														echo $_SESSION['logindeslogado'];
+														unset($_SESSION['logindeslogado']);
+													}
+													?>
+												</p>
+
+													<?php 
+														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				if(strpos($fullUrl, "error=campovazio") == true){
+                      			echo '<p class="text-center text-danger">Algum campo do cadastro está vazio!</p>';
+														}
+													?>
+
+													<?php 
+													$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+													if(strpos($fullUrl, "cadastro=sucess") == true){
+													echo '<p class="text-center text-success">Usuário cadastrado com sucesso!</p>';
+													}
+													?>
+
+													<?php 
+													$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+													if(strpos($fullUrl, "error=usuarioexistente") == true){
+													echo '<p class="text-center text-danger">Já existe um usuário com este e-mail!</p>';
+													}
+													?>
+
+													
+
+
 										</div>
 									</div>
 									<div class="kt-login__signup">
@@ -119,27 +165,30 @@
 											<div class="kt-login__desc">Digite as suas informações para criar a sua conta:</div>
 										</div>
 										<div class="kt-login__form">
-											<form class="kt-form" action="">
+											<form class="kt-form" method="post" action="./conn/cadastrar.php">
 												<div class="form-group">
-													<input class="form-control" type="text" placeholder="Nome completo" name="fullname">
+													<input class="form-control" id="nomecadastro" type="text" placeholder="Nome" name="nomecadastro">
 												</div>
 												<div class="form-group">
-													<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+													<input class="form-control" id="sobrenomecadastro" type="text" placeholder="Sobrenome" name="sobrenomecadastro">
 												</div>
 												<div class="form-group">
-													<input class="form-control" type="password" placeholder="Senha" name="password">
+													<input class="form-control" id="emailcadastro" type="text" placeholder="Email" name="emailcadastro" autocomplete="off">
 												</div>
 												<div class="form-group">
+													<input class="form-control" id="senhacadastro" type="password" placeholder="Senha" name="senhacadastro">
+												</div>
+											<!--	<div class="form-group">
 													<input class="form-control form-control-last" type="password" placeholder="Confirme a senha" name="rpassword">
-												</div>
+												</div> -->
 												<div class="kt-login__extra">
-													<label class="kt-checkbox">
+												<!-- 	<label class="kt-checkbox">
 														<input type="checkbox" name="agree"> Eu concordo com os <a href="#">termos e condições</a>.
 														<span></span>
-													</label>
+													</label> -->
 												</div>
 												<div class="kt-login__actions">
-													<button id="kt_login_signup_submit" class="btn btn-brand btn-pill btn-elevate">Cadastrar</button>
+													<button id="btaocadastrar" class="btn btn-brand btn-pill btn-elevate">Cadastrar</button>
 													<button id="kt_login_signup_cancel" class="btn btn-outline-brand btn-pill">Cancelar</button>
 												</div>
 											</form>
@@ -153,7 +202,7 @@
 										<div class="kt-login__form">
 											<form class="kt-form" action="">
 												<div class="form-group">
-													<input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+													<input class="form-control" type="text" placeholder="Email" name="emailesqueceu" id="kt_email" autocomplete="off">
 												</div>
 												<div class="kt-login__actions">
 													<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Request</button>
