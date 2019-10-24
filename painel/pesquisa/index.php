@@ -1,31 +1,34 @@
 <?php
 session_start();
-include('../../../conn/verifica_login.php');
 
+if(!$_SESSION['usuarioEmail']) {
+	header('Location: ../index.php');
+	exit();
+}
 	$idX = $_SESSION['usuarioId'];
 	$nomeX = $_SESSION['usuarioNome'];
 	$sobrenomeX = $_SESSION['usuarioSobrenome'];
 	$emailX = $_SESSION['usuarioEmail'];
-
+	$saldoX = $_SESSION['usuarioSaldo'];
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 
 <html lang="en">
 
-
+	<!-- begin::Head -->
 	<head>
 
+		<!--begin::Base Path (base relative path for assets of this page) -->
+		<base href="../../">
 
-		<base href="../../../">
-
-
+		<!--end::Base Path -->
 		<meta charset="utf-8" />
-		<title>iCompanion | Informações pessoais</title>
-		<meta name="description" content="User profile personal information example">
+		<title>Metronic | Popup</title>
+		<meta name="description" content="Popup chat example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+		<!--begin::Fonts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
 		<script>
 			WebFont.load({
@@ -38,10 +41,14 @@ include('../../../conn/verifica_login.php');
 			});
 		</script>
 
+		<!--end::Fonts -->
 
+		<!--begin:: Global Mandatory Vendors -->
 		<link href="./assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
 
+		<!--end:: Global Mandatory Vendors -->
 
+		<!--begin:: Global Optional Vendors -->
 		<link href="./assets/vendors/general/tether/dist/css/tether.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/vendors/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/vendors/general/bootstrap-datetime-picker/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
@@ -68,25 +75,35 @@ include('../../../conn/verifica_login.php');
 		<link href="./assets/vendors/custom/vendors/flaticon2/flaticon.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/vendors/general/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 
+		<!--end:: Global Optional Vendors -->
+
+		<!--begin::Global Theme Styles(used by all pages) -->
 		<link href="./assets/css/demo1/style.bundle.css" rel="stylesheet" type="text/css" />
 
+		<!--end::Global Theme Styles -->
 
+		<!--begin::Layout Skins(used by all pages) -->
 		<link href="./assets/css/demo1/skins/header/base/light.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/css/demo1/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/css/demo1/skins/brand/dark.css" rel="stylesheet" type="text/css" />
 		<link href="./assets/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />
 
-
+		<!--end::Layout Skins -->
 		<link rel="shortcut icon" href="./assets/media/logos/favicon.ico" />
 	</head>
 
-	<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+	<!-- end::Head -->
 
+	<!-- begin::Body -->
+	<body class="kt-app__aside--left kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
+		<!-- begin:: Page -->
+
+		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
 				<a href="demo1/index.html">
-					<img alt="Logo" src="./assets/media/logos/logo-icompanion-mobile.png" /> <!-- LOGO MOBILE -->
+					<img alt="Logo" src="./assets/media/logos/logo-light.png" />
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
@@ -96,18 +113,19 @@ include('../../../conn/verifica_login.php');
 			</div>
 		</div>
 
-
+		<!-- end:: Header Mobile -->
 		<div class="kt-grid kt-grid--hor kt-grid--root">
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
 
+				<!-- begin:: Aside -->
 				<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 				<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
 
-
+					<!-- begin:: Aside -->
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
 							<a href="demo1/index.html">
-								<img alt="Logo" src="./assets/media/logos/logo-icompanion-web.png" /> <!-- LOGO WEB -->
+								<img alt="Logo" src="./assets/media/logos/logo-light.png" />
 							</a>
 						</div>
 						<div class="kt-aside__brand-tools">
@@ -134,7 +152,9 @@ include('../../../conn/verifica_login.php');
 						</div>
 					</div>
 
+					<!-- end:: Aside -->
 
+					<!-- begin:: Aside Menu -->
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
@@ -159,7 +179,7 @@ include('../../../conn/verifica_login.php');
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Applications</span></span></li>
-											<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Users</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+											<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Users</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
 												<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 													<ul class="kt-menu__subnav">
 														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/list-default.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Default</span></a></li>
@@ -168,11 +188,11 @@ include('../../../conn/verifica_login.php');
 														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/list-columns-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 2</span></a></li>
 														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/add-user.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Add User</span></a></li>
 														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/edit-user.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Edit User</span></a></li>
-														<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Profile 1</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+														<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Profile 1</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
 															<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 																<ul class="kt-menu__subnav">
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/overview.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Overview</span></a></li>
-																	<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/personal-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Personal Information</span></a></li>
+																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/personal-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Personal Information</span></a></li>
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/account-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Account Information</span></a></li>
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/change-password.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Change Password</span></a></li>
 																	<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/user/profile-1/email-settings.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Email Settings</span></a></li>
@@ -196,12 +216,12 @@ include('../../../conn/verifica_login.php');
 													</ul>
 												</div>
 											</li>
-											<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Chat</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+											<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Chat</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
 												<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 													<ul class="kt-menu__subnav">
 														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/chat/private.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Private</span></a></li>
 														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/chat/group.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Group</span></a></li>
-														<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/custom/apps/chat/popup.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Popup</span></a></li>
+														<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="demo1/custom/apps/chat/popup.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Popup</span></a></li>
 													</ul>
 												</div>
 											</li>
@@ -990,39 +1010,6 @@ include('../../../conn/verifica_login.php');
 						<!-- begin:: Header Topbar -->
 						<div class="kt-header__topbar">
 
-							<!--begin: Search -->
-
-							<!--begin: Search -->
-							<div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
-								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-									<span class="kt-header__topbar-icon">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect id="bound" x="0" y="0" width="24" height="24" />
-												<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-												<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#000000" fill-rule="nonzero" />
-											</g>
-										</svg> </span>
-								</div>
-								<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-lg">
-									<div class="kt-quick-search kt-quick-search--inline" id="kt_quick_search_inline">
-										<form method="get" class="kt-quick-search__form">
-											<div class="input-group">
-												<div class="input-group-prepend"><span class="input-group-text"><i class="flaticon2-search-1"></i></span></div>
-												<input type="text" class="form-control kt-quick-search__input" placeholder="Search...">
-												<div class="input-group-append"><span class="input-group-text"><i class="la la-close kt-quick-search__close"></i></span></div>
-											</div>
-										</form>
-										<div class="kt-quick-search__wrapper kt-scroll" data-scroll="true" data-height="300" data-mobile-height="200">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!--end: Search -->
-
-							<!--end: Search -->
-
 							<!--begin: Notifications -->
 							<div class="kt-header__topbar-item dropdown">
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
@@ -1688,7 +1675,7 @@ include('../../../conn/verifica_login.php');
 										<li class="kt-nav__item kt-nav__item--active">
 											<a href="#" class="kt-nav__link">
 												<span class="kt-nav__link-icon"><img src="./assets/media/flags/011-brazil.svg" alt="" /></span>
-												<span class="kt-nav__link-text">English</span>
+												<span class="kt-nav__link-text">Português</span>
 											</a>
 										</li>
 										<li class="kt-nav__item">
@@ -1700,7 +1687,13 @@ include('../../../conn/verifica_login.php');
 										<li class="kt-nav__item">
 											<a href="#" class="kt-nav__link">
 												<span class="kt-nav__link-icon"><img src="./assets/media/flags/017-germany.svg" alt="" /></span>
-												<span class="kt-nav__link-text">German</span>
+												<span class="kt-nav__link-text">Deutsch</span>
+											</a>
+										</li>
+										<li class="kt-nav__item">
+											<a href="#" class="kt-nav__link">
+												<span class="kt-nav__link-icon"><img src="./assets/media/flags/020-flag.svg" alt="" /></span>
+												<span class="kt-nav__link-text">English</span>
 											</a>
 										</li>
 									</ul>
@@ -1713,7 +1706,7 @@ include('../../../conn/verifica_login.php');
 							<div class="kt-header__topbar-item kt-header__topbar-item--user">
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 									<div class="kt-header__topbar-user">
-									<span class="kt-header__topbar-welcome kt-hidden-mobile">Olá,</span>
+										<span class="kt-header__topbar-welcome kt-hidden-mobile">Olá,</span>
 										<span class="kt-header__topbar-username kt-hidden-mobile"><?php echo "$nomeX"; ?></span>
 										<img class="kt-hidden" alt="Pic" src="./assets/media/users/300_25.jpg" />
 
@@ -1743,7 +1736,7 @@ include('../../../conn/verifica_login.php');
 
 									<!--begin: Navigation -->
 									<div class="kt-notification">
-										<a href="painel/" class="kt-notification__item">
+										<a href="#" class="kt-notification__item">
 											<div class="kt-notification__item-icon">
 												<i class="flaticon2-calendar-3 kt-font-success"></i>
 											</div>
@@ -1809,8 +1802,8 @@ include('../../../conn/verifica_login.php');
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
-											<a href="demo1/custom/user/login-v2.html" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
+											<a href="demo1/custom/user/login-v2.html" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+											<a href="demo1/custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
 										</div>
 									</div>
 
@@ -1827,40 +1820,87 @@ include('../../../conn/verifica_login.php');
 					<!-- end:: Header -->
 					<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-						<!-- begin:: Subheader -->
+						<!-- begin:: Content Head -->
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<button class="kt-subheader__mobile-toggle kt-subheader__mobile-toggle--left" id="kt_subheader_mobile_toggle"><span></span></button>
 									<h3 class="kt-subheader__title">
-										Profile 1 </h3>
-									<span class="kt-subheader__separator kt-hidden"></span>
-									<div class="kt-subheader__breadcrumbs">
-										<a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
-										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="" class="kt-subheader__breadcrumbs-link">
-											Apps </a>
-										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="" class="kt-subheader__breadcrumbs-link">
-											Users </a>
-										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="" class="kt-subheader__breadcrumbs-link">
-											Profile 1 </a>
-										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="" class="kt-subheader__breadcrumbs-link">
-											Personal Information </a>
+										Users
+									</h3>
+									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
+									<div class="kt-subheader__group" id="kt_subheader_search">
+										<span class="kt-subheader__desc" id="kt_subheader_total">
+											450 Total </span>
+										<form class="kt-margin-l-20" id="kt_subheader_search_form">
+											<div class="kt-input-icon kt-input-icon--right kt-subheader__search">
+												<input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+												<span class="kt-input-icon__icon kt-input-icon__icon--right">
+													<span>
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																<rect id="bound" x="0" y="0" width="24" height="24" />
+																<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+																<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#000000" fill-rule="nonzero" />
+															</g>
+														</svg>
 
-										<!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+														<!--<i class="flaticon2-search-1"></i>-->
+													</span>
+												</span>
+											</div>
+										</form>
+									</div>
+									<div class="kt-subheader__group kt-hidden" id="kt_subheader_group_actions">
+										<div class="kt-subheader__desc"><span id="kt_subheader_group_selected_rows"></span> Selected:</div>
+										<div class="btn-toolbar kt-margin-l-20">
+											<div class="dropdown" id="kt_subheader_group_actions_status_change">
+												<button type="button" class="btn btn-label-brand btn-bold btn-sm dropdown-toggle" data-toggle="dropdown">
+													Update Status
+												</button>
+												<div class="dropdown-menu">
+													<ul class="kt-nav">
+														<li class="kt-nav__section kt-nav__section--first">
+															<span class="kt-nav__section-text">Change status to:</span>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="1">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-success kt-badge--inline kt-badge--bold">Approved</span></span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="2">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-danger kt-badge--inline kt-badge--bold">Rejected</span></span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="3">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-warning kt-badge--inline kt-badge--bold">Pending</span></span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="4">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-info kt-badge--inline kt-badge--bold">On Hold</span></span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button class="btn btn-label-success btn-bold btn-sm btn-icon-h" id="kt_subheader_group_actions_fetch" data-toggle="modal" data-target="#kt_datatable_records_fetch_modal">
+												Fetch Selected
+											</button>
+											<button class="btn btn-label-danger btn-bold btn-sm btn-icon-h" id="kt_subheader_group_actions_delete_all">
+												Delete All
+											</button>
+										</div>
 									</div>
 								</div>
 								<div class="kt-subheader__toolbar">
+									<a href="#" class="">
+									</a>
+									<a href="demo1/custom/apps/user/add-user.html" class="btn btn-label-brand btn-bold">
+										Add User </a>
 									<div class="kt-subheader__wrapper">
-										<a href="#" class="btn kt-subheader__btn-primary">
-											Actions &nbsp;
-
-											<!--<i class="flaticon2-calendar-1"></i>-->
-										</a>
-										<div class="dropdown dropdown-inline" data-toggle="kt-tooltip" title="Quick actions" data-placement="left">
+										<div class="dropdown dropdown-inline" data-toggle="kt-tooltip-" title="Quick actions" data-placement="left">
 											<a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--success kt-svg-icon--md">
 													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -1877,41 +1917,41 @@ include('../../../conn/verifica_login.php');
 												<!--begin::Nav-->
 												<ul class="kt-nav">
 													<li class="kt-nav__head">
-														Add anything or jump to:
+														Add New:
 														<i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
 													</li>
 													<li class="kt-nav__separator"></li>
 													<li class="kt-nav__item">
 														<a href="#" class="kt-nav__link">
 															<i class="kt-nav__link-icon flaticon2-drop"></i>
-															<span class="kt-nav__link-text">Order</span>
-														</a>
-													</li>
-													<li class="kt-nav__item">
-														<a href="#" class="kt-nav__link">
-															<i class="kt-nav__link-icon flaticon2-calendar-8"></i>
-															<span class="kt-nav__link-text">Ticket</span>
-														</a>
-													</li>
-													<li class="kt-nav__item">
-														<a href="#" class="kt-nav__link">
-															<i class="kt-nav__link-icon flaticon2-link"></i>
-															<span class="kt-nav__link-text">Goal</span>
+															<span class="kt-nav__link-text">Orders</span>
 														</a>
 													</li>
 													<li class="kt-nav__item">
 														<a href="#" class="kt-nav__link">
 															<i class="kt-nav__link-icon flaticon2-new-email"></i>
-															<span class="kt-nav__link-text">Support Case</span>
+															<span class="kt-nav__link-text">Members</span>
 															<span class="kt-nav__link-badge">
-																<span class="kt-badge kt-badge--success">5</span>
+																<span class="kt-badge kt-badge--brand kt-badge--rounded">15</span>
 															</span>
+														</a>
+													</li>
+													<li class="kt-nav__item">
+														<a href="#" class="kt-nav__link">
+															<i class="kt-nav__link-icon flaticon2-calendar-8"></i>
+															<span class="kt-nav__link-text">Reports</span>
+														</a>
+													</li>
+													<li class="kt-nav__item">
+														<a href="#" class="kt-nav__link">
+															<i class="kt-nav__link-icon flaticon2-link"></i>
+															<span class="kt-nav__link-text">Finance</span>
 														</a>
 													</li>
 													<li class="kt-nav__separator"></li>
 													<li class="kt-nav__foot">
-														<a class="btn btn-label-brand btn-bold btn-sm" href="#">Upgrade plan</a>
-														<a class="btn btn-clean btn-bold btn-sm" href="#" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
+														<a class="btn btn-label-brand btn-bold btn-sm" href="#">More options</a>
+														<a class="btn btn-clean btn-bold btn-sm kt-hidden" href="#" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
 													</li>
 												</ul>
 
@@ -1923,180 +1963,104 @@ include('../../../conn/verifica_login.php');
 							</div>
 						</div>
 
-						<!-- end:: Subheader -->
+						<!-- end:: Content Head -->
 
 						<!-- begin:: Content -->
 						<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
-							<!--Begin::App-->
-							<div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+							<!--Begin::Section-->
+							<div class="row">
+								<div class="col-xl-3">
 
-								<!--Begin:: App Aside Mobile Toggle-->
-								<button class="kt-app__aside-close" id="kt_user_profile_aside_close">
-									<i class="la la-close"></i>
-								</button>
-
-								<!--End:: App Aside Mobile Toggle-->
-
-								<!--Begin:: App Aside-->
-								<div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
-
-									<!--begin:: Widgets/Applications/User/Profile1-->
-									<div class="kt-portlet ">
-										<div class="kt-portlet__head  kt-portlet__head--noborder">
+									<!--Begin::Portlet-->
+									<div class="kt-portlet kt-portlet--height-fluid">
+										<div class="kt-portlet__head kt-portlet__head--noborder">
 											<div class="kt-portlet__head-label">
 												<h3 class="kt-portlet__head-title">
 												</h3>
 											</div>
 											<div class="kt-portlet__head-toolbar">
-												<a href="#" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown">
-													<i class="flaticon-more-1"></i>
+												<a href="#" class="btn btn-icon" data-toggle="dropdown">
+													<i class="flaticon-more-1 kt-font-brand"></i>
 												</a>
-												<div class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md">
-
-													<!--begin::Nav-->
+												<div class="dropdown-menu dropdown-menu-right">
 													<ul class="kt-nav">
-														<li class="kt-nav__head">
-															Export Options
-															<span data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">
-																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--brand kt-svg-icon--md1">
-																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																		<rect id="bound" x="0" y="0" width="24" height="24" />
-																		<circle id="Oval-5" fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-																		<rect id="Rectangle-9" fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
-																		<rect id="Rectangle-9-Copy" fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
-																	</g>
-																</svg> </span>
-														</li>
-														<li class="kt-nav__separator"></li>
 														<li class="kt-nav__item">
 															<a href="#" class="kt-nav__link">
-																<i class="kt-nav__link-icon flaticon2-drop"></i>
-																<span class="kt-nav__link-text">Activity</span>
+																<i class="kt-nav__link-icon flaticon2-line-chart"></i>
+																<span class="kt-nav__link-text">Reports</span>
 															</a>
 														</li>
 														<li class="kt-nav__item">
 															<a href="#" class="kt-nav__link">
-																<i class="kt-nav__link-icon flaticon2-calendar-8"></i>
-																<span class="kt-nav__link-text">FAQ</span>
+																<i class="kt-nav__link-icon flaticon2-send"></i>
+																<span class="kt-nav__link-text">Messages</span>
 															</a>
 														</li>
 														<li class="kt-nav__item">
 															<a href="#" class="kt-nav__link">
-																<i class="kt-nav__link-icon flaticon2-link"></i>
+																<i class="kt-nav__link-icon flaticon2-pie-chart-1"></i>
+																<span class="kt-nav__link-text">Charts</span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link">
+																<i class="kt-nav__link-icon flaticon2-avatar"></i>
+																<span class="kt-nav__link-text">Members</span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link">
+																<i class="kt-nav__link-icon flaticon2-settings"></i>
 																<span class="kt-nav__link-text">Settings</span>
 															</a>
 														</li>
-														<li class="kt-nav__item">
-															<a href="#" class="kt-nav__link">
-																<i class="kt-nav__link-icon flaticon2-new-email"></i>
-																<span class="kt-nav__link-text">Support</span>
-																<span class="kt-nav__link-badge">
-																	<span class="kt-badge kt-badge--success kt-badge--rounded">5</span>
-																</span>
-															</a>
-														</li>
-														<li class="kt-nav__separator"></li>
-														<li class="kt-nav__foot">
-															<a class="btn btn-label-danger btn-bold btn-sm" href="#">Upgrade plan</a>
-															<a class="btn btn-clean btn-bold btn-sm" href="#" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
-														</li>
 													</ul>
-
-													<!--end::Nav-->
 												</div>
 											</div>
 										</div>
-										<div class="kt-portlet__body kt-portlet__body--fit-y">
+										<div class="kt-portlet__body">
 
 											<!--begin::Widget -->
-											<div class="kt-widget kt-widget--user-profile-1">
+											<div class="kt-widget kt-widget--user-profile-2">
 												<div class="kt-widget__head">
 													<div class="kt-widget__media">
-														<img src="./assets/media/users/100_1.jpg" alt="image">
+														<img class="kt-widget__img kt-hidden-" src="./assets/media/users/300_21.jpg" alt="image">
+														<div class="kt-widget__pic kt-widget__pic--success kt-font-success kt-font-boldest kt-hidden">
+															ChS
+														</div>
 													</div>
-													<div class="kt-widget__content">
-														<div class="kt-widget__section">
-															<a href="#" class="kt-widget__username">
-															<?php echo "$nomeX $sobrenomeX"; ?>
-																<i class="flaticon2-correct kt-font-success"></i>
-															</a>
-															<span class="kt-widget__subtitle">
-																Informação sobre trabalho etc
-															</span>
-														</div>
-														<div class="kt-widget__action">
-															<button type="button" class="btn btn-info btn-sm">chat</button>&nbsp;
-															<button type="button" class="btn btn-success btn-sm">follow</button>
-														</div>
+													<div class="kt-widget__info">
+														<a href="#" class="kt-widget__username">
+															Luca Doncic
+														</a>
+														<span class="kt-widget__desc">
+															Head of Development
+														</span>
 													</div>
 												</div>
 												<div class="kt-widget__body">
-													<div class="kt-widget__content">
-														<div class="kt-widget__info">
+													<div class="kt-widget__section">
+														I distinguish three <a href="#" class="kt-font-brand kt-link kt-font-transform-u kt-font-bold">#xrs-54pq</a> objectsves First
+														esetablished and nice coocked rice
+													</div>
+													<div class="kt-widget__item">
+														<div class="kt-widget__contact">
 															<span class="kt-widget__label">Email:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$emailX"; ?></a>
+															<a href="#" class="kt-widget__data">luca@festudios.com</a>
 														</div>
-														<div class="kt-widget__info">
-															<span class="kt-widget__label">Telefone:</span>
+														<div class="kt-widget__contact">
+															<span class="kt-widget__label">Phone:</span>
 															<a href="#" class="kt-widget__data">44(76)34254578</a>
 														</div>
-														<div class="kt-widget__info">
-															<span class="kt-widget__label">Localização:</span>
-															<span class="kt-widget__data">Melbourne</span>
+														<div class="kt-widget__contact">
+															<span class="kt-widget__label">Location:</span>
+															<span class="kt-widget__data">Barcelona</span>
 														</div>
 													</div>
-													<div class="kt-widget__items">
-														<a href="painel" class="kt-widget__item ">
-															<span class="kt-widget__section">
-																<span class="kt-widget__icon">
-																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																			<polygon id="Bound" points="0 0 24 0 24 24 0 24" />
-																			<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" id="Shape" fill="#000000" fill-rule="nonzero" />
-																			<path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" id="Path" fill="#000000" opacity="0.3" />
-																		</g>
-																	</svg> </span>
-																<span class="kt-widget__desc">
-																	Perfil
-																</span>
-															</span>
-														</a>
-														<a href="painel/perfil/informacoes-pessoais/" class="kt-widget__item kt-widget__item--active">
-															<span class="kt-widget__section">
-																<span class="kt-widget__icon">
-																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																			<polygon id="Shape" points="0 0 24 0 24 24 0 24" />
-																			<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" id="Mask" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-																			<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" id="Mask-Copy" fill="#000000" fill-rule="nonzero" />
-																		</g>
-																	</svg> </span>
-																<span class="kt-widget__desc">
-																	Informações Pessoais
-																</span>
-															</span>
-														</a>
-													
-														<a href="painel/perfil/mudar-senha/" class="kt-widget__item ">
-															<span class="kt-widget__section">
-																<span class="kt-widget__icon">
-																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																			<rect id="bound" x="0" y="0" width="24" height="24" />
-																			<path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" id="Path-50" fill="#000000" opacity="0.3" />
-																			<path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z" id="Mask" fill="#000000" opacity="0.3" />
-																			<path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z" id="Mask-Copy" fill="#000000" opacity="0.3" />
-																		</g>
-																	</svg> </span>
-																<span class="kt-widget__desc">
-																	Mudar Senha
-																</span>
-															</span>
-														<!--	<span class="kt-badge kt-badge--unified-danger kt-badge--sm kt-badge--rounded kt-badge--bolder">5</span> -->
-														</a>
-												
-													</div>
+												</div>
+												<div class="kt-widget__footer">
+													<button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">Send Message</button>
 												</div>
 											</div>
 
@@ -2104,156 +2068,86 @@ include('../../../conn/verifica_login.php');
 										</div>
 									</div>
 
-									<!--end:: Widgets/Applications/User/Profile1-->
+									<!--End::Portlet-->
 								</div>
+								
+								</div>
+								</div> <!-- se apagar essa div e a de baixo, o indice n fica fixo -->
+								</div> <!-- se apagar essa div e a de cima, o indice n fica fixo -->
 
-								<!--End:: App Aside-->
+							<!--End::Section-->
 
-								<!--Begin:: App Content-->
-								<div class="kt-grid__item kt-grid__item--fluid kt-app__content">
-									<div class="row">
-										<div class="col-xl-12">
-											<div class="kt-portlet">
-												<div class="kt-portlet__head">
-													<div class="kt-portlet__head-label">
-														<h3 class="kt-portlet__head-title">Informações Pessoais <small>atualizar suas informações pessoais</small></h3>
-													</div>
-													<div class="kt-portlet__head-toolbar">
-														<div class="kt-portlet__head-wrapper">
-															<div class="dropdown dropdown-inline">
-																<button type="button" class="btn btn-label-brand btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																	<i class="flaticon2-gear"></i>
-																</button>
-																<div class="dropdown-menu dropdown-menu-right">
-																	<ul class="kt-nav">
-																		<li class="kt-nav__section kt-nav__section--first">
-																			<span class="kt-nav__section-text">Export Tools</span>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-print"></i>
-																				<span class="kt-nav__link-text">Print</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-copy"></i>
-																				<span class="kt-nav__link-text">Copy</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-file-excel-o"></i>
-																				<span class="kt-nav__link-text">Excel</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-file-text-o"></i>
-																				<span class="kt-nav__link-text">CSV</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-file-pdf-o"></i>
-																				<span class="kt-nav__link-text">PDF</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
+							<!--Begin::Section-->
+							<div class="row">
+								<div class="col-xl-12">
+
+									<!--begin:: Components/Pagination/Default-->
+									<div class="kt-portlet">
+										<div class="kt-portlet__body">
+
+											<!--begin: Pagination-->
+											<div class="kt-pagination kt-pagination--brand">
+												<ul class="kt-pagination__links">
+													<li class="kt-pagination__link--first">
+														<a href="#"><i class="fa fa-angle-double-left kt-font-brand"></i></a>
+													</li>
+													<li class="kt-pagination__link--next">
+														<a href="#"><i class="fa fa-angle-left kt-font-brand"></i></a>
+													</li>
+													<li>
+														<a href="#">...</a>
+													</li>
+													<li>
+														<a href="#">29</a>
+													</li>
+													<li>
+														<a href="#">30</a>
+													</li>
+													<li class="kt-pagination__link--active">
+														<a href="#">31</a>
+													</li>
+													<li>
+														<a href="#">32</a>
+													</li>
+													<li>
+														<a href="#">33</a>
+													</li>
+													<li>
+														<a href="#">34</a>
+													</li>
+													<li>
+														<a href="#">...</a>
+													</li>
+													<li class="kt-pagination__link--prev">
+														<a href="#"><i class="fa fa-angle-right kt-font-brand"></i></a>
+													</li>
+													<li class="kt-pagination__link--last">
+														<a href="#"><i class="fa fa-angle-double-right kt-font-brand"></i></a>
+													</li>
+												</ul>
+												<div class="kt-pagination__toolbar">
+													<select class="form-control kt-font-brand" style="width: 60px">
+														<option value="10">10</option>
+														<option value="20">20</option>
+														<option value="30">30</option>
+														<option value="50">50</option>
+														<option value="100">100</option>
+													</select>
+													<span class="pagination__desc">
+														Displaying 10 of 230 records
+													</span>
 												</div>
-												<form class="kt-form kt-form--label-right">
-													<div class="kt-portlet__body">
-														<div class="kt-section kt-section--first">
-															<div class="kt-section__body">
-																<div class="row">
-																	<label class="col-xl-3"></label>
-																	<div class="col-lg-9 col-xl-6">
-																		<h3 class="kt-section__title kt-section__title-sm">Informações do usuário:</h3>
-																	</div>
-																</div>
-																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Foto</label>
-																	<div class="col-lg-9 col-xl-6">
-																		<div class="kt-avatar kt-avatar--outline kt-avatar--circle" id="kt_apps_user_add_avatar">
-																			<div class="kt-avatar__holder" style="background-image: url(&quot;http://keenthemes.com/metronic/preview/default/custom/user/assets/media/users/100_1.jpg&quot;);"></div>
-																			<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
-																				<i class="fa fa-pen"></i>
-																				<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">
-																			</label>
-																			<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
-																				<i class="fa fa-times"></i>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Nome:</label>
-																	<div class="col-lg-9 col-xl-6">
-																		<input class="form-control" type="text" value="<?php echo "$nomeX"?>">
-																	</div>
-																</div>
-																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Sobrenome:</label>
-																	<div class="col-lg-9 col-xl-6">
-																		<input class="form-control" type="text" value="<?php echo "$sobrenomeX"?>">
-																	</div>
-																</div>
-																
-																<div class="row">
-																	<label class="col-xl-3"></label>
-																	<div class="col-lg-9 col-xl-6">
-																		<h3 class="kt-section__title kt-section__title-sm">Informações de contato:</h3>
-																	</div>
-																</div>
-																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Telefone</label>
-																	<div class="col-lg-9 col-xl-6">
-																		<div class="input-group">
-																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-																			<input type="text" class="form-control" value="+35278953712" placeholder="Phone" aria-describedby="basic-addon1">
-																		</div>
-																		<span class="form-text text-muted">
-																			Nunca compartilharemos seu email com mais ninguém.</span>
-																	</div>
-																</div>
-																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
-																	<div class="col-lg-9 col-xl-6">
-																		<div class="input-group">
-																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
-																			<input type="text" class="form-control" value="<?php echo "$emailX"?>" placeholder="Email" aria-describedby="basic-addon1">
-																		</div>
-																	</div>
-																</div>
-															
-														</div>
-													</div>
-													<div class="kt-portlet__foot">
-														<div class="kt-form__actions">
-															<div class="row">
-																<div class="col-lg-3 col-xl-3">
-																</div>
-																<div class="col-lg-9 col-xl-9">
-																	<button type="reset" class="btn btn-success">Salvar</button>&nbsp;
-																	<button type="reset" class="btn btn-secondary">Cancelar</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</form>
 											</div>
+
+											<!--end: Pagination-->
 										</div>
 									</div>
-								</div>
 
-								<!--End:: App Content-->
+									<!--end:: Components/Pagination/Default-->
+								</div>
 							</div>
 
-							<!--End::App-->
+							<!--End::Section-->
 						</div>
 
 						<!-- end:: Content -->
@@ -2262,13 +2156,13 @@ include('../../../conn/verifica_login.php');
 					<!-- begin:: Footer -->
 					<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 						<div class="kt-container  kt-container--fluid ">
-						<div class="kt-footer__copyright">
-								2019&nbsp;&copy;&nbsp;<a href="http://www.baruel.com.br/" target="_blank" class="kt-link">iCompanion</a>
+							<div class="kt-footer__copyright">
+								2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
 							</div>
 							<div class="kt-footer__menu">
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Sobre</a>
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Nossa equipe</a>
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contato</a>
+								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
+								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
+								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
 							</div>
 						</div>
 					</div>
@@ -2888,7 +2782,7 @@ include('../../../conn/verifica_login.php');
 								<div class="kt-chat__head ">
 									<div class="kt-chat__left">
 										<div class="kt-chat__label">
-											<a href="#" class="kt-chat__title">Nome Cliente</a>
+											<a href="#" class="kt-chat__title">Jason Muller</a>
 											<span class="kt-chat__status">
 												<span class="kt-badge kt-badge--dot kt-badge--success"></span> Active
 											</span>
@@ -3082,6 +2976,9 @@ include('../../../conn/verifica_login.php');
 			</div>
 		</div>
 
+		<!--ENd:: Chat-->
+
+		<!-- begin::Global Config(global config for global JS sciprts) -->
 		<script>
 			var KTAppOptions = {
 				"colors": {
@@ -3103,7 +3000,9 @@ include('../../../conn/verifica_login.php');
 			};
 		</script>
 
+		<!-- end::Global Config -->
 
+		<!--begin:: Global Mandatory Vendors -->
 		<script src="./assets/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
@@ -3114,7 +3013,9 @@ include('../../../conn/verifica_login.php');
 		<script src="./assets/vendors/general/sticky-js/dist/sticky.min.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/wnumb/wNumb.js" type="text/javascript"></script>
 
+		<!--end:: Global Mandatory Vendors -->
 
+		<!--begin:: Global Optional Vendors -->
 		<script src="./assets/vendors/general/jquery-form/dist/jquery.form.min.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/block-ui/jquery.blockUI.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
@@ -3166,12 +3067,18 @@ include('../../../conn/verifica_login.php');
 		<script src="./assets/vendors/general/jquery.repeater/src/repeater.js" type="text/javascript"></script>
 		<script src="./assets/vendors/general/dompurify/dist/purify.js" type="text/javascript"></script>
 
+		<!--end:: Global Optional Vendors -->
 
+		<!--begin::Global Theme Bundle(used by all pages) -->
 		<script src="./assets/js/demo1/scripts.bundle.js" type="text/javascript"></script>
 
-		<script src="./assets/js/demo1/pages/dashboard.js" type="text/javascript"></script>
-		<script src="./assets/js/demo1/pages/custom/user/profile.js" type="text/javascript"></script>
+		<!--end::Global Theme Bundle -->
 
+		<!--begin::Page Scripts(used by this page) -->
+		<script src="./assets/js/demo1/pages/custom/chat/chat.js" type="text/javascript"></script>
+
+		<!--end::Page Scripts -->
 	</body>
 
+	<!-- end::Body -->
 </html>

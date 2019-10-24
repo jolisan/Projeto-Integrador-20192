@@ -2236,13 +2236,13 @@ include('../../../conn/verifica_login.php');
 					<!-- begin:: Footer -->
 					<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 						<div class="kt-container  kt-container--fluid ">
-							<div class="kt-footer__copyright">
-								2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
+						<div class="kt-footer__copyright">
+								2019&nbsp;&copy;&nbsp;<a href="http://www.baruel.com.br/" target="_blank" class="kt-link">iCompanion</a>
 							</div>
 							<div class="kt-footer__menu">
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Sobre</a>
+								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Nossa equipe</a>
+								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contato</a>
 							</div>
 						</div>
 					</div>

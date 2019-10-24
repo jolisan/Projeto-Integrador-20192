@@ -115,7 +115,7 @@
 												</div>
 											</form>
 
-											<p class="text-center text-danger">
+												<p class="text-center text-danger">
 													<?php 
 													if(isset($_SESSION['loginErro'])){
 														echo $_SESSION['loginErro'];
@@ -133,26 +133,26 @@
 													?>
 												</p>
 
-													<?php 
-														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    				if(strpos($fullUrl, "error=campovazio") == true){
-                      			echo '<p class="text-center text-danger">Algum campo do cadastro está vazio!</p>';
-														}
-													?>
+												<?php
+													$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+													if (strpos($fullUrl, "error=campovazio") == true) {
+														echo '<p class="text-center text-danger">Algum campo do cadastro está vazio!</p>';
+													}
+												?>
 
-													<?php 
+												<?php 
 													$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 													if(strpos($fullUrl, "cadastro=sucess") == true){
 													echo '<p class="text-center text-success">Usuário cadastrado com sucesso!</p>';
 													}
-													?>
+												?>
 
-													<?php 
+												<?php 
 													$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 													if(strpos($fullUrl, "error=usuarioexistente") == true){
 													echo '<p class="text-center text-danger">Já existe um usuário com este e-mail!</p>';
 													}
-													?>
+												?>
 
 													
 
