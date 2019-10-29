@@ -231,5 +231,21 @@ class Graph
     return $result_strings;
   }
 
+
+  /**
+   * Função que realiza a busca DFS em um grafo
+   */
+  public function dfsSearch( $startKey)
+  {
+    static $graphAux = array();
+    echo "graphAuxd node {$startKey}<br/>";
+    $graphAux[$startKey] = 1;
+    foreach ($this->adj[$startKey] as $vertex1 => $v1_data) {
+        if (!isset($graphAux[$vertex1])) {
+            $this->dfs($vertex1);
+        }
+    }
+  }
+
 }
 ?>
