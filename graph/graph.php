@@ -238,11 +238,11 @@ class Graph
   public function dfsSearch( $startKey)
   {
     static $graphAux = array();
-    echo "graphAuxd node {$startKey}<br/>";
+    //echo "graphAuxd node {$startKey}<br/>"; Linha para efeito de debug apenas
     $graphAux[$startKey] = 1;
     foreach ($this->adj[$startKey] as $vertex1 => $v1_data) {
         if (!isset($graphAux[$vertex1])) {
-            $this->dfs($vertex1);
+            $this->dfsSearch($vertex1);
         }
     }
   }
