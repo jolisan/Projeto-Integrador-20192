@@ -1,17 +1,17 @@
 <?php
 session_start();
-include('../../../conn/verifica_login.php');
+include('../../../../conn2/verifica_login.php');
 
-	$idX = $_SESSION['usuarioId'];
-	$nomeX = $_SESSION['usuarioNome'];
-	$sobrenomeX = $_SESSION['usuarioSobrenome'];
-	$emailX = $_SESSION['usuarioEmail'];
-	$saldoX = $_SESSION['usuarioSaldo'];
-	$telefoneX = $_SESSION['usuarioTelefone'];
-	$cidadeX = $_SESSION['usuarioCidade'];
-	$estadoX = $_SESSION['usuarioEstado'];
-	$fotoPerfilX = $_SESSION['usuarioFoto'];
-	$id_telefoneX = $_SESSION['telefoneId'];
+	$idX = $_SESSION['colaboradorId'];
+	$nomeX = $_SESSION['colaboradorNome'];
+	$sobrenomeX = $_SESSION['colaboradorSobrenome'];
+	$emailX = $_SESSION['colaboradorEmail'];
+	$saldoX = $_SESSION['colaboradorSaldo'];
+	$telefoneX = $_SESSION['colaboradorTelefone'];
+	$cidadeX = $_SESSION['colaboradorCidade'];
+	$estadoX = $_SESSION['colaboradorEstado'];
+	$fotoPerfilX = $_SESSION['colaboradorFoto'];
+	$dataEntradaX = $_SESSION['colaboradorDataEntrada'];
 	
 ?>
 
@@ -24,7 +24,7 @@ include('../../../conn/verifica_login.php');
 	<head>
 
 
-		<base href="../../../">
+		<base href="../../../../">
 
 
 		<meta charset="utf-8" />
@@ -90,7 +90,7 @@ include('../../../conn/verifica_login.php');
 
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="painel/">
+				<a href="colaborador/painel/">
 					<img alt="Logo" src="./assets/media/logos/logo-icompanion-mobile.png" /> <!-- LOGO MOBILE -->
 				</a>
 			</div>
@@ -111,7 +111,7 @@ include('../../../conn/verifica_login.php');
 
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
-							<a href="painel/">
+							<a href="colaborador/painel/">
 								<img alt="Logo" src="./assets/media/logos/logo-icompanion-web.png" /> <!-- LOGO WEB -->
 							</a>
 						</div>
@@ -145,7 +145,7 @@ include('../../../conn/verifica_login.php');
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item " aria-haspopup="true"><a href="painel/" class="kt-menu__link "><span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+								<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/index.html" class="kt-menu__link "><span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 													<polygon id="Bound" points="0 0 24 0 24 24 0 24" />
 													<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" id="Shape" fill="#000000" fill-rule="nonzero" />
@@ -166,9 +166,9 @@ include('../../../conn/verifica_login.php');
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Subheaders</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Visão geral</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/informacoes-pessoais/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Informações pessoais</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/mudar-senha/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mudar senha</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Visão geral</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/informacoes-pessoais/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Informações pessoais</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/mudar-senha/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mudar senha</span></a></li>
 											<!-- <li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/subheader/classic.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Classic</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/subheader/none.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">None</span></a></li> -->
 										</ul>
@@ -184,9 +184,9 @@ include('../../../conn/verifica_login.php');
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Combinações</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/fixed-content.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/minimized-aside.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/no-aside.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
@@ -938,7 +938,7 @@ include('../../../conn/verifica_login.php');
 							<div class="kt-header__topbar-item kt-header__topbar-item--user">
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 									<div class="kt-header__topbar-user">
-										<span class="kt-header__topbar-welcome kt-hidden-mobile">Olá,</span>
+									<span class="kt-header__topbar-welcome kt-hidden-mobile">Olá,</span>
 										<span class="kt-header__topbar-username kt-hidden-mobile"><?php echo "$nomeX"; ?></span>
 										<img class="kt-hidden" alt="Pic" src="./assets/media/users/300_25.jpg" />
 
@@ -968,16 +968,16 @@ include('../../../conn/verifica_login.php');
 
 									<!--begin: Navigation -->
 									<div class="kt-notification">
-										<a href="painel/" class="kt-notification__item">
+										<a href="colaborador/painel/" class="kt-notification__item">
 											<div class="kt-notification__item-icon">
 												<i class="flaticon2-calendar-3 kt-font-success"></i>
 											</div>
 											<div class="kt-notification__item-details">
 												<div class="kt-notification__item-title kt-font-bold">
-													Meu Perfil
+													My Profile
 												</div>
 												<div class="kt-notification__item-time">
-												Configurações da conta e muito mais
+													Account settings and more
 												</div>
 											</div>
 										</a>
@@ -987,10 +987,23 @@ include('../../../conn/verifica_login.php');
 											</div>
 											<div class="kt-notification__item-details">
 												<div class="kt-notification__item-title kt-font-bold">
-													Minhas Mensagens
+													My Messages
 												</div>
 												<div class="kt-notification__item-time">
-													Caixa de entrada
+													Inbox and tasks
+												</div>
+											</div>
+										</a>
+										<a href="#" class="kt-notification__item">
+											<div class="kt-notification__item-icon">
+												<i class="flaticon2-rocket-1 kt-font-danger"></i>
+											</div>
+											<div class="kt-notification__item-details">
+												<div class="kt-notification__item-title kt-font-bold">
+													My Activities
+												</div>
+												<div class="kt-notification__item-time">
+													Logs and notifications
 												</div>
 											</div>
 										</a>
@@ -1013,16 +1026,16 @@ include('../../../conn/verifica_login.php');
 											</div>
 											<div class="kt-notification__item-details">
 												<div class="kt-notification__item-title kt-font-bold">
-													Pagamentos
+													Billing
 												</div>
 												<div class="kt-notification__item-time">
-													Faturamento e extratos
+													billing & statements <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill kt-badge--rounded">2 pending</span>
 												</div>
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sair</a>
-											<a href="painel/sair.php" target="_blank" class="btn btn-clean btn-sm btn-bold">Comprar plano</a>
+											<a href="colaborador/painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+											<a href="demo1/custom/user/login-v2.html" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
 										</div>
 									</div>
 
@@ -1128,7 +1141,7 @@ include('../../../conn/verifica_login.php');
 														</div>
 													</div>
 													<div class="kt-widget__items">
-														<a href="painel/" class="kt-widget__item ">
+														<a href="colaborador/painel/" class="kt-widget__item ">
 															<span class="kt-widget__section">
 																<span class="kt-widget__icon">
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -1143,7 +1156,7 @@ include('../../../conn/verifica_login.php');
 																</span>
 															</span>
 														</a>
-														<a href="painel/perfil/informacoes-pessoais/" class="kt-widget__item ">
+														<a href="colaborador/painel/perfil/informacoes-pessoais/" class="kt-widget__item ">
 															<span class="kt-widget__section">
 																<span class="kt-widget__icon">
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -1158,7 +1171,7 @@ include('../../../conn/verifica_login.php');
 																</span>
 															</span>
 														</a>
-														<a href="painel/perfil/mudar-senha/" class="kt-widget__item kt-widget__item--active">
+														<a href="colaborador/painel/perfil/mudar-senha/" class="kt-widget__item kt-widget__item--active">
 															<span class="kt-widget__section">
 																<span class="kt-widget__icon">
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -1742,6 +1755,23 @@ include('../../../conn/verifica_login.php');
 
 		<!-- end::Scrolltop -->
 
+		<!-- begin::Sticky Toolbar -->
+		<ul class="kt-sticky-toolbar" style="margin-top: 30px;">
+			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--success" id="kt_demo_panel_toggle" data-toggle="kt-tooltip" title="Check out more demos" data-placement="right">
+				<a href="#" class=""><i class="flaticon2-drop"></i></a>
+			</li>
+			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--brand" data-toggle="kt-tooltip" title="Layout Builder" data-placement="left">
+				<a href="https://keenthemes.com/metronic/preview/demo1/builder.html" target="_blank"><i class="flaticon2-gear"></i></a>
+			</li>
+			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="Documentation" data-placement="left">
+				<a href="https://keenthemes.com/metronic/?page=docs" target="_blank"><i class="flaticon2-telegram-logo"></i></a>
+			</li>
+			<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" id="kt_sticky_toolbar_chat_toggler" data-toggle="kt-tooltip" title="Chat Example" data-placement="left">
+				<a href="#" data-toggle="modal" data-target="#kt_chat_modal"><i class="flaticon2-chat-1"></i></a>
+			</li>
+		</ul>
+
+		<!-- end::Sticky Toolbar -->
 
 		<!-- begin::Demo Panel -->
 		<div id="kt_demo_panel" class="kt-demo-panel">
@@ -1761,7 +1791,7 @@ include('../../../conn/verifica_login.php');
 					<div class="kt-demo-panel__item-preview">
 						<img src="./assets/media/demos/preview/demo1.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="painel/" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
+							<a href="demo1/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
 						</div>
 					</div>
 				</div>
