@@ -9,10 +9,10 @@
 	<head>
 
 
-		<base href=""> <!-- ../ volta um diretorio -->
+		<base href="../"> <!-- ../ volta um diretorio -->
 
 		<meta charset="utf-8" />
-		<title>iCompanion | Login e Cadastro</title>
+		<title>iCompanion | Colaborador - Login e Cadastro</title>
 		<meta name="description" content="Login page example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -93,10 +93,10 @@
 									</div>
 									<div class="kt-login__signin">
 										<div class="kt-login__head">
-											<h3 class="kt-login__title">Faça login</h3>
+											<h3 class="kt-login__title">Faça login - Colaborador</h3>
 										</div>
 										<div class="kt-login__form">
-											<form class="kt-form" method="POST" action="conn/valida.php">
+											<form class="kt-form" method="POST" action="conn2/valida.php">
 												<div class="form-group">
 													<input class="form-control" id="email" type="text" placeholder="Email" name="email" autocomplete="off">
 												</div>
@@ -161,11 +161,11 @@
 									</div>
 									<div class="kt-login__signup">
 										<div class="kt-login__head">
-											<h3 class="kt-login__title">Cadastre-se</h3>
+											<h3 class="kt-login__title">Cadastre-se - Colaborador</h3>
 											<div class="kt-login__desc">Digite as suas informações para criar a sua conta:</div>
 										</div>
 										<div class="kt-login__form">
-											<form class="kt-form" method="post" action="./conn/cadastrar.php">
+											<form class="kt-form" method="post" action="conn2/cadastrar.php">
 												<div class="form-group">
 													<input class="form-control" id="nomecadastro" type="text" placeholder="Nome" name="nomecadastro">
 												</div>
@@ -221,10 +221,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(./assets/media//bg/bg-4.jpg);">
+					<div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(./assets/media//bg/bg-7.jpg);">
 						<div class="kt-login__section">
 							<div class="kt-login__block">
-								<h3 class="kt-login__title"> Junte-se a nossa comunidade</h3>
+								<h3 class="kt-login__title"> Junte-se ao nosso time de colaboradores</h3>
 								<div class="kt-login__desc">
 									Nós somos mais que uma aplicação web!
 									<br>Nós localizamos pessoas para encontros online de acordo com os seus interesses.
