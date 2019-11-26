@@ -5,35 +5,38 @@ include_once 'Subset.php';
 class Graph
 {
 	public $VerticesCount;
-	public $EdgesCount;
 	public $_edge = array();
-}
 
-function CreateGraph($verticesCount, $edgesCoun)
-{
-	$graph = new Graph();
-	$graph->VerticesCount = $verticesCount;
-	$graph->EdgesCount = $edgesCoun;
-	$graph->_edge = array();
-	
-	for ($i = 0; $i < $graph->EdgesCount; ++$i)
-		$graph->_edge[$i] = new Edge();
 
-	return $graph;
-}
+	function __construct($verticesCount)
+	{
+		$this->VerticesCount = $verticesCount;
+		$this->_edge = array();
+	}
 
-function Find($subsets, $i)
+
+	function AddConection($source, $dest, $price, $colaborator, $client){
+		$auxEdge = new Edge();
+		$auxEdge->Source = $source;
+		$auxEdge->Destination = $dest;
+		$auxEdge->Weight = $price;
+		$auxEdge->Colaborador = $colaborator;
+		$auxEdge->Cliente = $client;
+		array_push($this->_edge, $auxEdge);
+	}
+
+	function Find($subsets, $i)
 {
 	if ($subsets[$i]->Parent != $i)
-		$subsets[$i]->Parent = Find($subsets, $subsets[$i]->Parent);
+		$subsets[$i]->Parent = $this->Find($subsets, $subsets[$i]->Parent);
 
 	return $subsets[$i]->Parent;
 }
 
 function Union($subsets, $x, $y)
 {
-	$xroot = Find($subsets, $x);
-	$yroot = Find($subsets, $y);
+	$xroot = $this->Find($subsets, $x);
+	$yroot = $this->Find($subsets, $y);
 
 	if ($subsets[$xroot]->Rank < $subsets[$yroot]->Rank)
 		$subsets[$xroot]->Parent = $yroot;
@@ -68,15 +71,14 @@ function PrintResult($result)
 		//echo $result[$i]->Colaborador . " -- " . $result[$i]->Cliente . " == " . $result[$i]->Weight . "<br/>";
 }
 
-function Kruskal($graph)
+function Kruskal()
 {
-	$verticesCount = $graph->VerticesCount;
+	$verticesCount = $this->VerticesCount;
 	$result = array();
 	$i = 0;
 	$e = 0;
 
-	usort($graph->_edge, "CompareEdges"); //Organizar a lista por ordem do peso
-
+	usort($this->_edge, array( "Graph" ,"CompareEdges")); //Organizar a lista por ordem do peso
 
 	$subsets = array();
 
@@ -89,20 +91,20 @@ function Kruskal($graph)
 
 	while ($e < $verticesCount - 1)
 	{
-		$nextEdge = $graph->_edge[$i++];
-		$x = Find($subsets, $nextEdge->Source);
-		$y = Find($subsets, $nextEdge->Destination);
+		$nextEdge = $this->_edge[$i++];
+		$x = $this->Find($subsets, $nextEdge->Source);
+		$y = $this->Find($subsets, $nextEdge->Destination);
 
 		if ($x != $y)
 		{
 			$result[$e++] = $nextEdge;
-			Union($subsets, $x, $y);
+			$this->Union($subsets, $x, $y);
 		}
 	}
 
-	PrintResult($result);
+	$this->PrintResult($result);
 }
 
-
+}
 
 ?>
