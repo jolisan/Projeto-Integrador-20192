@@ -219,7 +219,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>

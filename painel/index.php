@@ -14,10 +14,35 @@ if(!$_SESSION['usuarioEmail']) {
 	$emailX = $_SESSION['usuarioEmail'];
 	$saldoX = $_SESSION['usuarioSaldo'];
 	$telefoneX = $_SESSION['usuarioTelefone'];
+	$dddX = $_SESSION['usuarioDDD']; // NOVO DDD
+	$ddiX = $_SESSION['usuarioDDI']; // NOVO DDI
 	$cidadeX = $_SESSION['usuarioCidade'];
 	$estadoX = $_SESSION['usuarioEstado'];
 	$fotoPerfilX = $_SESSION['usuarioFoto'];
 	$dataEntradaX = $_SESSION['dataEntrada'];
+
+	$sql = mysqli_query($conn, "SELECT t.telefone, u.id_telefone, t.ddi, t.ddd FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql)
+	);
+	while($aux = mysqli_fetch_assoc($sql)) { 
+		$telefone_banco = $aux["telefone"];
+	}
+
+	$sql2 = mysqli_query($conn, "SELECT e.cidade, e.estado, u.id_endereco FROM usuario u LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql2)
+	);
+	while($aux = mysqli_fetch_assoc($sql2)) { 
+		$cidade_banco = $aux["cidade"];
+		$estado_banco = $aux["estado"];
+	}
+
+	$sql3 = mysqli_query($conn, "SELECT saldo FROM usuario WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql3)
+	);
+	while($aux = mysqli_fetch_assoc($sql3)) { 
+		$saldo_banco = $aux["saldo"];
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -194,7 +219,7 @@ if(!$_SESSION['usuarioEmail']) {
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -1126,15 +1151,15 @@ if(!$_SESSION['usuarioEmail']) {
 													<div class="kt-widget__content">
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Email:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$emailX"; ?></a>
+															<a class="kt-widget__data"><?php echo "$emailX"; ?></a>
 														</div>
 														<div class="kt-widget__info">
-															<span class="kt-widget__label">Telefone:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$telefoneX"; ?></a>
+														<span class="kt-widget__label">Telefone:</span>
+															<a class="kt-widget__data"><?php echo " +$ddiX ($dddX) $telefone_banco"; ?></a>
 														</div>
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Localização:</span>
-															<span class="kt-widget__data"><?php echo "$cidadeX".'/'. "$estadoX"; ?></span>
+															<span class="kt-widget__data"><?php echo "$cidade_banco".'/'. "$estado_banco"; ?></span>
 														</div>
 													</div>
 													<div class="kt-widget__items">
@@ -1278,7 +1303,7 @@ if(!$_SESSION['usuarioEmail']) {
 															<div class="kt-widget12__item">
 																<div class="kt-widget12__info">
 																	<span class="kt-widget12__desc">Seu saldo</span>
-																	<span class="kt-widget12__value">R$<?php echo "$saldoX"; ?>,00</span>
+																	<span class="kt-widget12__value">R$<?php echo "$saldo_banco"; ?></span>
 																</div>
 																<div class="kt-widget12__info">
 																	<span class="kt-widget12__desc">Você participa da nossa comunidade desde:</span>

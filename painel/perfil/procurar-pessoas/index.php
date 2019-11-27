@@ -207,7 +207,7 @@ if(!$_SESSION['usuarioEmail']) {
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -1041,8 +1041,16 @@ if(!$_SESSION['usuarioEmail']) {
 									</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									<div class="kt-subheader__group" id="kt_subheader_search">
-										<span class="kt-subheader__desc" id="kt_subheader_total">
-											8 Total </span>
+
+									<?php
+										$sql = mysqli_query($conn, "SELECT COUNT(*) AS num_colaboradores FROM colaborador") or die( 
+											mysqli_error($sql) 
+										);
+										while($aux = mysqli_fetch_assoc($sql)) { 
+											echo '<span class="kt-subheader__desc" id="kt_subheader_total">'.$aux["num_colaboradores"].' Total</span>';
+										}
+										?>
+
 										<form class="kt-margin-l-20" id="kt_subheader_search_form">
 											<div class="kt-input-icon kt-input-icon--right kt-subheader__search">
 												<input type="text" class="form-control" placeholder="Procurar..." id="generalSearch">

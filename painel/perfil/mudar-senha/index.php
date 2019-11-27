@@ -1,6 +1,12 @@
 <?php
 session_start();
 include('../../../conn/verifica_login.php');
+include('../../../conn/conexao.php');
+
+if(!$_SESSION['usuarioEmail']) {
+	header('Location: ../../index.php');
+	exit();
+}
 
 	$idX = $_SESSION['usuarioId'];
 	$nomeX = $_SESSION['usuarioNome'];
@@ -8,11 +14,29 @@ include('../../../conn/verifica_login.php');
 	$emailX = $_SESSION['usuarioEmail'];
 	$saldoX = $_SESSION['usuarioSaldo'];
 	$telefoneX = $_SESSION['usuarioTelefone'];
+	$dddX = $_SESSION['usuarioDDD']; // NOVO DDD
+	$ddiX = $_SESSION['usuarioDDI']; // NOVO DDI
 	$cidadeX = $_SESSION['usuarioCidade'];
 	$estadoX = $_SESSION['usuarioEstado'];
 	$fotoPerfilX = $_SESSION['usuarioFoto'];
 	$id_telefoneX = $_SESSION['telefoneId'];
 	
+	$sql = mysqli_query($conn, "SELECT t.telefone, u.id_telefone, t.ddi, t.ddd FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql)
+	);
+	while($aux = mysqli_fetch_assoc($sql)) { 
+		$telefone_banco = $aux["telefone"];
+	}
+
+	$sql2 = mysqli_query($conn, "SELECT e.cidade, e.estado, u.id_endereco FROM usuario u LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql2)
+	);
+	while($aux = mysqli_fetch_assoc($sql2)) { 
+		$cidade_banco = $aux["cidade"];
+		$estado_banco = $aux["estado"];
+	}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -187,7 +211,7 @@ include('../../../conn/verifica_login.php');
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -1116,15 +1140,15 @@ include('../../../conn/verifica_login.php');
 													<div class="kt-widget__content">
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Email:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$emailX"; ?></a>
+															<a class="kt-widget__data"><?php echo "$emailX"; ?></a>
 														</div>
 														<div class="kt-widget__info">
-															<span class="kt-widget__label">Telefone:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$telefoneX"; ?></a>
+														<span class="kt-widget__label">Telefone:</span>
+															<a class="kt-widget__data"><?php echo " +$ddiX ($dddX) $telefone_banco"; ?></a>
 														</div>
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Localização:</span>
-															<span class="kt-widget__data"><?php echo "$cidadeX".'/'. "$estadoX"; ?></span>
+															<span class="kt-widget__data"><?php echo "$cidade_banco".'/'. "$estado_banco"; ?></span>
 														</div>
 													</div>
 													<div class="kt-widget__items">
@@ -1246,18 +1270,27 @@ include('../../../conn/verifica_login.php');
 														</div>
 													</div>
 												</div>
-												<form class="kt-form kt-form--label-right">
+												<form class="kt-form kt-form--label-right" method="post" action="conn/mudar.php">
 													<div class="kt-portlet__body">
 														<div class="kt-section kt-section--first">
 															<div class="kt-section__body">
-																<div class="alert alert-solid-danger alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
-																	<div class="alert-icon"><i class="fa fa-exclamation-triangle"></i></div>
-																	<div class="alert-text">Nunca compartilhe a sua senha com ninguém!</div>
-																	<div class="alert-close">
-																		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-																			<span aria-hidden="true"><i class="la la-close"></i></span>
-																		</button>
-																	</div>
+																<div class="" role="">
+																	<div class="alert-icon"></div>
+
+																	<?php
+                                        $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                                        if(strpos($fullUrl, "error=errosenha") == true){
+																				 echo '<div class="alert alert-solid-danger alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
+																				 <div class="alert-icon"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Senha atual ou confirmação de senha erradas!</div>';
+																				}
+																				
+																				if(strpos($fullUrl, "return=senhaalterada") == true){
+																					echo '<div class="alert alert-success alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
+																					<div class="alert-icon"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Sua senha foi alterada com sucesso!</div>';
+																				 }
+                                  ?>
+
+																
 																</div>
 																<div class="row">
 																	<label class="col-xl-3"></label>
@@ -1268,20 +1301,19 @@ include('../../../conn/verifica_login.php');
 																<div class="form-group row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Senha Atual</label>
 																	<div class="col-lg-9 col-xl-6">
-																		<input type="password" class="form-control" value="" placeholder="Senha Atual">
-																		<a href="#" class="kt-link kt-font-sm kt-font-bold kt-margin-t-5">Esqueceu sua senha ?</a>
+																		<input type="password" id="senhaatual" name="senhaatual" class="form-control" value="" placeholder="Senha Atual">
 																	</div>
 																</div>
 																<div class="form-group row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Nova senha</label>
 																	<div class="col-lg-9 col-xl-6">
-																		<input type="password" class="form-control" value="" placeholder="Nova senha">
+																		<input type="password" id="senha1" name="senha1" class="form-control" value="" placeholder="Nova senha">
 																	</div>
 																</div>
 																<div class="form-group form-group-last row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Repita sua nova senha</label>
 																	<div class="col-lg-9 col-xl-6">
-																		<input type="password" class="form-control" value="" placeholder="Repita sua nova senha">
+																		<input type="password" id="senha2" name="senha2" class="form-control" value="" placeholder="Repita sua nova senha">
 																	</div>
 																</div>
 															</div>
@@ -1292,10 +1324,12 @@ include('../../../conn/verifica_login.php');
 															<div class="row">
 																<div class="col-lg-3 col-xl-3">
 																</div>
-																<div class="col-lg-9 col-xl-9">
-																	<button type="reset" class="btn btn-brand btn-bold">Mudar senha</button>&nbsp;
-																	<button type="reset" class="btn btn-secondary">Cancelar</button>
+
+																<div class="kt-login__actions">
+																<button id="btaoalterar" class="btn btn-brand btn-bold">Mudar</button>
+																<button type="reset" class="btn btn-secondary">Cancelar</button>
 																</div>
+
 															</div>
 														</div>
 													</div>

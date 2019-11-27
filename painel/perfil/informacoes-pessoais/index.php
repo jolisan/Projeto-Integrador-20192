@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../../../conn/verifica_login.php');
+include('../../../conn/conexao.php');
 
 	$idX = $_SESSION['usuarioId'];
 	$nomeX = $_SESSION['usuarioNome'];
@@ -8,12 +9,28 @@ include('../../../conn/verifica_login.php');
 	$emailX = $_SESSION['usuarioEmail'];
 	$saldoX = $_SESSION['usuarioSaldo'];
 	$telefoneX = $_SESSION['usuarioTelefone'];
+	$dddX = $_SESSION['usuarioDDD']; // NOVO DDD
+	$ddiX = $_SESSION['usuarioDDI']; // NOVO DDI
 	$cidadeX = $_SESSION['usuarioCidade'];
 	$estadoX = $_SESSION['usuarioEstado'];
 	$fotoPerfilX = $_SESSION['usuarioFoto'];
 	$id_telefoneX = $_SESSION['telefoneId'];
 
-	//$query = "UPDATE telefone SET telefone = '$telefone_novo' WHERE id_telefone = '$id_telefoneX' ";
+	$sql = mysqli_query($conn, "SELECT t.telefone, u.id_telefone, t.ddi, t.ddd FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql)
+	);
+	while($aux = mysqli_fetch_assoc($sql)) { 
+		$telefone_banco = $aux["telefone"];
+	}
+
+	$sql2 = mysqli_query($conn, "SELECT e.cidade, e.estado, u.id_endereco FROM usuario u LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE id_usuario = ".$idX."") or die( 
+		mysqli_error($sql2)
+	);
+	while($aux = mysqli_fetch_assoc($sql2)) { 
+		$cidade_banco = $aux["cidade"];
+		$estado_banco = $aux["estado"];
+	}
+
 
 ?>
 
@@ -189,7 +206,7 @@ include('../../../conn/verifica_login.php');
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -1119,15 +1136,15 @@ include('../../../conn/verifica_login.php');
 													<div class="kt-widget__content">
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Email:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$emailX"; ?></a>
+															<a class="kt-widget__data"><?php echo "$emailX"; ?></a>
 														</div>
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Telefone:</span>
-															<a href="#" class="kt-widget__data"><?php echo "$telefoneX"; ?></a>
+															<a class="kt-widget__data"><?php echo " +$ddiX ($dddX) $telefone_banco"; ?></a>
 														</div>
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Localização:</span>
-															<span class="kt-widget__data"><?php echo "$cidadeX".'/'. "$estadoX"; ?></span>
+															<span class="kt-widget__data"><?php echo "$cidade_banco".'/'. "$estado_banco"; ?></span>
 														</div>
 													</div>
 													<div class="kt-widget__items">
@@ -1202,59 +1219,28 @@ include('../../../conn/verifica_login.php');
 													<div class="kt-portlet__head-label">
 														<h3 class="kt-portlet__head-title">Informações Pessoais <small>atualizar suas informações pessoais</small></h3>
 													</div>
-													<div class="kt-portlet__head-toolbar">
-														<div class="kt-portlet__head-wrapper">
-															<div class="dropdown dropdown-inline">
-																<button type="button" class="btn btn-label-brand btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																	<i class="flaticon2-gear"></i>
-																</button>
-																<div class="dropdown-menu dropdown-menu-right">
-																	<ul class="kt-nav">
-																		<li class="kt-nav__section kt-nav__section--first">
-																			<span class="kt-nav__section-text">Export Tools</span>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-print"></i>
-																				<span class="kt-nav__link-text">Print</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-copy"></i>
-																				<span class="kt-nav__link-text">Copy</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-file-excel-o"></i>
-																				<span class="kt-nav__link-text">Excel</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-file-text-o"></i>
-																				<span class="kt-nav__link-text">CSV</span>
-																			</a>
-																		</li>
-																		<li class="kt-nav__item">
-																			<a href="#" class="kt-nav__link">
-																				<i class="kt-nav__link-icon la la-file-pdf-o"></i>
-																				<span class="kt-nav__link-text">PDF</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
 												</div>
-												<form class="kt-form kt-form--label-right">
+												<form class="kt-form kt-form--label-right" method="post" action="conn/atualizar-cadastro.php">
 													<div class="kt-portlet__body">
 														<div class="kt-section kt-section--first">
 															<div class="kt-section__body">
 																<div class="row">
 																	<label class="col-xl-3"></label>
+
+
+																	<?php
+                                        $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                                        if(strpos($fullUrl, "error=errotualizar") == true){
+																				 echo '<div class="alert alert-solid-danger alert-bold fade show kt-margin-t-2 kt-margin-b-2" role="alert">
+																				 <div class="alert-icon"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Ocorreu um erro ao atualizar os seus dados!</div></div>';
+																				}
+																				
+																				if(strpos($fullUrl, "return=dadosatualizados") == true){
+																					echo '<div class="alert alert-success alert-bold fade show kt-margin-t-2 kt-margin-b-2" role="alert">
+																					<div class="alert-icon"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Seus dados foram alterados com sucesso!</div></div>';
+																				 }
+                                  ?>
+
 																	<div class="col-lg-9 col-xl-6">
 																		<h3 class="kt-section__title kt-section__title-sm">Informações do usuário:</h3>
 																	</div>
@@ -1293,27 +1279,53 @@ include('../../../conn/verifica_login.php');
 																		<h3 class="kt-section__title kt-section__title-sm">Informações de contato:</h3>
 																	</div>
 																</div>
-																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Telefone</label>
-																	<div class="col-lg-9 col-xl-6">
-																		<div class="input-group">
-																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-																			<input type="text" class="form-control" value="+35278953712" placeholder="Phone" aria-describedby="basic-addon1">
-																		</div>
-																		<span class="form-text text-muted">
-																			Nunca compartilharemos seu email com mais ninguém.</span>
-																	</div>
-																</div>
+
 																<div class="form-group row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
-																			<input type="text" class="form-control" value="<?php echo "$emailX"?>" placeholder="Email" aria-describedby="basic-addon1">
+																			<span type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1"><?php echo "$emailX"?></span>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Telefone</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i><?php echo " +$ddiX ($dddX)"?></span></div>
+																			<input type="text" maxlength="9" class="form-control" id="telefone" name="telefone" value="<?php echo "$telefone_banco"?>" placeholder="Telefone"></input>
 																		</div>
 																	</div>
 																</div>
 															
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Cidade</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo "$cidade_banco"?>" placeholder="Cidade"></input>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Estado</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" maxlength="2" class="form-control" id="estado" name="estado" value="<?php echo "$estado_banco"?>" placeholder="Estado"></input>
+																		</div>
+
+																	</br>
+																		<span class="form-text text-muted">
+																			Nunca compartilharemos suas informações com mais ninguém.</span>
+
+																	</div>
+																</div>
+
+
 														</div>
 													</div>
 													<div class="kt-portlet__foot">
@@ -1322,7 +1334,7 @@ include('../../../conn/verifica_login.php');
 																<div class="col-lg-3 col-xl-3">
 																</div>
 																<div class="col-lg-9 col-xl-9">
-																	<button type="reset" class="btn btn-success">Salvar</button>&nbsp;
+																<button id="btaoalterar" class="btn btn-brand btn-bold">Salvar</button>&nbsp;
 																	<button type="reset" class="btn btn-secondary">Cancelar</button>
 																</div>
 															</div>

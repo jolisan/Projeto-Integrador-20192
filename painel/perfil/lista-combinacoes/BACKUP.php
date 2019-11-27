@@ -207,7 +207,7 @@ if(!$_SESSION['usuarioEmail']) {
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -1041,17 +1041,8 @@ if(!$_SESSION['usuarioEmail']) {
 									</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									<div class="kt-subheader__group" id="kt_subheader_search">
-
-										<?php
-										$sql = mysqli_query($conn, "SELECT COUNT(*) AS qt_combinacoes FROM lista_match l WHERE l.id_usuario = ".$idX."") or die( 
-											mysqli_error($sql) //caso haja um erro na consulta 
-										);
-										while($aux = mysqli_fetch_assoc($sql)) { 
-											echo '<span class="kt-subheader__desc" id="kt_subheader_total">'.$aux["qt_combinacoes"].' Total</span>';
-										}
-										?>
-
-
+										<span class="kt-subheader__desc" id="kt_subheader_total">
+											8 Total </span>
 										<form class="kt-margin-l-20" id="kt_subheader_search_form">
 											<div class="kt-input-icon kt-input-icon--right kt-subheader__search">
 												<input type="text" class="form-control" placeholder="Procurar..." id="generalSearch">
@@ -1130,7 +1121,7 @@ if(!$_SESSION['usuarioEmail']) {
 
 			<?php
 
-			$sql = mysqli_query($conn, "SELECT * FROM colaborador c LEFT JOIN telefone t ON(c.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(c.id_endereco = e.id_endereco) WHERE id_colaborador IN (SELECT l.id_colaborador FROM lista_match l JOIN usuario u ON(l.id_usuario = ".$idX.")) LIMIT 8") or die( 
+			$sql = mysqli_query($conn, "SELECT * FROM colaborador c LEFT JOIN telefone t ON(c.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(c.id_endereco = e.id_endereco) WHERE id_colaborador IN (SELECT l.id_colaborador FROM lista_match l LEFT JOIN usuario u ON(l.id_usuario = u.id_usuario)) LIMIT 8") or die( 
 				mysqli_error($sql) //caso haja um erro na consulta 
 			);
 			while($aux = mysqli_fetch_assoc($sql)) { 
@@ -1192,7 +1183,6 @@ if(!$_SESSION['usuarioEmail']) {
 								</div>
 							</div>
 							<div class="kt-widget__footer">
-							<button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">ENVIAR MENSAGEM</button>
 							</div>
 						</div>
 

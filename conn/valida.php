@@ -9,7 +9,7 @@
 		$senha = md5($senha);
 			
 		//Buscar na tabela usuario o usuário que corresponde com os dados digitado no formulário
-		$result_usuario = "SELECT u.nome, u.sobrenome, u.fotoperfil, u.email, u.saldo, t.telefone, u.id_usuario, u.data_entrada, u.id_endereco, u.id_telefone, e.rua FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE email = '$email' AND senha = '$senha' LIMIT 1";
+		$result_usuario = "SELECT u.nome, u.sobrenome, u.fotoperfil, u.email, u.saldo, t.telefone, u.id_usuario, u.data_entrada, u.id_endereco, u.id_telefone, t.ddi, t.ddd, e.rua FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE email = '$email' AND senha = '$senha' LIMIT 1";
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		$resultado = mysqli_fetch_assoc($resultado_usuario);
 		
@@ -20,6 +20,8 @@
 			$_SESSION['usuarioSobrenome'] = $resultado['sobrenome'];
 			$_SESSION['usuarioEmail'] = $resultado['email'];
 			$_SESSION['usuarioSaldo'] = $resultado['saldo'];
+			$_SESSION['usuarioDDI'] = $resultado['ddi'];
+			$_SESSION['usuarioDDD'] = $resultado['ddd'];
 			$_SESSION['usuarioTelefone'] = $resultado['telefone'];
 			$_SESSION['usuarioCidade'] = $resultado['cidade'];
 			$_SESSION['usuarioEstado'] = $resultado['estado'];
