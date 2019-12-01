@@ -1129,7 +1129,7 @@ if(!$_SESSION['usuarioEmail']) {
 
 			<?php
 
-			$sql = mysqli_query($conn, "SELECT * FROM colaborador c LEFT JOIN telefone t ON(c.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(c.id_endereco = e.id_endereco) LIMIT 8") or die( 
+			$sql = mysqli_query($conn, "SELECT * FROM colaborador c LEFT JOIN telefone t ON(c.id_usuario = t.id_usuario) LEFT JOIN endereco e ON(c.id_usuario = e.id_usuario) LEFT JOIN usuario u ON(U.id_usuario = c.id_usuario) LIMIT 8") or die( 
 				mysqli_error($sql) //caso haja um erro na consulta 
 			);
 			while($aux = mysqli_fetch_assoc($sql)) { 

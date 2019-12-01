@@ -8,7 +8,7 @@ class Telefone{
 
 
 	function getTelefone($connection, $idX){
-		$sql = mysqli_query($connection, "SELECT * FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) WHERE id_usuario = ".$idX."") or die( mysqli_error($sql));
+		$sql = mysqli_query($connection, "SELECT * FROM usuario u LEFT JOIN telefone t ON(u.id_usuario = t.id_usuario) WHERE u.id_usuario = ".$idX."") or die( mysqli_error($sql));
 		while($aux = mysqli_fetch_assoc($sql)) { 
 			$this->id_telefone = $aux["id_telefone"];
   			$this->ddi = $aux["ddi"];

@@ -11,7 +11,7 @@ class Endereco{
 
 
 	function getEndereco($connection, $idX){
-		$sql2 = mysqli_query($connection, "SELECT * FROM usuario u LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE id_usuario = ".$idX."") or die( mysqli_error($sql2));
+		$sql2 = mysqli_query($connection, "SELECT * FROM usuario u LEFT JOIN endereco e ON(u.id_usuario = e.id_usuario) WHERE u.id_usuario = ".$idX."") or die( mysqli_error($sql2));
 		while($aux = mysqli_fetch_assoc($sql2)) { 
 			$this->id_endereco = $aux["id_endereco"];
 			$this->rua = $aux["rua"];

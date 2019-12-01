@@ -9,7 +9,7 @@
 		$senha = md5($senha);
 			
 		//Buscar na tabela usuario o usuário que corresponde com os dados digitado no formulário
-		$result_usuario = "SELECT u.nome, u.sobrenome, u.fotoperfil, u.email, u.saldo, t.telefone, u.id_usuario, u.data_entrada, u.id_endereco, u.id_telefone, t.ddi, t.ddd, e.rua FROM usuario u LEFT JOIN telefone t ON(u.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(u.id_endereco = e.id_endereco) WHERE email = '$email' AND senha = '$senha' LIMIT 1";
+		$result_usuario = "SELECT u.nome, u.sobrenome, u.fotoperfil, u.email, u.saldo, t.telefone, u.id_usuario, u.data_entrada, e.id_endereco, t.ddi, t.ddd, e.rua FROM usuario u INNER JOIN telefone t ON(u.id_usuario = t.id_usuario) INNER JOIN endereco e ON(e.id_usuario = u.id_usuario) WHERE email = '$email' AND senha = '$senha' LIMIT 1";
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		$resultado = mysqli_fetch_assoc($resultado_usuario);
 		
@@ -35,11 +35,11 @@
 	}else{	
 		//Váriavel global recebendo a mensagem de erro
 		$_SESSION['loginErro'] = "Usuário ou senha Inválido";
-		header("Location: ../index.php");
+		header("Location: ../login");
 	}
 //O campo usuário e senha não preenchido entra no else e redireciona o usuário para a página de login
 }else{
 	$_SESSION['loginErro'] = "Usuário ou senha inválido";
-	header("Location: ../index.php");
+	header("Location: ../login");
 }
 ?>

@@ -1043,7 +1043,7 @@ if(!$_SESSION['usuarioEmail']) {
 									<div class="kt-subheader__group" id="kt_subheader_search">
 
 										<?php
-										$sql = mysqli_query($conn, "SELECT COUNT(*) AS qt_combinacoes FROM lista_match l WHERE l.id_usuario = ".$idX."") or die( 
+										$sql = mysqli_query($conn, "SELECT COUNT(*) AS qt_combinacoes FROM combinacoes c WHERE c.id_usuario = ".$idX."") or die( 
 											mysqli_error($sql) //caso haja um erro na consulta 
 										);
 										while($aux = mysqli_fetch_assoc($sql)) { 
@@ -1130,7 +1130,7 @@ if(!$_SESSION['usuarioEmail']) {
 
 			<?php
 
-			$sql = mysqli_query($conn, "SELECT * FROM colaborador c LEFT JOIN telefone t ON(c.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(c.id_endereco = e.id_endereco) WHERE id_colaborador IN (SELECT l.id_colaborador FROM lista_match l JOIN usuario u ON(l.id_usuario = ".$idX.")) LIMIT 8") or die( 
+			$sql = mysqli_query($conn, "SELECT * FROM pedidos_combinacoes p LEFT JOIN telefone t ON(p.id_usuario = t.id_usuario) LEFT JOIN endereco e ON(p.id_usuario = e.id_usuario) WHERE p.id_usuario = ".$idX.")) LIMIT 8") or die( 
 				mysqli_error($sql) //caso haja um erro na consulta 
 			);
 			while($aux = mysqli_fetch_assoc($sql)) { 
