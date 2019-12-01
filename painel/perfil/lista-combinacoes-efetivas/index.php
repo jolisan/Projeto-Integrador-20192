@@ -21,18 +21,6 @@ if(!$_SESSION['usuarioEmail']) {
 
 <!DOCTYPE html>
 
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <html lang="en">
 
 	<!-- begin::Head -->
@@ -43,8 +31,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		<!--end::Base Path -->
 		<meta charset="utf-8" />
-		<title>MyCompanion | Chat</title>
-		<meta name="description" content="Group chat example">
+		<title>MyCompanion | Listar combinações</title>
+		<meta name="description" content="Popup chat example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!--begin::Fonts -->
@@ -114,7 +102,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- end::Head -->
 
 	<!-- begin::Body -->
-	<body class="kt-app__aside--left kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-aside--enabled kt-aside--fixed kt-page--loading">
+	<body class="kt-app__aside--left kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
 		<!-- begin:: Page -->
 
@@ -247,39 +235,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 						<!-- begin:: Header Topbar -->
 						<div class="kt-header__topbar">
-
-							<!--begin: Search -->
-
-							<!--begin: Search -->
-							<div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
-								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-									<span class="kt-header__topbar-icon">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect id="bound" x="0" y="0" width="24" height="24" />
-												<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-												<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#000000" fill-rule="nonzero" />
-											</g>
-										</svg> </span>
-								</div>
-								<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-lg">
-									<div class="kt-quick-search kt-quick-search--inline" id="kt_quick_search_inline">
-										<form method="get" class="kt-quick-search__form">
-											<div class="input-group">
-												<div class="input-group-prepend"><span class="input-group-text"><i class="flaticon2-search-1"></i></span></div>
-												<input type="text" class="form-control kt-quick-search__input" placeholder="Search...">
-												<div class="input-group-append"><span class="input-group-text"><i class="la la-close kt-quick-search__close"></i></span></div>
-											</div>
-										</form>
-										<div class="kt-quick-search__wrapper kt-scroll" data-scroll="true" data-height="300" data-mobile-height="200">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!--end: Search -->
-
-							<!--end: Search -->
 
 							<!--begin: Notifications -->
 							<div class="kt-header__topbar-item dropdown">
@@ -1078,169 +1033,243 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- end:: Header -->
 					<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-						<!-- begin:: Content -->
-						<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+						<!-- begin:: Content Head -->
+						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+							<div class="kt-container  kt-container--fluid ">
+								<div class="kt-subheader__main">
+									<h3 class="kt-subheader__title">
+										Usuários
+									</h3>
+									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
+									<div class="kt-subheader__group" id="kt_subheader_search">
 
-							<!--Begin::App-->
-							<div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+										<?php
+										$sql = mysqli_query($conn, "SELECT count(*) AS qt_combinacoes FROM combinacoes c INNER JOIN cliente k ON( c.id_cliente = k.id_cliente) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) WHERE u.id_usuario = ".$idX."") or die( 
+											mysqli_error($sql) //caso haja um erro na consulta 
+										);
+										while($aux = mysqli_fetch_assoc($sql)) { 
+											echo '<span class="kt-subheader__desc" id="kt_subheader_total">'.$aux["qt_combinacoes"].' Total</span>';
+										}
+										?>
 
-								<!--Begin:: App Aside Mobile Toggle-->
-								<button class="kt-app__aside-close" id="kt_chat_aside_close">
-									<i class="la la-close"></i>
-								</button>
 
-								<!--End:: App Aside Mobile Toggle-->
+										<form class="kt-margin-l-20" id="kt_subheader_search_form">
+											<div class="kt-input-icon kt-input-icon--right kt-subheader__search">
+												<input type="text" class="form-control" placeholder="Procurar..." id="generalSearch">
+												<span class="kt-input-icon__icon kt-input-icon__icon--right">
+													<span>
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																<rect id="bound" x="0" y="0" width="24" height="24" />
+																<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+																<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#000000" fill-rule="nonzero" />
+															</g>
+														</svg>
 
-								<!--Begin:: App Aside-->
-								<div class="kt-grid__item kt-app__toggle kt-app__aside kt-app__aside--lg kt-app__aside--fit" id="kt_chat_aside">
+														<!--<i class="flaticon2-search-1"></i>-->
+													</span>
+												</span>
+											</div>
+										</form>
+									</div>
+									<div class="kt-subheader__group kt-hidden" id="kt_subheader_group_actions">
+										<div class="kt-subheader__desc"><span id="kt_subheader_group_selected_rows"></span> Selected:</div>
+										<div class="btn-toolbar kt-margin-l-20">
+											<div class="dropdown" id="kt_subheader_group_actions_status_change">
+												<button type="button" class="btn btn-label-brand btn-bold btn-sm dropdown-toggle" data-toggle="dropdown">
+													Update Status
+												</button>
+												<div class="dropdown-menu">
+													<ul class="kt-nav">
+														<li class="kt-nav__section kt-nav__section--first">
+															<span class="kt-nav__section-text">Change status to:</span>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="1">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-success kt-badge--inline kt-badge--bold">Approved</span></span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="2">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-danger kt-badge--inline kt-badge--bold">Rejected</span></span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="3">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-warning kt-badge--inline kt-badge--bold">Pending</span></span>
+															</a>
+														</li>
+														<li class="kt-nav__item">
+															<a href="#" class="kt-nav__link" data-toggle="status-change" data-status="4">
+																<span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-info kt-badge--inline kt-badge--bold">On Hold</span></span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<button class="btn btn-label-success btn-bold btn-sm btn-icon-h" id="kt_subheader_group_actions_fetch" data-toggle="modal" data-target="#kt_datatable_records_fetch_modal">
+												Fetch Selected
+											</button>
+											<button class="btn btn-label-danger btn-bold btn-sm btn-icon-h" id="kt_subheader_group_actions_delete_all">
+												Delete All
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="kt-subheader__toolbar">
+									<div class="kt-subheader__wrapper">
+										<div class="dropdown dropdown-inline" data-toggle="kt-tooltip-" title="Quick actions" data-placement="left">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
-									<!--begin::Portlet-->
-									<div class="kt-portlet kt-portlet--last">
+
+			<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid"> <!--REFERENCIABOX-->
+			<div class="row">
+
+			<?php
+
+			$sql = mysqli_query($conn, "SELECT DISTINCT e.cidade, e.estado, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN colaborador k ON( c.id_colaborador= k.id_colaborador) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_cliente = (SELECT id_cliente from cliente where id_usuario = ".$idX.")") or die( 
+				mysqli_error($sql) //caso haja um erro na consulta 
+			);
+			while($aux = mysqli_fetch_assoc($sql)) { 
+				echo '
+				<div class="col-xl-3">
+
+				<!--Begin::Portlet-->
+				<div class="kt-portlet kt-portlet--height-fluid">
+					<div class="kt-portlet__head kt-portlet__head--noborder">
+						<div class="kt-portlet__head-label">
+							<h3 class="kt-portlet__head-title">
+							</h3>
+						</div>
+						<div class="kt-portlet__head-toolbar">
+							<a class="btn btn-icon">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+							</div>
+						</div>
+					</div>
+					<div class="kt-portlet__body">
+
+						<!--begin::Widget -->
+						<div class="kt-widget kt-widget--user-profile-2">
+							<div class="kt-widget__head">
+								<div class="kt-widget__media">
+									<img class="kt-widget__img kt-hidden-" src="'.$aux["fotoperfil"].'" alt="image">
+									<div class="kt-widget__pic kt-widget__pic--success kt-font-success kt-font-boldest kt-hidden">
+										ChS
+									</div>
+								</div>
+								<div class="kt-widget__info">
+									<a href="#" class="kt-widget__username">
+									'.$aux["nome"].'
+									<i class="flaticon2-correct kt-font-success"></i>
+									</a>
+									<span class="kt-widget__desc">
+										Colaborador(a)
+									</span>
+								</div>
+							</div>
+							<div class="kt-widget__body">
+								<div class="kt-widget__section">
+									PARA FUTURA DESCRIÇÃO
+								</div>
+								<div class="kt-widget__item">
+									<div class="kt-widget__contact">
+										<span class="kt-widget__label">Email:</span>
+										<a href="#" class="kt-widget__data">'.$aux["email"].'</a>
+									</div>
+									<div class="kt-widget__contact">
+										<span class="kt-widget__label">Telefone:</span>
+										<a href="#" class="kt-widget__data">('.$aux["ddd"].') '.$aux["telefone"].'</a>
+									</div>
+									<div class="kt-widget__contact">
+										<span class="kt-widget__label">Localização:</span>
+										<span class="kt-widget__data">'.$aux["cidade"].'/'.$aux["estado"].'</span>
+									</div>
+								</div>
+							</div>
+							<div class="kt-widget__footer">
+							<button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">ENVIAR MENSAGEM</button>
+							</div>
+						</div>
+
+						<!--end::Widget -->
+					</div>
+				</div>
+
+				<!--End::Portlet-->
+				</div>
+				';
+			}
+
+			?>
+
+			</div> <!--REFERENCIABOX-->
+
+
+					</div> <!-- se apagar essa div e a de baixo, o indice n fica fixo -->
+					</div> <!-- se apagar essa div e a de cima, o indice n fica fixo -->
+
+							<!--End::Section-->
+
+							<!--Begin::Section-->
+							<div class="row">
+								<div class="col-xl-12">
+
+									<!--begin:: Components/Pagination/Default-->
+									<div class="kt-portlet">
 										<div class="kt-portlet__body">
-											<div class="kt-searchbar">
-												<div class="input-group">
-													<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																	<rect id="bound" x="0" y="0" width="24" height="24" />
-																	<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-																	<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#000000" fill-rule="nonzero" />
-																</g>
-															</svg></span></div>
-													<input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+
+											<!--begin: Pagination-->
+											<div class="kt-pagination kt-pagination--brand">
+												<ul class="kt-pagination__links">
+													<li class="kt-pagination__link--first">
+														<a href="#"><i class="fa fa-angle-double-left kt-font-brand"></i></a>
+													</li>
+													<li class="kt-pagination__link--next">
+														<a href="#"><i class="fa fa-angle-left kt-font-brand"></i></a>
+													</li>
+													<li class="kt-pagination__link--active">
+														<a href="#">1</a>
+													</li>
+													<li>
+														<a href="#">2</a>
+													</li>
+													<li>
+														<a href="#">3</a>
+													</li>
+													<li class="kt-pagination__link--prev">
+														<a href="#"><i class="fa fa-angle-right kt-font-brand"></i></a>
+													</li>
+													<li class="kt-pagination__link--last">
+														<a href="#"><i class="fa fa-angle-double-right kt-font-brand"></i></a>
+													</li>
+												</ul>
+												<div class="kt-pagination__toolbar">
+													<select class="form-control kt-font-brand" style="width: 60px">
+														<option value="8">8</option>
+														<option value="16">16</option>
+														<option value="32">32</option>
+													</select>
+													<span class="pagination__desc">
+														Mostrando no máximo 8 por página
+													</span>
 												</div>
 											</div>
 
-
- <!-- INICIO CHAT -->
-
-											<div class="kt-widget kt-widget--users kt-mt-20">
-												<div class="kt-scroll kt-scroll--pull">
-													<div class="kt-widget__items">
-														<div class="kt-widget__item">
-															<span class="kt-userpic kt-userpic--circle">
-																<img src="https://i.imgur.com/ALC4YFz.png" alt="image">
-															</span>
-															<div class="kt-widget__info">
-																<div class="kt-widget__section">
-																	<a href="#" class="kt-widget__username">Saco de Pão</a>
-																	<span class="kt-badge kt-badge--success kt-badge--dot"></span>
-																</div>
-																<span class="kt-widget__desc">
-																	Salvador/BA
-																</span>
-															</div>
-															<div class="kt-widget__action">
-																<span class="kt-widget__date">Hoje</span>
-																<!-- <span class="kt-badge kt-badge--success kt-font-bold">1</span> -->
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+											<!--end: Pagination-->
 										</div>
 									</div>
 
-									<!--end::Portlet-->
+									<!--end:: Components/Pagination/Default-->
 								</div>
-
-								<!--End:: App Aside-->
-
-								<!--Begin:: App Content-->
-								<div class="kt-grid__item kt-grid__item--fluid kt-app__content" id="kt_chat_content">
-									<div class="kt-chat">
-										<div class="kt-portlet kt-portlet--head-lg- kt-portlet--last">
-											<div class="kt-portlet__head">
-												<div class="kt-chat__head ">
-													<div class="kt-chat__left">
-
-														<!--begin:: Aside Mobile Toggle -->
-														<button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md kt-hidden-desktop" id="kt_chat_aside_mobile_toggle">
-															<i class="flaticon2-open-text-book"></i>
-														</button>
-
-														<!--end:: Aside Mobile Toggle-->
-													</div>
-													<div class="kt-chat__center">
-														<div class="kt-chat__label kt-hidden">
-															<a href="#" class="kt-chat__title">Jason Muller</a>
-															<span class="kt-chat__status">
-																<span class="kt-badge kt-badge--dot kt-badge--success"></span> Active
-															</span>
-														</div>
-														<div class="kt-chat__pic">
-															<span class="kt-userpic kt-userpic--sm kt-userpic--circle" data-toggle="kt-tooltip" data-placement="top" title="Alex Barna" data-original-title="Tooltip title">
-																<img src="https://i.imgur.com/35VL5yv.png" alt="image">
-															</span>
-															<span class="kt-userpic kt-userpic--sm kt-userpic--circle" data-toggle="kt-tooltip" data-placement="top" title="Saco de Pão" data-original-title="Tooltip title">
-																<img src="https://i.imgur.com/ALC4YFz.png" alt="image">
-															</span>
-														</div>
-													</div>
-													<div class="kt-chat__right">
-													</div>
-												</div>
-											</div>
-											<div class="kt-portlet__body">
-												<div class="kt-scroll kt-scroll--pull" data-mobile-height="300">
-													<div class="kt-chat__messages">
-
-
-														<div class="kt-chat__message">
-															<div class="kt-chat__user">
-																<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-																	<img src="https://i.imgur.com/ALC4YFz.png" alt="image">
-																</span>
-																<a href="#" class="kt-chat__username">CONSULTA_BANCO_NOME</span></a>
-																<span class="kt-chat__datetime">DATA_HORA</span>
-															</div>
-															<div class="kt-chat__text kt-bg-light-success">
-																TESTE
-															</div>
-														</div>
-
-
-													<?php
-													$sql = mysqli_query($conn, "SELECT e.cidade, e.estado, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN colaborador k ON( c.id_colaborador= k.id_colaborador) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_cliente = (SELECT id_cliente from cliente where id_usuario = ".$idX.")") or die( 
-													mysqli_error($sql) //caso haja um erro na consulta 
-													);
-													while($aux = mysqli_fetch_assoc($sql)) {
-														
-														}
-													?> 
-														
-														
-<!-- FIM PARTE UTIL CHAT -->
-
-
-
-													</div>
-												</div>
-											</div>
-											<div class="kt-portlet__foot">
-												<div class="kt-chat__input">
-													<div class="kt-chat__editor">
-														<textarea style="height: 50px" placeholder="Escreva aqui..."></textarea>
-													</div>
-													<div class="kt-chat__toolbar">
-														<div class="kt_chat__tools">
-															<a href="#"><i class="flaticon2-link"></i></a>
-															<a href="#"><i class="flaticon2-photograph"></i></a>
-															<a href="#"><i class="flaticon2-photo-camera"></i></a>
-														</div>
-														<div class="kt_chat__actions">
-															<button type="button" class="btn btn-brand btn-md btn-upper btn-bold kt-chat__reply">Responder</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!--End:: App Content-->
 							</div>
 
-							<!--End::App-->
+							<!--End::Section-->
 						</div>
 
 						<!-- end:: Content -->
@@ -1259,6 +1288,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 						</div>
 					</div>
+					
 
 					<!-- end:: Footer -->
 				</div>
@@ -1674,7 +1704,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		<!-- end::Scrolltop -->
 
-	
 
 		<!-- begin::Demo Panel -->
 		<div id="kt_demo_panel" class="kt-demo-panel">
@@ -1694,7 +1723,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="kt-demo-panel__item-preview">
 						<img src="./assets/media/demos/preview/demo1.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="demo1/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
+							<a href="painel/" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
 						</div>
 					</div>
 				</div>
@@ -1848,153 +1877,6 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 
 		<!-- end::Demo Panel -->
-
-		<!--Begin:: Chat-->
-		<div class="modal fade- modal-sticky-bottom-right" id="kt_chat_modal" role="dialog" data-backdrop="false">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="kt-chat">
-						<div class="kt-portlet kt-portlet--last">
-							<div class="kt-portlet__head">
-								<div class="kt-chat__head ">
-									<div class="kt-chat__left">
-										<div class="kt-chat__label">
-											<a href="#" class="kt-chat__title">Jason Muller</a>
-											<span class="kt-chat__status">
-												<span class="kt-badge kt-badge--dot kt-badge--success"></span> Active
-											</span>
-										</div>
-									</div>
-									<div class="kt-chat__right">
-									</div>
-								</div>
-							</div>
-							<div class="kt-portlet__body">
-								<div class="kt-scroll kt-scroll--pull" data-height="410" data-mobile-height="300">
-									<div class="kt-chat__messages kt-chat__messages--solid">
-										<div class="kt-chat__message kt-chat__message--success">
-											<div class="kt-chat__user">
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/100_12.jpg" alt="image">
-												</span>
-												<a href="#" class="kt-chat__username">Jason Muller</span></a>
-												<span class="kt-chat__datetime">2 Hours</span>
-											</div>
-											<div class="kt-chat__text">
-												How likely are you to recommend our company<br> to your friends and family?
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-											<div class="kt-chat__user">
-												<span class="kt-chat__datetime">30 Seconds</span>
-												<a href="#" class="kt-chat__username">You</span></a>
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/300_21.jpg" alt="image">
-												</span>
-											</div>
-											<div class="kt-chat__text">
-												Hey there, we’re just writing to let you know that you’ve<br> been subscribed to a repository on GitHub.
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--success">
-											<div class="kt-chat__user">
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/100_12.jpg" alt="image">
-												</span>
-												<a href="#" class="kt-chat__username">Jason Muller</span></a>
-												<span class="kt-chat__datetime">30 Seconds</span>
-											</div>
-											<div class="kt-chat__text">
-												Ok, Understood!
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-											<div class="kt-chat__user">
-												<span class="kt-chat__datetime">Just Now</span>
-												<a href="#" class="kt-chat__username">You</span></a>
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/300_21.jpg" alt="image">
-												</span>
-											</div>
-											<div class="kt-chat__text">
-												You’ll receive notifications for all issues, pull requests!
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--success">
-											<div class="kt-chat__user">
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/100_12.jpg" alt="image">
-												</span>
-												<a href="#" class="kt-chat__username">Jason Muller</span></a>
-												<span class="kt-chat__datetime">2 Hours</span>
-											</div>
-											<div class="kt-chat__text">
-												You were automatically <b class="kt-font-brand">subscribed</b> <br>because you’ve been given access to the repository
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-											<div class="kt-chat__user">
-												<span class="kt-chat__datetime">30 Seconds</span>
-												<a href="#" class="kt-chat__username">You</span></a>
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/300_21.jpg" alt="image">
-												</span>
-											</div>
-											<div class="kt-chat__text">
-												You can unwatch this repository immediately <br>by clicking here: <a href="#" class="kt-font-bold kt-link"></a>
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--success">
-											<div class="kt-chat__user">
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/100_12.jpg" alt="image">
-												</span>
-												<a href="#" class="kt-chat__username">Jason Muller</span></a>
-												<span class="kt-chat__datetime">30 Seconds</span>
-											</div>
-											<div class="kt-chat__text">
-												Discover what students who viewed Learn <br>Figma - UI/UX Design Essential Training also viewed
-											</div>
-										</div>
-										<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-											<div class="kt-chat__user">
-												<span class="kt-chat__datetime">Just Now</span>
-												<a href="#" class="kt-chat__username">You</span></a>
-												<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-													<img src="./assets/media/users/300_21.jpg" alt="image">
-												</span>
-											</div>
-											<div class="kt-chat__text">
-												Most purchased Business courses during this sale!
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="kt-portlet__foot">
-								<div class="kt-chat__input">
-									<div class="kt-chat__editor">
-										<textarea placeholder="Type here..." style="height: 50px"></textarea>
-									</div>
-									<div class="kt-chat__toolbar">
-										<div class="kt_chat__tools">
-											<a href="#"><i class="flaticon2-link"></i></a>
-											<a href="#"><i class="flaticon2-photograph"></i></a>
-											<a href="#"><i class="flaticon2-photo-camera"></i></a>
-										</div>
-										<div class="kt_chat__actions">
-											<button type="button" class="btn btn-brand btn-md  btn-font-sm btn-upper btn-bold kt-chat__reply">reply</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--ENd:: Chat-->
 
 		<!-- begin::Global Config(global config for global JS sciprts) -->
 		<script>

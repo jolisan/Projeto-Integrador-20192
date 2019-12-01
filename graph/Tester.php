@@ -1,10 +1,10 @@
 <?php 
 
-    include_once 'Graph.php';
-	include_once '../config/Database.php';
-	include_once '../models/Combinacoes.php';
-	include_once '../models/Usuario.php';
-	include_once '../models/ListaPessoa.php';
+    include 'Graph.php';
+    include '../../../config/Database.php';
+	include '../../../models/Combinacoes.php';
+	include '../../../models/Usuario.php';
+	include '../../../models/ListaPessoa.php';
 
 
 	$database = new Database();
@@ -127,6 +127,8 @@
 
 	}
 
-	$graph->Kruskal();
+	$recomendados = $graph->Kruskal();
+
+	//echo json_encode($recomendados);
 
 ?>

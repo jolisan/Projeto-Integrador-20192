@@ -1,10 +1,13 @@
 <?php
 session_start();
-//Incluindo a conexão com banco de dados
-include_once("../../../conn/conexao.php");
 
+//Incluindo a conexão com banco de dados
+include_once ("../../../conn/conexao.php");
+include_once ("../../../graph/Tester.php");
+//include_once('../../../models/Colaborador.php');
+var_dump($recomendados);
 if(!$_SESSION['usuarioEmail']) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 	exit();
 }
 	$idX = $_SESSION['usuarioId'];
@@ -205,7 +208,8 @@ if(!$_SESSION['usuarioEmail']) {
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Combinações</span></span></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista de combinações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes-pendentes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações pendentes</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes-efetivas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações efetivas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
@@ -1121,7 +1125,8 @@ if(!$_SESSION['usuarioEmail']) {
 
 			<?php
 
-			$sql = mysqli_query($conn, "SELECT * FROM colaborador c LEFT JOIN telefone t ON(c.id_telefone = t.id_telefone) LEFT JOIN endereco e ON(c.id_endereco = e.id_endereco) WHERE id_colaborador IN (SELECT l.id_colaborador FROM lista_match l JOIN usuario u ON(l.id_usuario = ".$idX.")) LIMIT 8") or die( 
+			foreach ($recomendados as $key => $value) {
+				$sql = mysqli_query($conn, "SELECT * FROM usuario u INNER JOIN telefone t ON(t.id_usuario = u.id_usuario) INNER JOIN endereco e ON(e.id_usuario = u.id_usuario) WHERE u.nome = '".$value."'") or die( 
 				mysqli_error($sql) //caso haja um erro na consulta 
 			);
 			while($aux = mysqli_fetch_assoc($sql)) { 
@@ -1194,6 +1199,8 @@ if(!$_SESSION['usuarioEmail']) {
 				</div>
 				';
 			}
+			}
+
 
 			?>
 

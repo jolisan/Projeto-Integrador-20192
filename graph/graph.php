@@ -1,10 +1,11 @@
 <?php 
 include_once 'Edge.php';
 include_once 'Subset.php';
+include_once '../../../models/Colaborador.php';
 
 class Graph
 {
-	public $VerticesCount;
+    public $VerticesCount;
 	public $_edge = array();
 
 
@@ -59,16 +60,18 @@ function PrintResult($result)
 	$bestSellers = array();
 
 	for ($i = 0; $i < count($result); ++$i){
+		//echo $result[$i]->Colaborador . " -- " . $result[$i]->Cliente . " == " . $result[$i]->Weight . "<br/>";
 		if(!in_array($result[$i]->Colaborador, $bestSellers)){
 			array_push($bestSellers, $result[$i]->Colaborador);
 		}
 
 	}
-	echo 'Vendedores recomendados: </br></br>';
+	//echo 'Vendedores recomendados: </br></br>';
 	for ($j = 0; $j < count($bestSellers); $j++)
-		echo $bestSellers[$j] .'<br/>';
-
-		//echo $result[$i]->Colaborador . " -- " . $result[$i]->Cliente . " == " . $result[$i]->Weight . "<br/>";
+		//echo $bestSellers[$j] .'<br/>';
+	
+	return $bestSellers;
+		
 }
 
 function Kruskal()
@@ -102,7 +105,7 @@ function Kruskal()
 		}
 	}
 
-	$this->PrintResult($result);
+	return $this->PrintResult($result);
 }
 
 }

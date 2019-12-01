@@ -18,7 +18,7 @@ $Tel->getTelefone($conn, $idX);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->estado){
-    if ($telefone != $telefone_banco)
+    if ($telefone != $Tel->telefone)
   {
     $queryupdate = "UPDATE telefone JOIN usuario u LEFT JOIN telefone t ON t.id_usuario = u.id_usuario SET t.telefone = '$telefone' WHERE u.id_usuario = '$idX'";
     $result = mysqli_query($conn, $queryupdate);
