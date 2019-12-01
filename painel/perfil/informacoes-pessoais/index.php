@@ -47,7 +47,7 @@ include('../../../conn/conexao.php');
 
 
 		<meta charset="utf-8" />
-		<title>iCompanion | Informações pessoais</title>
+		<title>MyCompanion | Informações pessoais</title>
 		<meta name="description" content="User profile personal information example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -112,7 +112,7 @@ include('../../../conn/conexao.php');
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
 				<a href="painel/">
-					<img alt="Logo" src="./assets/media/logos/logo-icompanion-mobile.png" /> <!-- LOGO MOBILE -->
+					<img alt="Logo" src="./assets/media/logos/logo-mycompanion-mobile.png" /> <!-- LOGO MOBILE -->
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
@@ -132,7 +132,7 @@ include('../../../conn/conexao.php');
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
 							<a href="painel/">
-								<img alt="Logo" src="./assets/media/logos/logo-icompanion-web.png" /> <!-- LOGO WEB -->
+								<img alt="Logo" src="./assets/media/logos/logo-mycompanion-web.png" /> <!-- LOGO WEB -->
 							</a>
 						</div>
 						<div class="kt-aside__brand-tools">
@@ -740,7 +740,7 @@ include('../../../conn/conexao.php');
 				<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 						<div class="kt-container  kt-container--fluid ">
 						<div class="kt-footer__copyright">
-								2019&nbsp;&copy;&nbsp;<a href="http://www.baruel.com.br/" target="_blank" class="kt-link">iCompanion</a>
+								2019&nbsp;&copy;&nbsp;<a href="http://www.baruel.com.br/" target="_blank" class="kt-link">MyCompanion</a>
 							</div>
 							<div class="kt-footer__menu">
 								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Sobre</a>

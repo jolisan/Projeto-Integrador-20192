@@ -12,7 +12,7 @@
 		<base href="../"> <!-- ../ volta um diretorio -->
 
 		<meta charset="utf-8" />
-		<title>iCompanion | Login e Cadastro</title>
+		<title>MyCompanion | Login e Cadastro</title>
 		<meta name="description" content="Login page example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -88,7 +88,7 @@
 								<div class="kt-login__body">
 									<div class="kt-login__logo">
 										<a href="#">
-											<img src="./assets/media/logos/logo-icompanion.png">
+											<img src="./assets/media/logos/logo-mycompanion.png">
 										</a>
 									</div>
 									<div class="kt-login__signin">
