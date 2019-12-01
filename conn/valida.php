@@ -9,7 +9,7 @@
 		$senha = md5($senha);
 			
 		//Buscar na tabela usuario o usuário que corresponde com os dados digitado no formulário
-		$result_usuario = "SELECT u.nome, u.sobrenome, u.fotoperfil, u.email, u.saldo, t.telefone, u.id_usuario, u.data_entrada, e.id_endereco, t.ddi, t.ddd, e.rua FROM usuario u INNER JOIN telefone t ON(u.id_usuario = t.id_usuario) INNER JOIN endereco e ON(e.id_usuario = u.id_usuario) WHERE email = '$email' AND senha = '$senha' LIMIT 1";
+		$result_usuario = "SELECT u.nome, u.tipo_usuario, u.sobrenome, u.fotoperfil, u.email, u.saldo, t.telefone, u.id_usuario, u.data_entrada, e.id_endereco, t.ddi, t.ddd, e.rua FROM usuario u INNER JOIN telefone t ON(u.id_usuario = t.id_usuario) INNER JOIN endereco e ON(e.id_usuario = u.id_usuario) WHERE email = '$email' AND senha = '$senha' LIMIT 1";
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
 		$resultado = mysqli_fetch_assoc($resultado_usuario);
 		
@@ -28,8 +28,13 @@
 			$_SESSION['usuarioFoto'] = $resultado['fotoperfil'];
 			$_SESSION['telefoneId'] = $resultado['id_telefone'];
 			$_SESSION['dataEntrada'] = $resultado['data_entrada'];
-
-			header("Location: ../painel/");
+			$tipoUsuario = $resultado['tipo_usuario'];
+			if($tipoUsuario == 0){
+				header("Location: ../painel/");
+			}
+			if($tipoUsuario == 1){
+				header("Location: ../colaborador/painel");
+			}
 		//Não foi encontrado um usuario na tabela usuário com os mesmos dados digitado no formulário
 		//redireciona o usuario para a página de login
 	}else{	

@@ -3,21 +3,24 @@ session_start();
 //Incluindo a conexão com banco de dados
 include_once("../../conn/conexao.php");
 
-if(!$_SESSION['colaboradorEmail']) {
-	header('Location: ../index.php');
+if(!$_SESSION['usuarioEmail']) {
+	header('Location: ../../login/');
 	exit();
 }
 
-	$idX = $_SESSION['colaboradorId'];
-	$nomeX = $_SESSION['colaboradorNome'];
-	$sobrenomeX = $_SESSION['colaboradorSobrenome'];
-	$emailX = $_SESSION['colaboradorEmail'];
-	$saldoX = $_SESSION['colaboradorSaldo'];
-	$telefoneX = $_SESSION['colaboradorTelefone'];
-	$cidadeX = $_SESSION['colaboradorCidade'];
-	$estadoX = $_SESSION['colaboradorEstado'];
-	$fotoPerfilX = $_SESSION['colaboradorFoto'];
-	$dataEntradaX = $_SESSION['colaboradorDataEntrada'];
+$idX = $_SESSION['usuarioId'];
+$nomeX = $_SESSION['usuarioNome'];
+$sobrenomeX = $_SESSION['usuarioSobrenome'];
+$emailX = $_SESSION['usuarioEmail'];
+$saldoX = $_SESSION['usuarioSaldo'];
+$telefoneX = $_SESSION['usuarioTelefone'];
+$dddX = $_SESSION['usuarioDDD']; // NOVO DDD
+$ddiX = $_SESSION['usuarioDDI']; // NOVO DDI
+$cidadeX = $_SESSION['usuarioCidade'];
+$estadoX = $_SESSION['usuarioEstado'];
+$fotoPerfilX = $_SESSION['usuarioFoto'];
+$dataEntradaX = $_SESSION['dataEntrada'];
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ if(!$_SESSION['colaboradorEmail']) {
 
 
 		<meta charset="utf-8" />
-		<title>iCompanion | Visão geral</title>
+		<title>MyCompanion | Visão geral</title>
 		<meta name="description" content="User profile overview example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -99,7 +102,7 @@ if(!$_SESSION['colaboradorEmail']) {
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
 				<a href="colaborador/painel/">
-					<img alt="Logo" src="./assets/media/logos/logo-icompanion-mobile.png" /> <!-- LOGO MOBILE -->
+					<img alt="Logo" src="./assets/media/logos/logo-mycompanion-mobile.png" /> <!-- LOGO MOBILE -->
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
@@ -121,7 +124,7 @@ if(!$_SESSION['colaboradorEmail']) {
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
 							<a href="colaborador/painel/">
-								<img alt="Logo" src="./assets/media/logos/logo-icompanion-web.png" /> <!-- LOGO WEB -->
+								<img alt="Logo" src="./assets/media/logos/logo-mycompanion-web.png" /> <!-- LOGO WEB -->
 							</a>
 						</div>
 						<div class="kt-aside__brand-tools">
@@ -1057,12 +1060,12 @@ if(!$_SESSION['colaboradorEmail']) {
 										Menu </h3>
 									<span class="kt-subheader__separator kt-hidden"></span>
 									<div class="kt-subheader__breadcrumbs">
-										<a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+										<a class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="" class="kt-subheader__breadcrumbs-link">
+										<a class="kt-subheader__breadcrumbs-link">
 											Perfil </a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="" class="kt-subheader__breadcrumbs-link">
+										<a class="kt-subheader__breadcrumbs-link">
 											Visão Geral</a>
 
 										<!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
@@ -1327,34 +1330,31 @@ if(!$_SESSION['colaboradorEmail']) {
 														</ul>
 													</div>
 												</div>
-												<div class="kt-portlet__body">
-													<div class="tab-content">
-														<div class="tab-pane active" id="kt_widget2_tab1_content">
-															<div class="kt-widget2">
-																<div class="kt-widget2__item kt-widget2__item--primary">
-																	<div class="kt-widget2__checkbox">
-
+											
 																	<?php
 
-																		$sql = mysqli_query($conn, "SELECT * FROM `match` WHERE id_colaborador = '$idX' LIMIT 7") or die( 
+
+																		$sql = mysqli_query($conn, "SELECT c.id_colaborador FROM colaborador c INNER JOIN usuario u ON(c.id_usuario = u.id_usuario) WHERE u.id_usuario = '$idX'") or die( 
+																			mysqli_error($sql)
+																		);
+																		while($aux = mysqli_fetch_assoc($sql)) { 
+																			$idColaborador = $aux["id_colaborador"];
+																		}
+
+																		$sql = mysqli_query($conn, "SELECT c.descricao, c.nome_encontro FROM combinacoes c 
+																		INNER JOIN colaborador p ON(c.id_colaborador = p.id_colaborador) 
+																		INNER JOIN usuario u ON(p.id_usuario = u.id_usuario) 
+																		WHERE c.id_colaborador = '$idColaborador'") or die( 
 																			mysqli_error($sql) //caso haja um erro na consulta 
 																		);
 																		while($aux = mysqli_fetch_assoc($sql)) { 
-																			echo '
-																			<div class="kt-widget2__info">
-																				<a class="kt-widget2__title">'.$aux["nome_encontro"].'</a>
-																				<a class="kt-widget2__username">Descrição: '.$aux["descricao"].'</a>
-																			</div><br>';
+																			echo ''.$aux["nome_encontro"].'</br>'.$aux["descricao"].'</br>';
+																			
 																		}
 
 																	?>
 
-																	</div>
-																</div> 
-														</div>
-														</div>
-													</div>
-												</div>
+
 											</div>
 
 											<!--end:: Widgets/Tasks -->
@@ -1799,7 +1799,7 @@ if(!$_SESSION['colaboradorEmail']) {
 					<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 						<div class="kt-container  kt-container--fluid ">
 							<div class="kt-footer__copyright">
-								2019&nbsp;&copy;&nbsp;<a href="http://www.baruel.com.br/" target="_blank" class="kt-link">iCompanion</a>
+								2019&nbsp;&copy;&nbsp;<a href="http://www.baruel.com.br/" target="_blank" class="kt-link">MyCompanion</a>
 							</div>
 							<div class="kt-footer__menu">
 								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Sobre</a>

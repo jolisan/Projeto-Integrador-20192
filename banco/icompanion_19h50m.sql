@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 01-Dez-2019 às 02:59
+-- Generation Time: 01-Dez-2019 às 22:49
 -- Versão do servidor: 5.7.26
 -- versão do PHP: 7.2.18
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `id_cliente` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_usuario` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `cliente`
@@ -62,7 +62,10 @@ INSERT INTO `cliente` (`id_cliente`, `id_usuario`) VALUES
 (4, 20),
 (5, 21),
 (6, 22),
-(7, 37);
+(7, 37),
+(8, 38),
+(9, 39),
+(10, 40);
 
 -- --------------------------------------------------------
 
@@ -109,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
   `id_colaborador` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_usuario` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_colaborador`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `colaborador`
@@ -117,13 +120,14 @@ CREATE TABLE IF NOT EXISTS `colaborador` (
 
 INSERT INTO `colaborador` (`id_colaborador`, `id_usuario`) VALUES
 (1, 9),
-(2, 16),
-(3, 14),
+(2, 10),
+(3, 11),
 (4, 12),
-(5, 11),
-(6, 10),
-(7, 13),
-(8, 15);
+(5, 13),
+(6, 14),
+(7, 15),
+(8, 16),
+(9, 18);
 
 -- --------------------------------------------------------
 
@@ -150,16 +154,14 @@ CREATE TABLE IF NOT EXISTS `combinacoes` (
 --
 
 INSERT INTO `combinacoes` (`id_combinacoes`, `data`, `valor`, `nome_encontro`, `descricao`, `id_cliente`, `id_colaborador`) VALUES
-(1, '2019-11-30', 5, 'Jogar bola', 'Bater aquele baba maroto', 1, 1),
-(2, '2019-11-30', 2, 'Jogar volei', 'Bater aquele voleizao', 2, 1),
-(3, '2019-11-30', 1, 'Reuniao do PI', 'Reunir pra terminar o PI 1', 1, 2),
-(4, '2019-11-30', 3, 'Trocar ideia', 'Bater aquele papo', 2, 2),
-(5, '2019-11-30', 4, 'Ainda nao sei', 'to pensando', 3, 2),
-(6, '2019-11-30', 3, 'Andar de bike', 'Rolezao de bike', 3, 4),
-(7, '2019-11-30', 2, 'Bar', 'Tomar uma no bar ', 4, 4),
-(8, '2019-11-30', 7, 'Cinema', 'Assistir vingadores ', 5, 3),
-(9, '2019-11-30', 16, 'To pensando', 'Ainda n sei', 3, 3),
-(10, '2019-11-30', 10, 'Role', 'Dar um rolê de carro', 2, 3);
+(1, '2019-11-30', 5, 'Jogar bola', 'Bater aquele baba maroto', 5, 1),
+(2, '2019-11-30', 2, 'Jogar volei', 'Bater aquele voleizao', 5, 2),
+(3, '2019-11-30', 1, 'Reuniao do PI', 'Reunir pra terminar o PI 1', 5, 3),
+(4, '2019-11-30', 3, 'Trocar ideia', 'Bater aquele papo', 5, 4),
+(5, '2019-11-30', 4, 'Ainda nao sei', 'to pensando', 5, 5),
+(6, '2019-11-30', 3, 'Andar de bike', 'Rolezao de bike', 5, 6),
+(7, '2019-11-30', 2, 'Bar', 'Tomar uma no bar ', 5, 7),
+(8, '2019-11-30', 7, 'Cinema', 'Assistir vingadores ', 5, 8);
 
 -- --------------------------------------------------------
 
@@ -180,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `pais` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_endereco`),
   KEY `fk_id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `endereco`
@@ -189,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 INSERT INTO `endereco` (`id_endereco`, `id_usuario`, `rua`, `numero`, `cep`, `complemento`, `cidade`, `estado`, `pais`) VALUES
 (1, 9, 'Rua Maria Alves', 12, '\r\n40435-885\r\n', 'Ao lado da padaria', 'Salvador', 'BA', 'Brasil'),
 (2, 10, 'Avenida Nelson Dórea', 754, ' 40327-175', ' Liberdade', ' Salvador', 'BA', 'Brasil'),
-(3, 21, 'Rua Valor novaes', 12, ' 41290-695', 'padaria', 'Salvador', 'BA', 'Brasil'),
+(3, 21, 'Rua Valor novaes', 12, ' 41290-695', 'padaria', 'SalvadoX', 'BK', 'Brasil'),
 (4, 12, 'Avenida Cearense', 33, ' 40327-175', 'casa', 'Salvador', 'BA', 'Brasil'),
 (5, 13, 'Travessa Sá Pinto', 87, '40327-175', 'santos', 'Salvador', 'BA', 'Brasil'),
 (6, 14, 'Rua Itajuá', 12, '40327-175', 'mercadinho sao jose', 'Salvador', 'BA', 'Brasil'),
@@ -198,9 +200,12 @@ INSERT INTO `endereco` (`id_endereco`, `id_usuario`, `rua`, `numero`, `cep`, `co
 (9, 17, 'Rua Travessa Avestruz', 122, '69901-176', 'Perto dali', 'Rio Branco', 'AC', 'Brasil'),
 (10, 18, 'Rua Abacaxi', 7564, ' 69901-043', ' Morada do Sol', ' Rio Branco', 'AC', 'Brasil'),
 (11, 19, 'Travessa Augusto Borges', 126, ' 68743-625', 'Caiçara', 'Castanhal', 'PA', 'Brasil'),
-(12, 20, 'Travessa Coronel Bonifácio', 336, ' 59025-560', 'Cidade Alta', 'Natal', 'RN', 'Brasil'),
+(12, 33, 'Travessa Coronel Bonifácio', 336, ' 59025-560', 'Cidade Alta', 'Natal', 'RN', 'Brasil'),
 (13, 33, 'Rua G', 87, '77423-050', 'Waldir Lins I', 'Gurupi', 'TO', 'Brasil'),
-(14, 22, 'Rua Colio', 37, '86706-208', 'Jardim do Café', 'Arapongas', 'PR', 'Brasil');
+(14, 11, 'Rua Colio', 37, '86706-208', 'Jardim do Café', 'Arapongas', 'PR', 'Brasil'),
+(15, 38, '', 0, '', '', '', '', ''),
+(16, 39, '', 0, '', '', '', '', ''),
+(17, 40, '', 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -263,19 +268,24 @@ CREATE TABLE IF NOT EXISTS `mensagem` (
 DROP TABLE IF EXISTS `pedidos_combinacoes`;
 CREATE TABLE IF NOT EXISTS `pedidos_combinacoes` (
   `id_pedidos_combinacoes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(10) UNSIGNED NOT NULL,
-  `id_colaborador` int(10) UNSIGNED NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_colaborador` int(11) NOT NULL,
+  `valor` float NOT NULL DEFAULT '0',
+  `descricao` text,
   PRIMARY KEY (`id_pedidos_combinacoes`),
-  KEY `fk_usuario` (`id_usuario`),
-  KEY `fk_colaborador` (`id_colaborador`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  KEY `fk_colaborador_combinacoes` (`id_colaborador`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `pedidos_combinacoes`
 --
 
-INSERT INTO `pedidos_combinacoes` (`id_pedidos_combinacoes`, `id_usuario`, `id_colaborador`) VALUES
-(1, 21, 13);
+INSERT INTO `pedidos_combinacoes` (`id_pedidos_combinacoes`, `id_usuario`, `id_colaborador`, `valor`, `descricao`) VALUES
+(1, 21, 4, 0, NULL),
+(2, 21, 2, 0, NULL),
+(3, 21, 3, 0, NULL),
+(4, 21, 5, 0, NULL),
+(5, 21, 9, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -291,21 +301,23 @@ CREATE TABLE IF NOT EXISTS `telefone` (
   `ddd` varchar(5) NOT NULL DEFAULT '',
   `telefone` varchar(15) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_telefone`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `telefone`
 --
 
 INSERT INTO `telefone` (`id_telefone`, `id_usuario`, `ddi`, `ddd`, `telefone`) VALUES
-(1, 21, '55', '71', '987124599'),
-(2, 22, '55', '71', '987062290'),
+(1, 21, '55', '71', '987124522'),
+(2, 20, '55', '71', '987062290'),
 (3, 12, '55', '71', '944155346'),
 (4, 10, '55', '71', '962298489'),
 (5, 11, '55', '71', '936402387'),
-(6, 12, '55', '71', '984669074'),
+(6, 18, '55', '71', '984669074'),
 (7, 13, '55', '71', '993486037'),
-(8, 14, '55', '71', '987931964');
+(8, 9, '55', '71', '987931964'),
+(9, 39, '', '', ''),
+(10, 40, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -328,15 +340,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fotoperfil` varchar(150) NOT NULL DEFAULT 'https://i.imgur.com/2s9gA6V.png',
   `tipo_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `sobrenome`, `cpf`, `rg`, `data_aniversario`, `data_entrada`, `email`, `senha`, `saldo`, `fotoperfil`, `tipo_usuario`) VALUES
-(9, 'Esther', 'Castro', '15240608369', '192705507', '1957-06-05', '2019-10-30', 'estherandreiasaracastro-91@pobox.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/xq5ambl.png', 0),
-(10, 'Maria', 'Madalena', '17775648890', '156489638', '1997-06-30', '2019-10-30', 'mariamadalena@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/JtaFqQm.png', 0),
+(9, 'Esther', 'Castro', '15240608369', '192705507', '1957-06-05', '2019-10-30', 'estherandreiasaracastro-91@pobox.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/xq5ambl.png', 1),
+(10, 'Maria', 'Madalena', '17775648890', '156489638', '1997-06-30', '2019-10-30', 'mariamadalena@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/JtaFqQm.png', 1),
 (11, 'Julia', 'Guedes', '07774115960', '159876458', '1989-08-12', '2019-10-30', 'juliaguedes@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/QcsCnrB.png', 0),
 (12, 'Saco', 'Depao', '45685245620', '156789456', '1999-04-12', '2019-10-30', 'sacodepaonacara@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/ALC4YFz.png', 0),
 (13, 'Joana', 'Maria', '08995612350', '156982368', '1967-10-15', '2019-10-30', 'namoradadepique@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/bhnsuCj.png', 0),
@@ -347,18 +359,31 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `sobrenome`, `cpf`, `rg`, `data_ani
 (18, 'Jolisan', 'Vinicius', '487.903.320-08', '30.978.180-2', '1997-06-30', '2019-10-30', 'jolisan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
 (19, 'Joao', 'Sledz', '698.687.190-20', '25.118.759-7', '1989-08-12', '2019-10-30', 'sledz@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
 (20, 'Pedro', 'Monnerat', '908.847.080-47', '49.284.233-4', '1999-04-12', '2019-10-30', 'pedro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(21, 'Alex', 'Boanerges', '292.900.770-26', '43.770.284-4', '1967-10-15', '2019-10-30', 'alex@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 125, 'https://i.imgur.com/2s9gA6V.png', 0),
+(21, 'Alex', 'Boanerges', '292.900.770-26', '43.770.284-4', '1967-10-15', '2019-10-30', 'alex@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 333, 'https://i.imgur.com/2s9gA6V.png', 0),
 (22, 'Marcos', 'Lapa', '210.612.030-34', '41.460.811-2', '1977-07-30', '2019-10-30', 'lapa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
 (32, 'teste', 'vsf', '', '', NULL, '2019-11-30', 'comecuzinho@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
 (33, 'juliana', 'alves', '', '', NULL, '2019-11-30', 'juliana@gmail.com', '4b2c4ccbe88baa6bb4d1a3271a6ad633', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
 (34, 'marcos', 'teste', '', '', NULL, '2019-11-30', 'TESTES@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
 (35, 'joao', 'auves', '', '', NULL, '2019-11-30', 'joao9@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
 (36, 'marcelo', 'marcelo', '', '', NULL, '2019-11-30', 'marcelod444444@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(37, 'yuri', 'alves', '', '', NULL, '2019-11-30', 'yuri@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0);
+(37, 'yuri', 'alves', '', '', NULL, '2019-11-30', 'yuri@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
+(38, 'cabesa', 'deguidao', '', '', NULL, '2019-12-01', 'cabesa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
+(39, 'paulo', 'fora', '', '', NULL, '2019-12-01', 'paulo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
+(40, 'sdiahsdi', 'ijdaojdsao', '', '', NULL, '2019-12-01', 'ocjkaodjoas@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1);
 
 --
 -- Acionadores `usuario`
 --
+DROP TRIGGER IF EXISTS `add_endereco`;
+DELIMITER $$
+CREATE TRIGGER `add_endereco` AFTER INSERT ON `usuario` FOR EACH ROW INSERT INTO endereco (id_usuario) VALUES (new.id_usuario)
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `add_telefone`;
+DELIMITER $$
+CREATE TRIGGER `add_telefone` AFTER INSERT ON `usuario` FOR EACH ROW INSERT INTO telefone (id_usuario) VALUES (new.id_usuario)
+$$
+DELIMITER ;
 DROP TRIGGER IF EXISTS `inserir_id_cliente`;
 DELIMITER $$
 CREATE TRIGGER `inserir_id_cliente` AFTER INSERT ON `usuario` FOR EACH ROW INSERT INTO cliente (id_usuario) VALUES ( new.id_usuario)
@@ -408,13 +433,6 @@ ALTER TABLE `gostos_usuario`
 ALTER TABLE `mensagem`
   ADD CONSTRAINT `fk_usuario_envio` FOREIGN KEY (`id_usuario_envio`) REFERENCES `usuario` (`id_usuario`),
   ADD CONSTRAINT `fk_usuario_recebe` FOREIGN KEY (`id_usuario_recebe`) REFERENCES `usuario` (`id_usuario`);
-
---
--- Limitadores para a tabela `pedidos_combinacoes`
---
-ALTER TABLE `pedidos_combinacoes`
-  ADD CONSTRAINT `fk_colaborador` FOREIGN KEY (`id_colaborador`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
