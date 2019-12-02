@@ -28,6 +28,7 @@
 			$_SESSION['usuarioFoto'] = $resultado['fotoperfil'];
 			$_SESSION['telefoneId'] = $resultado['id_telefone'];
 			$_SESSION['dataEntrada'] = $resultado['data_entrada'];
+			$_SESSION['tipoUsuario'] = $resultado['tipo_usuario'];
 			$tipoUsuario = $resultado['tipo_usuario'];
 			if($tipoUsuario == 0){
 				header("Location: ../painel/");

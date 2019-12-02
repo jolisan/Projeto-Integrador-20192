@@ -1,12 +1,16 @@
 <?php
 session_start();
-//Incluindo a conexão com banco de dados
 include_once("../../../conn/conexao.php");
 
 if(!$_SESSION['usuarioEmail']) {
-	header('Location: ../../index.php');
+	header('Location: ../../../login');
 	exit();
 }
+if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
+	header('Location: ../../../login/');
+	exit();
+}
+
 	$idX = $_SESSION['usuarioId'];
 	$nomeX = $_SESSION['usuarioNome'];
 	$sobrenomeX = $_SESSION['usuarioSobrenome'];
@@ -913,9 +917,6 @@ if(!$_SESSION['usuarioEmail']) {
 										<div class="kt-user-card__name">
 										<?php echo ucwords($nomeX)."&nbsp".ucwords($sobrenomeX);?>
 										</div>
-										<div class="kt-user-card__badge">
-											<span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
-										</div>
 									</div>
 
 									<!--end: Head -->
@@ -935,48 +936,8 @@ if(!$_SESSION['usuarioEmail']) {
 												</div>
 											</div>
 										</a>
-										<a href="#" class="kt-notification__item">
-											<div class="kt-notification__item-icon">
-												<i class="flaticon2-mail kt-font-warning"></i>
-											</div>
-											<div class="kt-notification__item-details">
-												<div class="kt-notification__item-title kt-font-bold">
-													Minhas Mensagens
-												</div>
-												<div class="kt-notification__item-time">
-													Caixa de entrada
-												</div>
-											</div>
-										</a>
-										<a href="#" class="kt-notification__item">
-											<div class="kt-notification__item-icon">
-												<i class="flaticon2-hourglass kt-font-brand"></i>
-											</div>
-											<div class="kt-notification__item-details">
-												<div class="kt-notification__item-title kt-font-bold">
-													My Tasks
-												</div>
-												<div class="kt-notification__item-time">
-													latest tasks and projects
-												</div>
-											</div>
-										</a>
-										<a href="#" class="kt-notification__item">
-											<div class="kt-notification__item-icon">
-												<i class="flaticon2-cardiogram kt-font-warning"></i>
-											</div>
-											<div class="kt-notification__item-details">
-												<div class="kt-notification__item-title kt-font-bold">
-													Pagamentos
-												</div>
-												<div class="kt-notification__item-time">
-													Faturamento e extratos
-												</div>
-											</div>
-										</a>
 										<div class="kt-notification__custom kt-space-between">
 											<a href="painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sair</a>
-											<a href="painel/sair.php" target="_blank" class="btn btn-clean btn-sm btn-bold">Comprar plano</a>
 										</div>
 									</div>
 

@@ -1,13 +1,13 @@
 <?php
 session_start();
-include_once("../../../conn/conexao.php");
+include('../../../../conn/conexao.php');
 
 if(!$_SESSION['usuarioEmail']) {
-	header('Location: ../../../login');
+	header('Location: ../../../../login/');
 	exit();
 }
-if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
-	header('Location: ../../../login/');
+if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
+	header('Location: ../../../../login/');
 	exit();
 }
 
@@ -33,7 +33,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 	<head>
 
 		<!--begin::Base Path (base relative path for assets of this page) -->
-		<base href="../../../">
+		<base href="../../../../">
 
 		<!--end::Base Path -->
 		<meta charset="utf-8" />
@@ -115,13 +115,12 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="painel/">
+				<a href="colaborador/painel/">
 					<img alt="Logo" src="./assets/media/logos/logo-mycompanion-mobile.png" /> <!-- LOGO MOBILE -->
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
-				<button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
-				<button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
+			<button class="kt-header-mobile__toggler" id="kt_aside_mobile_toggler"><span></span></button>
 				<button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
 			</div>
 		</div>
@@ -137,7 +136,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 					<!-- begin:: Aside -->
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
-							<a href="painel/">
+							<a href="colaborador/painel/">
 								<img alt="Logo" src="./assets/media/logos/logo-mycompanion-web.png" /> <!-- LOGO WEB -->
 							</a>
 						</div>
@@ -171,7 +170,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item " aria-haspopup="true"><a href="painel/" class="kt-menu__link "><span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+								<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/" class="kt-menu__link "><span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 													<polygon id="Bound" points="0 0 24 0 24 24 0 24" />
 													<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" id="Shape" fill="#000000" fill-rule="nonzero" />
@@ -192,9 +191,9 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Subheaders</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Visão geral</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/informacoes-pessoais/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Informações pessoais</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/mudar-senha/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mudar senha</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Visão geral</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/informacoes-pessoais/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Informações pessoais</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/mudar-senha/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mudar senha</span></a></li>
 											<!-- <li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/subheader/classic.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Classic</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="demo1/layout/subheader/none.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">None</span></a></li> -->
 										</ul>
@@ -210,11 +209,9 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Combinações</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes-pendentes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações pendentes</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/lista-combinacoes-efetivas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações efetivas</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/lista-combinacoes-pendentes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações pendentes</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/lista-combinacoes-efetivas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações efetivas</span></a></li>
+											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -931,7 +928,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 
 									<!--begin: Navigation -->
 									<div class="kt-notification">
-										<a href="painel/" class="kt-notification__item">
+										<a href="colaborador/painel/" class="kt-notification__item">
 											<div class="kt-notification__item-icon">
 												<i class="flaticon2-calendar-3 kt-font-success"></i>
 											</div>
@@ -944,9 +941,8 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 												</div>
 											</div>
 										</a>
-										
 										<div class="kt-notification__custom kt-space-between">
-											<a href="painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sair</a>
+											<a href="colaborador/painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sair</a>
 										</div>
 									</div>
 
@@ -1591,7 +1587,7 @@ OR die(mysqli_error($firstQuery) );
 					<div class="kt-demo-panel__item-preview">
 						<img src="./assets/media/demos/preview/demo1.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
-							<a href="painel/" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
+							<a href="colaborador/painel/" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
 						</div>
 					</div>
 				</div>

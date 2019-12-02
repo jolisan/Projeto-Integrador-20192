@@ -5,9 +5,10 @@ include_once("../../models/Endereco.php");
 include_once("../../models/Telefone.php");
 
 $telefone = $_POST['telefone'];
+$ddi = $_POST['ddi'];
+$ddd = $_POST['ddd'];
 $cidade = $_POST['cidade'];
 $estado = $_POST['estado'];
-
 $rua = $_POST['rua'];
 $numero = $_POST['numero'];
 $cep = $_POST['cep'];
@@ -24,10 +25,30 @@ $Tel->getTelefone($conn, $idX);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->estado){
-    if ($telefone != $Tel->telefone)
+if($telefone != $Tel->telefone || $ddi != $Tel->ddi || $ddi != $Tel->ddd || $rua != $End->rua || $numero != $End->numero || $cep != $End->cep || $complemento != $End->complemento ||$cidade != $End->cidade || $estado != $end->estado){
+  if ($telefone != $Tel->telefone)
   {
     $queryupdate = "UPDATE telefone JOIN usuario u LEFT JOIN telefone t ON t.id_usuario = u.id_usuario SET t.telefone = '$telefone' WHERE u.id_usuario = '$idX'";
+    $result = mysqli_query($conn, $queryupdate);
+    if($result)
+    {
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+    }
+  }
+
+  if ($ddi != $Tel->ddi)
+  {
+    $queryupdate = "UPDATE telefone JOIN usuario u LEFT JOIN telefone t ON t.id_usuario = u.id_usuario SET t.ddi = '$ddi' WHERE u.id_usuario = '$idX'";
+    $result = mysqli_query($conn, $queryupdate);
+    if($result)
+    {
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+    }
+  }
+
+  if ($ddd != $Tel->ddd)
+  {
+    $queryupdate = "UPDATE telefone JOIN usuario u LEFT JOIN telefone t ON t.id_usuario = u.id_usuario SET t.ddd = '$ddd' WHERE u.id_usuario = '$idX'";
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {

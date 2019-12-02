@@ -1,7 +1,15 @@
 <?php
 session_start();
-include('../../../../conn/verifica_login.php');
 include('../../../../conn/conexao.php');
+
+if(!$_SESSION['usuarioEmail']) {
+	header('Location: ../../../../login/');
+	exit();
+}
+if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
+	header('Location: ../../../../login/');
+	exit();
+}
 
 	$idX = $_SESSION['usuarioId'];
 	$nomeX = $_SESSION['usuarioNome'];
@@ -20,6 +28,9 @@ include('../../../../conn/conexao.php');
 		mysqli_error($sql)
 	);
 	while($aux = mysqli_fetch_assoc($sql)) { 
+		$ddi_banco = $aux["ddi"];
+		$ddd_banco = $aux["ddd"];
+
 		$telefone_banco = $aux["telefone"];
 	}
 
@@ -208,11 +219,9 @@ include('../../../../conn/conexao.php');
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Combinações</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/procurar-pessoas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Procurar pessoas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/lista-combinacoes-pendentes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações pendentes</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/lista-combinacoes-efetivas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações efetivas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/recomendacoes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Recomendações</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -366,16 +375,13 @@ include('../../../../conn/conexao.php');
 										<div class="kt-user-card__name">
 										<?php echo ucwords($nomeX)."&nbsp".ucwords($sobrenomeX);?>
 										</div>
-										<div class="kt-user-card__badge">
-											<span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
-										</div>
 									</div>
 
 									<!--end: Head -->
 
 									<!--begin: Navigation -->
 									<div class="kt-notification">
-										<a href="painel/" class="kt-notification__item">
+										<a href="colaborador/painel/" class="kt-notification__item">
 											<div class="kt-notification__item-icon">
 												<i class="flaticon2-calendar-3 kt-font-success"></i>
 											</div>
@@ -388,48 +394,8 @@ include('../../../../conn/conexao.php');
 												</div>
 											</div>
 										</a>
-										<a href="#" class="kt-notification__item">
-											<div class="kt-notification__item-icon">
-												<i class="flaticon2-mail kt-font-warning"></i>
-											</div>
-											<div class="kt-notification__item-details">
-												<div class="kt-notification__item-title kt-font-bold">
-													Minhas Mensagens
-												</div>
-												<div class="kt-notification__item-time">
-													Caixa de entrada
-												</div>
-											</div>
-										</a>
-										<a href="#" class="kt-notification__item">
-											<div class="kt-notification__item-icon">
-												<i class="flaticon2-hourglass kt-font-brand"></i>
-											</div>
-											<div class="kt-notification__item-details">
-												<div class="kt-notification__item-title kt-font-bold">
-													My Tasks
-												</div>
-												<div class="kt-notification__item-time">
-													latest tasks and projects
-												</div>
-											</div>
-										</a>
-										<a href="#" class="kt-notification__item">
-											<div class="kt-notification__item-icon">
-												<i class="flaticon2-cardiogram kt-font-warning"></i>
-											</div>
-											<div class="kt-notification__item-details">
-												<div class="kt-notification__item-title kt-font-bold">
-													Pagamentos
-												</div>
-												<div class="kt-notification__item-time">
-													Faturamento e extratos
-												</div>
-											</div>
-										</a>
 										<div class="kt-notification__custom kt-space-between">
 											<a href="colaborador/painel/sair.php" class="btn btn-label btn-label-brand btn-sm btn-bold">Sair</a>
-											<a href="colaborador/painel/sair.php" target="_blank" class="btn btn-clean btn-sm btn-bold">Comprar plano</a>
 										</div>
 									</div>
 
@@ -528,7 +494,7 @@ include('../../../../conn/conexao.php');
 														</div>
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Telefone:</span>
-															<a class="kt-widget__data"><?php echo " +$ddiX ($dddX) $telefone_banco"; ?></a>
+															<a class="kt-widget__data"><?php echo " +$ddi_banco ($ddd_banco) $telefone_banco"; ?></a>
 														</div>
 														<div class="kt-widget__info">
 															<span class="kt-widget__label">Localização:</span>
@@ -682,12 +648,16 @@ include('../../../../conn/conexao.php');
 																	<label class="col-xl-3 col-lg-3 col-form-label">Telefone</label>
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
-																			<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i><?php echo " +$ddiX ($dddX)"?></span></div>
-																			<input type="text" maxlength="9" class="form-control" id="telefone" name="telefone" value="<?php echo "$telefone_banco"?>" placeholder="Telefone"></input>
+																			<div class="input-group-prepend">
+																			<span class="input-group-text"><i class="la la-phone"></i></span>
+																			<input type="text" maxlength="5" class="form-control" style="width:85px;" id="ddi" name="ddi" value="<?php echo "$ddi_banco"?>" placeholder="DDI" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
+																			<input type="text" maxlength="5" class="form-control" style="width:75px;" id="ddd" name="ddd" value="<?php echo "$ddd_banco"?>" placeholder="DDD" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
+																			</div>
+																			<input type="text" maxlength="14" class="form-control" id="telefone" name="telefone" value="<?php echo "$telefone_banco"?>" placeholder="Telefone" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
 																		</div>
+																	</div>	
 																	</div>
-																</div>
-															
+
 																<div class="row">
 																	<label class="col-xl-3"></label>
 																	<div class="col-lg-9 col-xl-6">
@@ -700,7 +670,7 @@ include('../../../../conn/conexao.php');
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
-																			<input type="text" class="form-control" id="rua" name="rua" value="<?php echo "$rua_banco"?>" placeholder="Cidade"></input>
+																			<input type="text" maxlength="30" class="form-control" id="rua" name="rua" value="<?php echo "$rua_banco"?>" placeholder="Cidade"></input>
 																		</div>
 																	</div>
 																</div>
@@ -710,7 +680,7 @@ include('../../../../conn/conexao.php');
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
-																			<input type="text" class="form-control" id="numero" name="numero" value="<?php echo "$numero_banco"?>" placeholder="Cidade"></input>
+																			<input type="text" maxlength="7" class="form-control" id="numero" name="numero" value="<?php echo "$numero_banco"?>" placeholder="Cidade" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
 																		</div>
 																	</div>
 																</div>
@@ -720,7 +690,7 @@ include('../../../../conn/conexao.php');
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
-																			<input type="text" class="form-control" id="cep" name="cep" value="<?php echo "$cep_banco"?>" placeholder="Cidade"></input>
+																			<input type="text" maxlength="14" class="form-control" id="cep" name="cep" value="<?php echo "$cep_banco"?>" placeholder="Cidade" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
 																		</div>
 																	</div>
 																</div>
@@ -730,7 +700,7 @@ include('../../../../conn/conexao.php');
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
-																			<input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo "$complemento_banco"?>" placeholder="Cidade"></input>
+																			<input type="text" maxlength="25" class="form-control" id="complemento" name="complemento" value="<?php echo "$complemento_banco"?>" placeholder="Cidade"></input>
 																		</div>
 																	</div>
 																</div>
@@ -740,7 +710,7 @@ include('../../../../conn/conexao.php');
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
-																			<input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo "$cidade_banco"?>" placeholder="Cidade"></input>
+																			<input type="text" maxlength="25" class="form-control" id="cidade" name="cidade" value="<?php echo "$cidade_banco"?>" placeholder="Cidade"></input>
 																		</div>
 																	</div>
 																</div>

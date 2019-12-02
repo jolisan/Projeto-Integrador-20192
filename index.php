@@ -48,8 +48,8 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a href="#page-top">Início</a></li>
                             <li><a href="#app-about-area">Sobre</a></li>
-                            <li><a href="#awesome-features-area">Características</a></li>
-                            <li><a href="#app-screenshot-area">Telas</a></li>
+                            <li><a href="#page-top">Telas</a></li>
+                            <li><a href="#team-area">Equipe</a></li>
                         </ul>
                     </div>
                 </div>
@@ -344,13 +344,13 @@
                         <img src="landing/img/others/video-demo.jpg" alt="" class="img-responsive center-block">
                     </div>
                     <div class="video-play-icon">
-                        <a href="http://www.youtube.com/watch?v=k-R6AFn9-ek"><i class="icofont icofont-ui-play"></i></a>
+                        <a href="https://youtu.be/vECNVYh5cSM"><i class="icofont icofont-ui-play"></i></a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- promo video area end -->
-        <!-- fun fact area start -->
+        <!-- 
         <section id="fun-fact-area" class="overlay-grad-two ptb-120">
             <div class="container">
                 <div class="row">
@@ -384,9 +384,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- fun fact area end -->
-        <!-- app screenshot area start -->
+        </section> 
+
+
         <section id="app-screenshot-area" class="home-style-2 ptb-120">
             <div class="container">
                 <div class="row">
@@ -398,7 +398,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!-- Swiper -->
                     <div class="swiper-container two">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -442,12 +441,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>  -->
         <!-- app screenshot area end -->
         <!-- team area start -->
         <section id="team-area" class="overlay-grad-two ptb-120">
