@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once("conexao.php");
-include_once("../models/Endereco.php");
-include_once("../models/Telefone.php");
+include_once("../conexao.php");
+include_once("../../models/Endereco.php");
+include_once("../../models/Telefone.php");
 
 $telefone = $_POST['telefone'];
 $cidade = $_POST['cidade'];
@@ -31,7 +31,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -41,7 +41,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -51,7 +51,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -61,7 +61,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -71,7 +71,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -81,7 +81,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -91,7 +91,7 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 
@@ -101,12 +101,12 @@ if($telefone != $Tel->telefone || $cidade != $End->cidade || $estado != $end->es
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {
-      header('location:../painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
     }
   }
 }
 else{
-  header('location:../painel/perfil/informacoes-pessoais/?error=errotualizar');
+  header('location:../../colaborador/painel/perfil/informacoes-pessoais/?error=errotualizar');
 }
 
 

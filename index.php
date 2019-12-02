@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Appai - Home 14</title>
+    <title>MyCompanion - A solução para a sua solidão</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -50,10 +50,6 @@
                             <li><a href="#app-about-area">Sobre</a></li>
                             <li><a href="#awesome-features-area">Características</a></li>
                             <li><a href="#app-screenshot-area">Telas</a></li>
-                            <li><a href="#pricing-table-area">Pricing</a></li>
-                            <li><a href="#faq-area">FAQs</a></li>
-                            <li><a href="#blog-area">Blog</a></li>
-                            <li><a href="#contact-area">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,7 +72,7 @@
                             <h2 class="animated fadeInDown wow" data-wow-delay="1s">A solução para a </h2>
                             <h1 class="animated fadeInDown wow" data-wow-delay="1.5s">Sua solidão</h1>
                             <p class="animated fadeInDown wow" data-wow-delay="2s">Nós somos mais que uma aplicação web!</br>Nós localizamos pessoas para encontros online de acordo com os seus interesses.</p>
-                            <a href="#" class="btn btn-style-2 animated fadeInDown wow" data-wow-delay="2.5s">Acesse</a>
+                            <a href="login/" class="btn btn-style-2 animated fadeInDown wow" data-wow-delay="2.5s">Acesse</a>
                             <!-- Swiper -->
                             <div class="swiper-container one animated fadeInUp wow" data-wow-delay="3s">
                                 <div class="swiper-wrapper">
@@ -107,8 +103,8 @@
                                 <img src="landing/img/icons/app-feature-1.png" alt="">
                             </div>
                             <div class="feature-details">
-                                <h5 class="text-uppercase">easy to use</h5>
-                                <p>Lorem ipsum dolor sit consectet aadop adipisicing elit, sed do eiusod aemporaryly ididunt ugt laborepsu silmply dolor sit amet.</p>
+                                <h5 class="text-uppercase">Fácil de usar</h5>
+                                <p>.</p>
                             </div>
                         </div>
                     </div>
@@ -118,8 +114,8 @@
                                 <img src="landing/img/icons/app-feature-2.png" alt="">
                             </div>
                             <div class="feature-details">
-                                <h5 class="text-uppercase">Awesome design</h5>
-                                <p>Lorem ipsum dolor sit consectet aadop adipisicing elit, sed do eiusod aemporaryly ididunt ugt laborepsu silmply dolor sit amet.</p>
+                                <h5 class="text-uppercase">Design inovador</h5>
+                                <p>.</p>
                             </div>
                         </div>
                     </div>
@@ -129,8 +125,8 @@
                                 <img src="landing/img/icons/app-feature-3.png" alt="">
                             </div>
                             <div class="feature-details">
-                                <h5 class="text-uppercase">EASY TO CUSTOMIZE</h5>
-                                <p>Lorem ipsum dolor sit consectet aadop adipisicing elit, sed do eiusod aemporaryly ididunt ugt laborepsu silmply dolor sit amet.</p>
+                                <h5 class="text-uppercase">Fácil utilização</h5>
+                                <p>.</p>
                             </div>
                         </div>
                     </div>
@@ -140,8 +136,8 @@
                                 <img src="landing/img/icons/app-feature-4.png" alt="">
                             </div>
                             <div class="feature-details">
-                                <h5 class="text-uppercase">24/7 Online Support</h5>
-                                <p>Lorem ipsum dolor sit consectet aadop adipisicing elit, sed do eiusod aemporaryly ididunt ugt laborepsu silmply dolor sit amet.</p>
+                                <h5 class="text-uppercase">Suporte 24 horas</h5>
+                                <p>.</p>
                             </div>
                         </div>
                     </div>
@@ -156,25 +152,25 @@
                     <div class="col-sm-12">
                         <div class="section-heading shape-2 text-center">
                             <h2>SOBRE O NOSSO APP</h2>
-                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>
+                            <p>Nós localizamos pessoas para encontros online de acordo com os seus interesses..</p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="about-app mt-100">
-                            <h3>Take a Look Around our App</h3>
-                            <p>Mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound. mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system expound. expound. mistaken idea of denouncing</p>
-                            <p>the and expound the actual teachings of the great explorer of the truth, the aster of human happiness. NoM one rejects, dislikes, teachings of the great explorer of the ruth, master of human happiness.</p>
+                            <h3>Experimente utilizar a nossa aplicação!</h3>
+                            <p>Nossa aplicação é de fácil utilização, pensando em você que deseja encontrar um(a) colaborador(a) disposta a realizar algo do seu interesse.</p>
+        
                             <div class="button-group store-buttons">
                                 <a href="#" class="btn btn-style-2 btn-bordered-grad">
                                     <i class="icofont icofont-brand-android-robot dsp-tc"></i>
-                                    <p class="dsp-tc">available on
+                                    <p class="dsp-tc">disponível na
                                         <br> <span>Google Store</span></p>
                                 </a>
                                 <a href="#" class="btn btn-style-2 btn-bordered-grad">
                                     <i class="icofont icofont-brand-apple dsp-tc"></i>
-                                    <p class="dsp-tc">available on
+                                    <p class="dsp-tc">disponível na
                                         <br> <span>Apple Store</span></p>
                                 </a>
                             </div>
@@ -189,13 +185,13 @@
             </div>
         </section>
         <!-- app about area end -->
-        <!-- how it work area start -->
+        <!--
         <section id="how-it-works-area" class="ptb-120">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="section-heading shape-2 text-center">
-                            <h2>HOW DOES IT WORK?</h2>
+                            <h2>COMO NOSSA APLICAÇÃO FUNCIONA?</h2>
                             <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>
                         </div>
                     </div>
@@ -255,8 +251,7 @@
                 </div>
             </div>
         </section>
-        <!-- how it work area end -->
-        <!-- awesome feature area start -->
+
         <section id="awesome-features-area" class="overlay-white ptb-120">
             <div class="container">
                 <div class="row">
@@ -339,8 +334,9 @@
                 </div>
             </div>
         </section>
-        <!-- awesome feature area end -->
-        <!-- promo video area start -->
+
+
+-->
         <div id="promo-video-area">
             <div class="container">
                 <div class="video-demo-image wow fadeIn" data-wow-duration="2s">
@@ -396,8 +392,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="section-heading shape-2 text-center">
-                            <h2>APP Screenshots</h2>
-                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>
+                            <h2>Imagens do app</h2>
+                        
                         </div>
                     </div>
                 </div>
@@ -459,20 +455,20 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="section-heading white-shape text-center">
-                            <h2>AWESOME TEAM</h2>
-                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>
+                            <h2>EQUIPE</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 col-md-3">
                         <div class="single-member one text-center">
-                            <img src="landing/img/members/member-1.jpg" alt="" class="img-responsive">
+                        
+                            <img src="https://i.imgur.com/7FFNpTT.png" alt="" class="img-responsive">
                             <div class="member-description home-style-2">
                                 <div class="member-description-inner">
-                                    <h3 class="member-name">JASON ADAMS</h3>
-                                    <p class="designation">UI UX Designer</p>
-                                    <p class="short-description">Lorem ipsum dolor sit amet, secte tur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <h3 class="member-name">ALFONSO MARTINEZ</h3>
+                                    <p class="designation">Desenvolvedor</p>
+                                    <p class="short-description"></p>
                                     <ul class="social list-inline home-style-2">
                                         <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>
                                         <li><a href="#"><i class="icofont icofont-social-google-plus"></i></a></li>
@@ -485,12 +481,13 @@
                     </div>
                     <div class="col-sm-4 col-md-3">
                         <div class="single-member two text-center">
-                            <img src="landing/img/members/member-2.jpg" alt="" class="img-responsive">
+                        <BR>
+                            <img src="https://i.imgur.com/1iaJhPs.png" alt="" class="img-responsive">
                             <div class="member-description home-style-2">
                                 <div class="member-description-inner">
-                                    <h3 class="member-name">JASON ADAMS</h3>
-                                    <p class="designation">UI UX Designer</p>
-                                    <p class="short-description">Lorem ipsum dolor sit amet, secte tur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <h3 class="member-name">ALEX BOANERGES</h3>
+                                    <p class="designation">Desenvolvedor</p>
+                                    <p class="short-description"> </p>
                                     <ul class="social list-inline home-style-2">
                                         <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>
                                         <li><a href="#"><i class="icofont icofont-social-google-plus"></i></a></li>
@@ -503,12 +500,12 @@
                     </div>
                     <div class="col-sm-4 col-md-3">
                         <div class="single-member three text-center">
-                            <img src="landing/img/members/member-3.jpg" alt="" class="img-responsive">
+                            <img src="https://i.imgur.com/DPQLS7A.png" alt="" class="img-responsive">
                             <div class="member-description home-style-2">
                                 <div class="member-description-inner">
-                                    <h3 class="member-name">JASON ADAMS</h3>
-                                    <p class="designation">UI UX Designer</p>
-                                    <p class="short-description">Lorem ipsum dolor sit amet, secte tur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <h3 class="member-name">JOLISAN VINÍCIUS</h3>
+                                    <p class="designation">Desenvolvedor</p>
+                                    <p class="short-description"> </p>
                                     <ul class="social list-inline home-style-2">
                                         <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>
                                         <li><a href="#"><i class="icofont icofont-social-google-plus"></i></a></li>
@@ -519,14 +516,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-md-3 hidden-sm">
-                        <div class="single-member four text-center">
-                            <img src="landing/img/members/member-4.jpg" alt="" class="img-responsive">
+
+
+                    <div class="col-sm-4 col-md-3">
+                        <div class="single-member three text-center">
+                        <BR>
+                            <img src="https://i.imgur.com/iw62nor.png" alt="" class="img-responsive">
                             <div class="member-description home-style-2">
                                 <div class="member-description-inner">
-                                    <h3 class="member-name">JASON ADAMS</h3>
-                                    <p class="designation">UI UX Designer</p>
-                                    <p class="short-description">Lorem ipsum dolor sit amet, secte tur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <h3 class="member-name">JOÃO SLEDZ</h3>
+                                    <p class="designation">Desenvolvedor</p>
+                                    <p class="short-description"> </p>
+                                    <ul class="social list-inline home-style-2">
+                                        <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icofont icofont-social-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="icofont icofont-social-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icofont icofont-social-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-md-3 hidden-sm">
+                        <div class="single-member four text-center">
+                        <br>
+                            <img src="https://i.imgur.com/MeLxqZ9.png" alt="" class="img-responsive">
+                            <div class="member-description home-style-2">
+                                <div class="member-description-inner">
+                                    <h3 class="member-name">PEDRO MONNERAT</h3>
+                                    <p class="designation">Desenvolvedor</p>
+                                    <p class="short-description"> </p>
                                     <ul class="social list-inline home-style-2">
                                         <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>
                                         <li><a href="#"><i class="icofont icofont-social-google-plus"></i></a></li>
@@ -540,8 +560,12 @@
                 </div>
             </div>
         </section>
-        <!-- team area end -->
-        <!-- testimonial area start -->
+
+
+
+
+
+        <!-- testimonial area start
         <section id="testimonial-area" class="home-style-2 ptb-120">
             <div class="testimonial-slider-2">
                 <div class="slide">
@@ -582,8 +606,12 @@
                 </div>
             </div>
         </section>
-        <!-- testimonial area end -->
-        <!-- pricing table area start -->
+        testimonial area end -->
+
+
+
+
+        <!--
         <section id="pricing-table-area" class="overlay-white ptb-120">
             <div class="container">
                 <div class="row">
@@ -664,8 +692,12 @@
                 </div>
             </div>
         </section>
-        <!-- pricing table area end -->
-        <!-- frequently asked questions area start -->
+        -->
+
+
+
+
+<!--
         <section id="faq-area" class="faq-home-2 ptb-120">
             <div class="container">
                 <div class="row">
@@ -739,8 +771,8 @@
                 </div>
             </div>
         </section>
-        <!-- frequently asked questions area end -->
-        <!-- app download area start -->
+        
+
         <section id="app-download-area" class="home-style-2 blue-grad-bg-2 ptb-120">
             <div class="container">
                 <div class="row">
@@ -765,8 +797,7 @@
                 </div>
             </div>
         </section>
-        <!-- app download area end -->
-        <!-- blog area start -->
+
         <section id="blog-area" class="home-style-2 ptb-120">
             <div class="container">
                 <div class="row">
@@ -850,8 +881,7 @@
                 </div>
             </div>
         </section>
-        <!-- blog area end -->
-        <!-- subscription area start -->
+
         <section id="subscribe-area">
             <div class="container">
                 <div class="row">
@@ -877,8 +907,7 @@
                 </div>
             </div>
         </section>
-        <!-- subscription area end -->
-        <!-- contact area start -->
+
         <section id="contact-area">
             <div id="map"></div>
             <div class="contact-box home-style-2">
@@ -948,8 +977,9 @@
                 </div>
             </div>
         </section>
-        <!-- map area end -->
-        <!-- footer area start -->
+
+-->
+
         <footer id="footer-area" class="home-style-2">
             <div class="container">
                 <ul class="social list-inline text-center home-style-2">

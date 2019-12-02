@@ -23,10 +23,16 @@ include('../../../conn/conexao.php');
 		$telefone_banco = $aux["telefone"];
 	}
 
-	$sql2 = mysqli_query($conn, "SELECT e.cidade, e.estado, u.id_usuario FROM endereco e LEFT JOIN usuario u ON(e.id_usuario = u.id_usuario) WHERE u.id_usuario = ".$idX."") or die( 
+	$sql2 = mysqli_query($conn, "SELECT e.cidade, e.estado, e.rua, e.numero, e.cep, e.complemento, e.pais, u.id_usuario FROM endereco e LEFT JOIN usuario u ON(e.id_usuario = u.id_usuario) WHERE u.id_usuario = ".$idX."") or die( 
 		mysqli_error($sql2)
 	);
 	while($aux = mysqli_fetch_assoc($sql2)) { 
+		$rua_banco = $aux["rua"];
+		$numero_banco = $aux["numero"];
+		$cep_banco = $aux["cep"];
+		$complemento_banco = $aux["complemento"];
+		$pais_banco = $aux["pais"];
+
 		$cidade_banco = $aux["cidade"];
 		$estado_banco = $aux["estado"];
 	}
@@ -642,16 +648,25 @@ include('../../../conn/conexao.php');
 																		</div>
 																	</div>
 																</div>
+
 																<div class="form-group row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Nome:</label>
 																	<div class="col-lg-9 col-xl-6">
 																		<span class="form-control" type="text"><?php echo "$nomeX"?></span>
 																	</div>
 																</div>
+
 																<div class="form-group row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Sobrenome:</label>
 																	<div class="col-lg-9 col-xl-6">
 																		<span class="form-control" type="text"><?php echo "$sobrenomeX"?></span>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Data de aniversário:</label>
+																	<div class="col-lg-9 col-xl-6">
+																	<input type="date" class="form-control" value="$data_banco" type="text"></input>
 																	</div>
 																</div>
 																
@@ -682,6 +697,53 @@ include('../../../conn/conexao.php');
 																	</div>
 																</div>
 															
+																<div class="row">
+																	<label class="col-xl-3"></label>
+																	<div class="col-lg-9 col-xl-6">
+																		<h3 class="kt-section__title kt-section__title-sm">Endereço:</h3>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Rua</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" class="form-control" id="rua" name="rua" value="<?php echo "$rua_banco"?>" placeholder="Cidade"></input>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Número</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" class="form-control" id="numero" name="numero" value="<?php echo "$numero_banco"?>" placeholder="Cidade"></input>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">CEP</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" class="form-control" id="cep" name="cep" value="<?php echo "$cep_banco"?>" placeholder="Cidade"></input>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Complemento</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo "$complemento_banco"?>" placeholder="Cidade"></input>
+																		</div>
+																	</div>
+																</div>
+
 																<div class="form-group row">
 																	<label class="col-xl-3 col-lg-3 col-form-label">Cidade</label>
 																	<div class="col-lg-9 col-xl-6">
@@ -697,8 +759,21 @@ include('../../../conn/conexao.php');
 																	<div class="col-lg-9 col-xl-6">
 																		<div class="input-group">
 																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
-																			<input type="text" maxlength="2" class="form-control" id="estado" name="estado" value="<?php echo "$estado_banco"?>" placeholder="Estado"></input>
+																			<input type="text" maxlength="2" class="form-control" id="estado" name="estado" value="<?php echo "$estado_banco"?>" placeholder="Cidade"></input>
 																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">País</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" maxlength="20" class="form-control" id="pais" name="pais" value="<?php echo "$pais_banco"?>" placeholder="País"></input>
+																		</div>
+
+																		
+
 
 																	</br>
 																		<span class="form-text text-muted">

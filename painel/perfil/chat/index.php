@@ -21,6 +21,18 @@ if(!$_SESSION['usuarioEmail']) {
 
 <!DOCTYPE html>
 
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
 <html lang="en">
 
 	<!-- begin::Head -->
@@ -1130,32 +1142,60 @@ if(!$_SESSION['usuarioEmail']) {
 												<div class="kt-scroll kt-scroll--pull" data-mobile-height="300">
 													<div class="kt-chat__messages">
 
-
-														<div class="kt-chat__message">
-															<div class="kt-chat__user">
-																<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-																	<img src="https://i.imgur.com/ALC4YFz.png" alt="image">
-																</span>
-																<a href="#" class="kt-chat__username">CONSULTA_BANCO_NOME</span></a>
-																<span class="kt-chat__datetime">DATA_HORA</span>
-															</div>
-															<div class="kt-chat__text kt-bg-light-success">
-																TESTE
-															</div>
-														</div>
-
-
 													<?php
-													$sql = mysqli_query($conn, "SELECT e.cidade, e.estado, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN colaborador k ON( c.id_colaborador= k.id_colaborador) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_cliente = (SELECT id_cliente from cliente where id_usuario = ".$idX.")") or die( 
-													mysqli_error($sql) //caso haja um erro na consulta 
-													);
-													while($aux = mysqli_fetch_assoc($sql)) {
-														
+													
+													$idColaborador = 1;
+
+													$sql = mysqli_query($conn, "SELECT * FROM mensagem WHERE id_usuario_envio = '$idX' OR id_usuario_recebe = '$idX'") or die(mysqli_error($sql));
+													$query = mysqli_query($conn, "SELECT nome, fotoperfil FROM usuario WHERE id_usuario = '$idX'");
+													$query2 = mysqli_query($conn, "SELECT u.nome, u.fotoperfil FROM usuario u 
+																					INNER JOIN colaborador c ON(c.id_usuario = u.id_usuario) 
+																					WHERE c.id_colaborador = '$idColaborador'");
+													$dados = mysqli_fetch_row($query);
+													$dados2 = mysqli_fetch_row($query2);
+													while($row = mysqli_fetch_array($sql)) {
+
+														if($row['id_usuario_envio'] == $idX){
+															echo '
+																<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
+																	<div class="kt-chat__user">
+																		<span class="kt-chat__datetime">'.$row['data_ocorrencia'].'</span>
+																		<a href="#" class="kt-chat__username">'.$dados[0].'</span></a>
+																		<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
+																			<img src="'.$dados[1].'" alt="image">
+																		</span>
+																	</div>
+																	<div class="kt-chat__text kt-bg-light-brand">'.$row['conteudo'].'</div>
+																</div>
+															';
 														}
-													?> 
+														else{
+															echo '
+																<div class="kt-chat__message">
+																	<div class="kt-chat__user">
+																		<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
+																			<img src="'.$dados2[1].'" alt="image">
+																		</span>
+																		<a href="#" class="kt-chat__username">'.$dados2[0].'</span></a>
+																		<span class="kt-chat__datetime">'.$row['data_ocorrencia'].'</span>
+																	</div>
+																	<div class="kt-chat__text kt-bg-light-success">
+																		'.$row['conteudo'].'
+																	</div>
+																</div>
+															';
+														}
+													}
+													?>
+
+
+
+
+
+
 														
 														
-<!-- FIM PARTE UTIL CHAT -->
+												<!-- FIM PARTE UTIL CHAT -->
 
 
 
@@ -1164,19 +1204,34 @@ if(!$_SESSION['usuarioEmail']) {
 											</div>
 											<div class="kt-portlet__foot">
 												<div class="kt-chat__input">
-													<div class="kt-chat__editor">
-														<textarea style="height: 50px" placeholder="Escreva aqui..."></textarea>
-													</div>
-													<div class="kt-chat__toolbar">
-														<div class="kt_chat__tools">
-															<a href="#"><i class="flaticon2-link"></i></a>
-															<a href="#"><i class="flaticon2-photograph"></i></a>
-															<a href="#"><i class="flaticon2-photo-camera"></i></a>
+													<form action="painel/perfil/chat/mensagem.php" id="enviarMensagem" method="post">
+														<div class="kt-chat__editor">
+															<input type="bigtextarea" name="mensagem" style="height: 50px; width: 100%;"  placeholder="Escreva aqui..."></input>
 														</div>
-														<div class="kt_chat__actions">
-															<button type="button" class="btn btn-brand btn-md btn-upper btn-bold kt-chat__reply">Responder</button>
+														<div class="kt-chat__toolbar">
+															<div class="kt_chat__tools">
+																<a href="#"><i class="flaticon2-link"></i></a>
+																<a href="#"><i class="flaticon2-photograph"></i></a>
+																<a href="#"><i class="flaticon2-photo-camera"></i></a>
+															</div>
+															<?php
+																$id_result = mysqli_query($conn, "SELECT u.id_usuario 
+																											   FROM usuario u 
+																											   INNER JOIN colaborador c ON(c.id_usuario = u.id_usuario) 
+																											   WHERE c.id_colaborador = '$idColaborador'");
+															
+																$id_colaborador_usuario = mysqli_fetch_row($id_result);
+															?>
+
+
+
+															<input type="hidden" name="id_usuario" value="<?php echo $idX; ?>"/>
+															<input type="hidden" name="id_colaborador" value="<?php echo $id_colaborador_usuario[0]; ?>"/>
+															<div class="kt_chat__actions">
+																<input type="submit" class="btn btn-brand btn-md btn-upper btn-bold kt-chat__reply" value="Responder"/>
+															</div>
 														</div>
-													</div>
+													</form>	
 												</div>
 											</div>
 										</div>
