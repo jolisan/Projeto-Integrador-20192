@@ -456,7 +456,7 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 																<i class="flaticon2-correct kt-font-success"></i>
 															</a>
 															<span class="kt-widget__subtitle">
-																	Usuário
+																	Colaborador(a)
 															</span>
 														</div>
 														<!-- <div class="kt-widget__action">

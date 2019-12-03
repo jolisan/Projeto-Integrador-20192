@@ -1057,7 +1057,7 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 																<i class="flaticon2-correct kt-font-success"></i>
 															</a>
 															<span class="kt-widget__subtitle">
-																Colaboradora
+																Colaborador(a)
 															</span>
 														</div>
 														<!-- <div class="kt-widget__action">
@@ -1300,160 +1300,9 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 											<!--end:: Widgets/Tasks -->
 										</div>
 									</div>
-									<div class="row">
 										<div class="col-xl-6">
 
-											<!--begin:: Widgets/Last Updates-->
-											<div class="kt-portlet kt-portlet--height-fluid">
-												<div class="kt-portlet__head">
-													<div class="kt-portlet__head-label">
-														<h3 class="kt-portlet__head-title">
-															Últimas atualizações
-														</h3>
-													</div>
-													<div class="kt-portlet__head-toolbar">
-														<!-- <a href="#" class="btn btn-label-brand btn-bold btn-sm dropdown-toggle" data-toggle="dropdown">
-															Today
-														</a> -->
-														<div class="dropdown-menu dropdown-menu-fit dropdown-menu-md dropdown-menu-right">
-
-															<!--begin::Nav-->
-															<ul class="kt-nav">
-																<li class="kt-nav__head">
-																	Export Options
-																	<span data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">
-																		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--brand kt-svg-icon--md1">
-																			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																				<rect id="bound" x="0" y="0" width="24" height="24" />
-																				<circle id="Oval-5" fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-																				<rect id="Rectangle-9" fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
-																				<rect id="Rectangle-9-Copy" fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
-																			</g>
-																		</svg> </span>
-																</li>
-																<li class="kt-nav__separator"></li>
-																<li class="kt-nav__item">
-																	<a href="#" class="kt-nav__link">
-																		<i class="kt-nav__link-icon flaticon2-drop"></i>
-																		<span class="kt-nav__link-text">Activity</span>
-																	</a>
-																</li>
-																<li class="kt-nav__item">
-																	<a href="#" class="kt-nav__link">
-																		<i class="kt-nav__link-icon flaticon2-calendar-8"></i>
-																		<span class="kt-nav__link-text">FAQ</span>
-																	</a>
-																</li>
-																<li class="kt-nav__item">
-																	<a href="#" class="kt-nav__link">
-																		<i class="kt-nav__link-icon flaticon2-link"></i>
-																		<span class="kt-nav__link-text">Settings</span>
-																	</a>
-																</li>
-																<li class="kt-nav__item">
-																	<a href="#" class="kt-nav__link">
-																		<i class="kt-nav__link-icon flaticon2-new-email"></i>
-																		<span class="kt-nav__link-text">Support</span>
-																		<span class="kt-nav__link-badge">
-																			<span class="kt-badge kt-badge--success kt-badge--rounded">5</span>
-																		</span>
-																	</a>
-																</li>
-																<li class="kt-nav__separator"></li>
-																<li class="kt-nav__foot">
-																	<a class="btn btn-label-danger btn-bold btn-sm" href="#">Upgrade plan</a>
-																	<a class="btn btn-clean btn-bold btn-sm" href="#" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
-																</li>
-															</ul>
-
-															<!--end::Nav-->
-														</div>
-													</div>
-												</div>
-												<div class="kt-portlet__body">
-
-													<!--begin::widget 12-->
-													<div class="kt-widget4">
-														<div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon-pie-chart-1 kt-font-info"></i>
-															</span>
-															<a class="kt-widget4__title kt-widget4__title--light">
-																Neymar chegou ao Brasil!
-															</a>
-															<span class="kt-widget4__number kt-font-info">+500dol</span>
-														</div>
-
-														<!-- <div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon-safe-shield-protection  kt-font-success"></i>
-															</span>
-															<a href="#" class="kt-widget4__title kt-widget4__title--light">
-																Metronic community meet-up 2019 in Rome.
-															</a>
-															<span class="kt-widget4__number kt-font-success">+1260</span>
-														</div>
-
-														<div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon2-line-chart kt-font-danger"></i>
-															</span>
-															<a href="#" class="kt-widget4__title kt-widget4__title--light">
-																Metronic Angular 8 version will be landing soon...
-															</a>
-															<span class="kt-widget4__number kt-font-danger">+1080</span>
-														</div>
-
-														<div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon2-pie-chart-1 kt-font-primary"></i>
-															</span>
-															<a href="#" class="kt-widget4__title kt-widget4__title--light">
-																ale! Purchase Metronic at 70% off for limited time
-															</a>
-															<span class="kt-widget4__number kt-font-primary">70% Off!</span>
-														</div>
-
-														<div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon2-rocket kt-font-brand"></i>
-															</span>
-															<a href="#" class="kt-widget4__title kt-widget4__title--light">
-																Metronic VueJS version is in progress. Stay tuned!
-															</a>
-															<span class="kt-widget4__number kt-font-brand">+134</span>
-														</div>
-
-														<div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon2-notification kt-font-warning"></i>
-															</span>
-															<a href="#" class="kt-widget4__title kt-widget4__title--light">
-																Black Friday! Purchase Metronic at ever lowest 90% off for limited time
-															</a>
-															<span class="kt-widget4__number kt-font-warning">70% Off!</span>
-														</div>
-
-														<div class="kt-widget4__item">
-															<span class="kt-widget4__icon">
-																<i class="flaticon2-file kt-font-success"></i>
-															</span>
-															<a href="#" class="kt-widget4__title kt-widget4__title--light">
-																Metronic React version is in progress.
-															</a>
-															<span class="kt-widget4__number kt-font-success">+13%</span>
-														</div>-->
-													</div>
-
-													<!--end::Widget 12-->
-												</div>
-											</div>
-
-											<!--end:: Widgets/Last Updates-->
-										</div>
-										<div class="col-xl-6">
-
-											<!--begin:: Widgets/Notifications-->
+											<!--
 											<div class="kt-portlet kt-portlet--height-fluid">
 												<div class="kt-portlet__head">
 													<div class="kt-portlet__head-label">
@@ -1464,19 +1313,10 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 													<div class="kt-portlet__head-toolbar">
 														<ul class="nav nav-pills nav-pills-sm nav-pills-label nav-pills-bold" role="tablist">
 															<li class="nav-item">
-																<!-- <a class="nav-link active" data-toggle="tab" href="#kt_widget6_tab1_content" role="tab">
-																	Latest
-																</a> -->
 															</li>
 															<li class="nav-item">
-																<!-- <a class="nav-link" data-toggle="tab" href="#kt_widget6_tab2_content" role="tab">
-																	Week
-																</a> -->
 															</li>
 															<li class="nav-item">
-																<!-- <a class="nav-link" data-toggle="tab" href="#kt_widget6_tab3_content" role="tab">
-																	Month
-																</a> -->
 															</li>
 														</ul>
 													</div>
@@ -1719,9 +1559,8 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 
-											<!--end:: Widgets/Notifications-->
 										</div>
 									</div>
 								</div>
