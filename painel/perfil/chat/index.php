@@ -1041,7 +1041,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															</span>
 															<div class="kt-widget__info">
 																<div class="kt-widget__section">
-																	<a href="#" class="kt-widget__username">Saco de Pão</a>
+																	<a class="kt-widget__username">Saco de Pão</a>
 																	<span class="kt-badge kt-badge--success kt-badge--dot"></span>
 																</div>
 																<span class="kt-widget__desc">
@@ -1114,6 +1114,14 @@ License: You must have a valid license purchased only from themeforest(the above
 																					WHERE c.id_colaborador = '$idColaborador'");
 													$dados = mysqli_fetch_row($query);
 													$dados2 = mysqli_fetch_row($query2);
+
+													var_dump($sql);
+													var_dump($query);
+													var_dump($query2);
+													var_dump($dados);
+													var_dump($dados2);
+
+													
 													while($row = mysqli_fetch_array($sql)) {
 
 														if($row['id_usuario_envio'] == $idX){

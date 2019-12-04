@@ -1033,9 +1033,8 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 			<div class="row">
 
 			<?php
-
-$firstQuery = mysqli_query($conn, "SELECT DISTINCT * FROM pedidos_combinacoes c INNER JOIN colaborador k ON (c.id_colaborador = k.id_colaborador) INNER JOIN usuario u ON (U.id_usuario = K.id_usuario) WHERE c.id_usuario = ".$idX."") 
-OR die(mysqli_error($firstQuery) ); 
+			$firstQuery = mysqli_query($conn, "SELECT DISTINCT * FROM pedidos_combinacoes c INNER JOIN colaborador k ON (c.id_colaborador = k.id_colaborador) INNER JOIN usuario u ON (U.id_usuario = K.id_usuario) WHERE c.id_usuario = ".$idX."") 
+			OR die(mysqli_error($firstQuery) ); 
             while($aux = mysqli_fetch_assoc($firstQuery)) {
 				echo '
 				<div class="col-xl-3">
@@ -1094,21 +1093,25 @@ OR die(mysqli_error($firstQuery) );
 							</br>
 							</br>
 
+							<form action="painel/perfil/lista-combinacoes-pendentes/pedido-combinacao.php" id="pedidoCombinacao" method="post">
 							<center><label for="story">O que você deseja no encontro?</label></center>
-							<textarea class="form-control" id="texto" name="texto" value="" required="" rows="5" cols="33"></textarea>
-							
+							<textarea class="form-control" id="mensagem" name="mensagem" value="" required="" rows="5" cols="33"></textarea>
+							<input type="hidden" name="id_usuario" value="'.$idX.'"/>
+							<input type="hidden" name="id_colaborador" value="'.$aux["id_colaborador"].'"/>
 							</br>
 
 							<center><label for="story">Quanto você está disposto a pagar por isso?</label></center>
 							<input type="text" maxlength="6" class="form-control" id="valor" name="valor" value="" required="" placeholder="Valor"></input>
 
 							<div class="kt-widget__footer">
-							<button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">ENVIAR MENSAGEM</button>
+							<button id="btaoalterar" class="btn btn-brand btn-bold">ENVIAR MENSAGEM</button>
 							</div>
 						</div>
 
+						
+						</form>	
 
-						<!--end::Widget -->
+
 					</div>
 				</div>
 

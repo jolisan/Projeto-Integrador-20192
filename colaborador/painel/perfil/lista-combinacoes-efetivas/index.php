@@ -1027,11 +1027,11 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 
 			<?php
 
-			$sql = mysqli_query($conn, "SELECT e.cidade, e.estado, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN colaborador k ON( c.id_colaborador= k.id_colaborador) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_cliente = (SELECT id_cliente from cliente where id_usuario = ".$idX.")") or die( 
+			$sql = mysqli_query($conn, "SELECT DISTINCT e.cidade, e.estado, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN cliente k ON( c.id_cliente= k.id_cliente) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_colaborador = (SELECT colaborador.id_colaborador FROM colaborador INNER JOIN usuario ON(colaborador.id_usuario = usuario.id_usuario) WHERE colaborador.id_usuario = ".$idX.")") or die( 
 				mysqli_error($sql) //caso haja um erro na consulta 
 			);
 			while($aux = mysqli_fetch_assoc($sql)) { 
-				echo '
+				echo ' 
 				<div class="col-xl-3">
 
 				<!--Begin::Portlet-->
@@ -1065,7 +1065,7 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 									<i class="flaticon2-correct kt-font-success"></i>
 									</a>
 									<span class="kt-widget__desc">
-										Colaborador(a)
+										Usuário
 									</span>
 								</div>
 							</div>

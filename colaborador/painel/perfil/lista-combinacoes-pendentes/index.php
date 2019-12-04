@@ -1030,7 +1030,7 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 
 			<?php
 
-$firstQuery = mysqli_query($conn, "SELECT DISTINCT * FROM pedidos_combinacoes c INNER JOIN colaborador k ON (c.id_colaborador = k.id_colaborador) INNER JOIN usuario u ON (U.id_usuario = K.id_usuario) WHERE c.id_usuario = ".$idX."") 
+$firstQuery = mysqli_query($conn, "SELECT DISTINCT * FROM pedidos_combinacoes c INNER JOIN usuario u ON (U.id_usuario = c.id_usuario) WHERE c.id_colaborador = (SELECT colaborador.id_colaborador FROM colaborador INNER JOIN usuario ON(colaborador.id_usuario = usuario.id_usuario) WHERE colaborador.id_usuario = ".$idX.")") 
 OR die(mysqli_error($firstQuery) ); 
             while($aux = mysqli_fetch_assoc($firstQuery)) {
 				echo '
@@ -1067,7 +1067,7 @@ OR die(mysqli_error($firstQuery) );
 									<i class="flaticon2-correct kt-font-success"></i>
 									</a>
 									<span class="kt-widget__desc">
-										Colaborador(a)
+										Usuário
 									</span>
 								</div>
 							</div>
@@ -1090,21 +1090,24 @@ OR die(mysqli_error($firstQuery) );
 							</br>
 							</br>
 
-							<center><label for="story">O que você deseja no encontro?</label></center>
-							<textarea class="form-control" id="texto" name="texto" value="" required="" rows="5" cols="33"></textarea>
+							<form action="colaborador/painel/perfil/lista-combinacoes-pendentes/aceitar-proposta.php" id="aceitarProposta" method="post">
+							<center><label for="story">O que o cliente deseja no encontro:</label></center>
+							<textarea class="form-control" id="texto" name="texto" rows="5" cols="33" readonly>'.$aux["descricao"].'</textarea>
 							
 							</br>
 
-							<center><label for="story">Quanto você está disposto a pagar por isso?</label></center>
-							<input type="text" maxlength="6" class="form-control" id="valor" name="valor" value="" required="" placeholder="Valor"></input>
+							<center><label for="story">Valor da proposta</label></center>
+							<span id="valor" name="valor" class="form-control" type="text">R$'.$aux["valor"].'</span>
 
 							<div class="kt-widget__footer">
-							<button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">ENVIAR MENSAGEM</button>
+							<button id="btaoalterar" class="btn btn-brand btn-bold">ACEITAR PROPOSTA</button>
 							</div>
 						</div>
 
 
-						<!--end::Widget -->
+						</form>	
+
+
 					</div>
 				</div>
 

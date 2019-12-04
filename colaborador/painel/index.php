@@ -1236,8 +1236,27 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 																</div>
 															</div>
 														</div>
-														<div class="kt-widget12__chart" style="height:143px;">
+														
+
+														<div class="kt-portlet__head">
+															<div class="kt-portlet__head-label">
+															<h3 class="kt-portlet__head-title">Descrição</h3>
+															</div>
 														</div>
+
+														<textarea class="form-control" id="texto" name="texto" rows="5" cols="33">XYZ</textarea>
+
+														</br></br>
+
+														<div class="row">
+																<div class="col-lg-3 col-xl-3">
+																</div>
+																<div class="col-lg-9 col-xl-9">
+																<button id="btaoalterar" class="btn btn-brand btn-bold">Salvar</button>&nbsp;
+																	<button type="reset" class="btn btn-secondary">Cancelar</button>
+																</div>
+															</div>
+
 													</div>
 												</div>
 											</div>

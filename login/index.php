@@ -141,6 +141,13 @@
 													?>
 
 													<?php 
+														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				if(strpos($fullUrl, "error=errocadastro") == true){
+                      			echo '<p class="text-center text-danger">Ocorreu um erro de cadastro!</p>';
+														}
+													?>	
+
+													<?php 
 													$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 													if(strpos($fullUrl, "cadastro=sucess") == true){
 													echo '<p class="text-center text-success">Usuário cadastrado com sucesso!</p>';
@@ -167,18 +174,32 @@
 										</div>
 										<div class="kt-login__form">
 											<form class="kt-form" method="post" action="./conn/cadastrar.php">
+
 												<div class="form-group">
-													<input class="form-control" id="nomecadastro" type="text" placeholder="Nome" name="nomecadastro">
+													<input class="form-control" id="nomecadastro" required="" type="text" placeholder="Nome" name="nomecadastro">
 												</div>
+
 												<div class="form-group">
-													<input class="form-control" id="sobrenomecadastro" type="text" placeholder="Sobrenome" name="sobrenomecadastro">
+													<input class="form-control" id="sobrenomecadastro" required="" type="text" placeholder="Sobrenome" name="sobrenomecadastro">
 												</div>
+
 												<div class="form-group">
-													<input class="form-control" id="emailcadastro" type="text" placeholder="Email" name="emailcadastro" autocomplete="off">
+													<input class="form-control" id="emailcadastro" required="" type="text" placeholder="Email" name="emailcadastro" autocomplete="off">
 												</div>
+
 												<div class="form-group">
-													<input class="form-control" id="senhacadastro" type="password" placeholder="Senha" name="senhacadastro">
+													<input class="form-control" id="senhacadastro" required="" type="password" placeholder="Senha" name="senhacadastro">
 												</div>
+												
+													</br>
+
+												<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 col-form-label">Data de aniversário:</label>
+														<div class="col-lg-9 col-xl-6">
+														<input type="date" required="" id="datanascimento" name="datanascimento" class="form-control" value="" type="text"></input>
+														</div>
+												</div>
+
 
 												</br>
 												</br>
