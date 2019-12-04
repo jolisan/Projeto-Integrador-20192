@@ -1089,7 +1089,7 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 								</div>
 							</div>
 							<div class="kt-widget__footer">
-							<button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">ENVIAR MENSAGEM</button>
+							<a href="colaborador/painel/perfil/chat/"><button id="btaoalterar" class="btn btn-brand btn-bold">ENVIAR MENSAGEM</button></a>
 							</div>
 						</div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 04-Dez-2019 às 02:56
+-- Generation Time: 04-Dez-2019 às 06:18
 -- Versão do servidor: 5.7.26
 -- versão do PHP: 7.2.18
 
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `combinacoes` (
 --
 
 INSERT INTO `combinacoes` (`id_combinacoes`, `data`, `valor`, `nome_encontro`, `descricao`, `id_cliente`, `id_colaborador`) VALUES
-(1, '2019-11-30', 200, 'Jogar bola', 'Bater aquele baba maroto', 4, 2),
+(1, '2019-11-30', 200, 'Jogar bola', 'Bater aquele baba maroto', 5, 2),
 (2, '2019-11-30', 250, 'Jogar volei', 'Bater aquele voleizao', 5, 10),
 (3, '2019-11-30', 3, 'Reuniao do PI', 'Reunir pra terminar o PI 1', 5, 2),
 (4, '2019-11-30', 4, 'Trocar ideia', 'Bater aquele papo', 5, 2),
@@ -315,11 +315,11 @@ CREATE TABLE IF NOT EXISTS `mensagem` (
 
 INSERT INTO `mensagem` (`id_mensagem`, `conteudo`, `data_ocorrencia`, `id_usuario_envio`, `id_usuario_recebe`) VALUES
 (1, 'OlÃ¡ tudo bom?', '2019-12-02', 21, 9),
-(2, 'TESTE', '2019-12-02', 21, 9),
+(2, 'TESTE', '2019-12-02', 21, 12),
 (3, 'TUDO BOM', '2019-12-02', 21, 9),
 (4, 'COMO VAI', '2019-12-02', 21, 9),
-(5, 'TUDO BOM??????????????????', '2019-12-02', 21, 9),
-(6, '', '2019-12-03', 21, 9),
+(5, 'TUDO BOM??????????????????', '2019-12-02', 10, 21),
+(6, '', '2019-12-03', 10, 11),
 (7, '', '2019-12-03', 21, 9),
 (8, '', '2019-12-03', 21, 9),
 (9, '', '2019-12-03', 21, 9),
@@ -347,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `pedidos_combinacoes` (
 --
 
 INSERT INTO `pedidos_combinacoes` (`id_pedidos_combinacoes`, `id_usuario`, `id_colaborador`, `valor`, `descricao`) VALUES
-(1, 21, 2, 123, 'testeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
+(1, 21, 2, 123, 'testeDESCPEDIDO'),
 (2, 20, 2, 99999, 'teste2'),
 (3, 21, 4, 123, 'teste3'),
 (4, 21, 4, 123, 'teste4');
@@ -381,7 +381,7 @@ INSERT INTO `telefone` (`id_telefone`, `id_usuario`, `ddi`, `ddd`, `telefone`) V
 (6, 14, '55', '71', '984669074'),
 (7, 15, '55', '71', '993486037'),
 (8, 20, '55', '71', '987931964'),
-(9, 21, '55', '12', '912341234'),
+(9, 21, '55', '71', '912341234'),
 (10, 40, '', '', ''),
 (11, 41, '', '', ''),
 (12, 42, '', '', ''),
@@ -411,6 +411,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `saldo` float NOT NULL DEFAULT '0',
   `fotoperfil` varchar(150) NOT NULL DEFAULT 'https://i.imgur.com/2s9gA6V.png',
   `tipo_usuario` int(11) NOT NULL,
+  `descricaoUsuario` text NOT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
 
@@ -418,37 +419,37 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nome`, `sobrenome`, `cpf`, `rg`, `data_aniversario`, `data_entrada`, `email`, `senha`, `saldo`, `fotoperfil`, `tipo_usuario`) VALUES
-(9, 'Esther', 'Castro', '15240608369', '192705507', '1957-06-05', '2019-10-30', 'estherandreiasaracastro-91@pobox.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/xq5ambl.png', 1),
-(10, 'Maria', 'Madalena', '17775648890', '156489638', '1997-06-30', '2019-10-30', 'mariamadalena@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 3, 'https://i.imgur.com/JtaFqQm.png', 1),
-(11, 'Julia', 'Guedes', '07774115960', '159876458', '1989-08-12', '2019-10-30', 'juliaguedes@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/QcsCnrB.png', 1),
-(12, 'Saco', 'Depao', '45685245620', '156789456', '1999-04-12', '2019-10-30', 'sacodepaonacara@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/ALC4YFz.png', 1),
-(13, 'Joana', 'Maria', '08995612350', '156982368', '1967-10-15', '2019-10-30', 'namoradadepique@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/bhnsuCj.png', 1),
-(14, 'Tatiana', 'Mariano', '18649568450', '156826456', '1977-07-30', '2019-10-30', 'maedepedro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/xFTdtd3.png', 1),
-(15, 'Isabella', 'Barbosa', '15946245580', '179456123', '1988-12-08', '2019-10-30', 'maedepike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/MCEuWOb.png', 1),
-(16, 'Maria', 'Janaina', '05564548820', '115685507', '1988-11-05', '2019-10-30', 'mariajanaina12@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/dBp72q0.png', 1),
-(17, 'Alfonso', 'Martinez', '129.787.360-20', '15.213.082-2', '1957-06-05', '2019-10-30', 'alfonso@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(18, 'Jolisan', 'Vinicius', '487.903.320-08', '30.978.180-2', '1997-06-30', '2019-10-30', 'jolisan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(19, 'Joao', 'Sledz', '698.687.190-20', '25.118.759-7', '1989-08-12', '2019-10-30', 'sledz@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(20, 'Pedro', 'Monnerat', '908.847.080-47', '49.284.233-4', '1999-04-12', '2019-10-30', 'pedro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(21, 'Alex', 'Boanerges', '292.900.770-26', '43.770.284-4', '1967-10-15', '2019-10-30', 'alex@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 333, 'https://i.imgur.com/35VL5yv.png', 0),
-(22, 'Marcos', 'Lapa', '210.612.030-34', '41.460.811-2', '1977-07-30', '2019-10-30', 'lapa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(32, 'teste', 'vsf', '', '', NULL, '2019-11-30', 'comecuzinho@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(33, 'juliana', 'alves', '', '', NULL, '2019-11-30', 'juliana@gmail.com', '4b2c4ccbe88baa6bb4d1a3271a6ad633', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(34, 'marcos', 'teste', '', '', NULL, '2019-11-30', 'TESTES@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(35, 'joao', 'auves', '', '', NULL, '2019-11-30', 'joao9@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(36, 'marcelo', 'marcelo', '', '', NULL, '2019-11-30', 'marcelod444444@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(37, 'yuri', 'alves', '', '', NULL, '2019-11-30', 'yuri@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(38, 'cabesa', 'deguidao', '', '', NULL, '2019-12-01', 'cabesa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(39, 'paulo', 'fora', '', '', NULL, '2019-12-01', 'paulo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(40, 'sdiahsdi', 'ijdaojdsao', '', '', NULL, '2019-12-01', 'ocjkaodjoas@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(41, 'Joao', 'Alves', '', '', NULL, '2019-12-02', 'joao99@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(42, 'RAFAELA', 'VELUDO', '', '', NULL, '2019-12-03', 'rafaela@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(43, 'PAULETE', 'ALVES', '', '', NULL, '2019-12-03', 'paulete@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(44, 'janaina', 'alves', '', '', '2019-12-03', '2019-12-03', 'janaina@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(45, 'colaborador', 'sobrenome', '', '', '2019-12-03', '2019-12-03', 'colaboradora@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1),
-(46, 'testenome', 'testesobrenome', '', '', '2019-12-03', '2019-12-03', 'testeemail@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0),
-(47, 'ssdadas', 'dasdasd', '', '', '1111-12-12', '2019-12-03', 'asdasdasda@ggggg.com', '64687450b702fa37f85855f56e562c0c', 0, 'https://i.imgur.com/2s9gA6V.png', 1);
+INSERT INTO `usuario` (`id_usuario`, `nome`, `sobrenome`, `cpf`, `rg`, `data_aniversario`, `data_entrada`, `email`, `senha`, `saldo`, `fotoperfil`, `tipo_usuario`, `descricaoUsuario`) VALUES
+(9, 'Esther', 'Castro', '15240608369', '192705507', '1957-06-05', '2019-10-30', 'estherandreiasaracastro-91@pobox.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/xq5ambl.png', 1, ''),
+(10, 'Maria', 'Madalena', '45685245620', '15648963682', '1989-06-30', '2019-10-30', 'mariamadalena@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 3, 'https://i.imgur.com/JtaFqQm.png', 1, 'testes'),
+(11, 'Julia', 'Guedes', '07774115960', '159876458', '1989-08-12', '2019-10-30', 'juliaguedes@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/QcsCnrB.png', 1, ''),
+(12, 'Saco', 'Depao', '45685245620', '156789456', '1999-04-12', '2019-10-30', 'sacodepaonacara@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/ALC4YFz.png', 1, ''),
+(13, 'Joana', 'Maria', '08995612350', '156982368', '1967-10-15', '2019-10-30', 'namoradadepique@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/bhnsuCj.png', 1, ''),
+(14, 'Tatiana', 'Mariano', '18649568450', '156826456', '1977-07-30', '2019-10-30', 'maedepedro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/xFTdtd3.png', 1, ''),
+(15, 'Isabella', 'Barbosa', '15946245580', '179456123', '1988-12-08', '2019-10-30', 'maedepike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/MCEuWOb.png', 1, ''),
+(16, 'Maria', 'Janaina', '05564548820', '115685507', '1988-11-05', '2019-10-30', 'mariajanaina12@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/dBp72q0.png', 1, ''),
+(17, 'Alfonso', 'Martinez', '129.787.360-20', '15.213.082-2', '1957-06-05', '2019-10-30', 'alfonso@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(18, 'Jolisan', 'Vinicius', '487.903.320-08', '30.978.180-2', '1997-06-30', '2019-10-30', 'jolisan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(19, 'Joao', 'Sledz', '698.687.190-20', '25.118.759-7', '1989-08-12', '2019-10-30', 'sledz@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(20, 'Pedro', 'Monnerat', '908.847.080-47', '49.284.233-4', '1999-04-12', '2019-10-30', 'pedro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(21, 'Alex', 'Boanerges', '292.900.770-55', '43.770.284-5', '1960-10-13', '2019-10-30', 'alex@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 333, 'https://i.imgur.com/35VL5yv.png', 0, 'Sou Alex, Amante do futebol nato, hehe!!'),
+(22, 'Marcos', 'Lapa', '210.612.030-34', '41.460.811-2', '1977-07-30', '2019-10-30', 'lapa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(32, 'teste', 'vsf', '', '', NULL, '2019-11-30', 'comecuzinho@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(33, 'juliana', 'alves', '', '', NULL, '2019-11-30', 'juliana@gmail.com', '4b2c4ccbe88baa6bb4d1a3271a6ad633', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(34, 'marcos', 'teste', '', '', NULL, '2019-11-30', 'TESTES@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(35, 'joao', 'auves', '', '', NULL, '2019-11-30', 'joao9@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(36, 'marcelo', 'marcelo', '', '', NULL, '2019-11-30', 'marcelod444444@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(37, 'yuri', 'alves', '', '', NULL, '2019-11-30', 'yuri@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(38, 'cabesa', 'deguidao', '', '', NULL, '2019-12-01', 'cabesa@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(39, 'paulo', 'fora', '', '', NULL, '2019-12-01', 'paulo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(40, 'sdiahsdi', 'ijdaojdsao', '', '', NULL, '2019-12-01', 'ocjkaodjoas@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(41, 'Joao', 'Alves', '', '', NULL, '2019-12-02', 'joao99@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(42, 'RAFAELA', 'VELUDO', '', '', NULL, '2019-12-03', 'rafaela@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(43, 'PAULETE', 'ALVES', '', '', NULL, '2019-12-03', 'paulete@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(44, 'janaina', 'alves', '', '', '2019-12-03', '2019-12-03', 'janaina@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(45, 'colaborador', 'sobrenome', '', '', '2019-12-03', '2019-12-03', 'colaboradora@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 1, ''),
+(46, 'testenome', 'testesobrenome', '', '', '2019-12-03', '2019-12-03', 'testeemail@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'https://i.imgur.com/2s9gA6V.png', 0, ''),
+(47, 'ssdadas', 'dasdasd', '', '', '1111-12-12', '2019-12-03', 'asdasdasda@ggggg.com', '64687450b702fa37f85855f56e562c0c', 0, 'https://i.imgur.com/2s9gA6V.png', 1, '');
 
 --
 -- Acionadores `usuario`
