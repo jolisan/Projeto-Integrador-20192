@@ -41,11 +41,12 @@ while($aux = mysqli_fetch_assoc($sql2)) {
 	$estado_banco = $aux["estado"];
 }
 
-$sql3 = mysqli_query($conn, "SELECT saldo FROM usuario WHERE id_usuario = ".$idX."") or die( 
+$sql3 = mysqli_query($conn, "SELECT saldo, descricaoUsuario FROM usuario WHERE id_usuario = ".$idX."") or die( 
 	mysqli_error($sql3)
 );
 while($aux = mysqli_fetch_assoc($sql3)) { 
 	$saldo_banco = $aux["saldo"];
+	$descricao_banco = $aux["descricaoUsuario"];
 }
 
 ?>
@@ -1231,23 +1232,38 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 															</div>
 															<div class="kt-widget12__item">
 																<div class="kt-widget12__info">
-																	<span class="kt-widget12__desc">Receite média</span>
-																	<span class="kt-widget12__value">R$<?php echo "$saldo_banco"; ?></span>
+																<span class="kt-widget12__desc">Você participa da nossa comunidade desde:</span>
+																	<span class="kt-widget12__value"><?php echo date('d/m/Y', strtotime($dataEntradaX)); ?></span>
 																</div>
 															</div>
 														</div>
-														
 
+
+
+												<!-- INICIO DESCRIÇÃO -->
+												<form class="kt-form kt-form--label-right" method="post" action="conn/colaborador/atualizar-descricao.php">
 														<div class="kt-portlet__head">
 															<div class="kt-portlet__head-label">
 															<h3 class="kt-portlet__head-title">Descrição</h3>
 															</div>
 														</div>
+														<textarea class="form-control" id="descricaoUsuario" name="descricaoUsuario" rows="5" cols="33"><?php echo "$descricao_banco"; ?></textarea>
 
-														<textarea class="form-control" id="texto" name="texto" rows="5" cols="33">XYZ</textarea>
+														<?php 
+														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				if(strpos($fullUrl, "error=errotualizardescricao") == true){
+                      			echo '<p class="text-center text-danger">Ocorreu um erro!  Já verificou se está com a descrição igual a antiga?</p>';
+														}
+													?>
+
+													<?php 
+														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				if(strpos($fullUrl, "return=descricaoatualizada") == true){
+															echo '<p class="text-center text-success">Descrição atualizada com sucesso!</p>';
+														}
+													?>
 
 														</br></br>
-
 														<div class="row">
 																<div class="col-lg-3 col-xl-3">
 																</div>
@@ -1256,6 +1272,10 @@ while($aux = mysqli_fetch_assoc($sql3)) {
 																	<button type="reset" class="btn btn-secondary">Cancelar</button>
 																</div>
 															</div>
+															</form>
+													<!-- FIM DESCRICAO -->
+
+
 
 													</div>
 												</div>

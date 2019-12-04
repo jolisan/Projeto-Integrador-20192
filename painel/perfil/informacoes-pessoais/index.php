@@ -24,13 +24,15 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 	$fotoPerfilX = $_SESSION['usuarioFoto'];
 	$id_telefoneX = $_SESSION['telefoneId'];
 
-	$sql = mysqli_query($conn, "SELECT t.telefone, u.id_usuario, t.ddi, t.ddd FROM telefone t LEFT JOIN usuario u ON(u.id_usuario = t.id_usuario) WHERE u.id_usuario = ".$idX."") or die( 
+	$sql = mysqli_query($conn, "SELECT t.telefone, u.id_usuario, u.cpf, u.rg, u.data_aniversario, t.ddi, t.ddd FROM telefone t LEFT JOIN usuario u ON(u.id_usuario = t.id_usuario) WHERE u.id_usuario = ".$idX."") or die( 
 		mysqli_error($sql)
 	);
 	while($aux = mysqli_fetch_assoc($sql)) { 
 		$ddi_banco = $aux["ddi"];
 		$ddd_banco = $aux["ddd"];
-
+		$cpf_banco = $aux["cpf"];
+		$rg_banco = $aux["rg"];
+		$data_nascimento = $aux["data_aniversario"];
 		$telefone_banco = $aux["telefone"];
 	}
 
@@ -43,7 +45,6 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 		$cep_banco = $aux["cep"];
 		$complemento_banco = $aux["complemento"];
 		$pais_banco = $aux["pais"];
-
 		$cidade_banco = $aux["cidade"];
 		$estado_banco = $aux["estado"];
 	}
@@ -632,11 +633,32 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 																</div>
 
 																<div class="form-group row">
-																	<label class="col-xl-3 col-lg-3 col-form-label">Data de aniversário:</label>
+																	<label class="col-xl-3 col-lg-3 col-form-label">CPF</label>
 																	<div class="col-lg-9 col-xl-6">
-																	<input type="date" class="form-control" value="$data_banco" type="text"></input>
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" maxlength="14" class="form-control" id="cpf" name="cpf" value="<?php echo "$cpf_banco"?>" placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
+																		</div>
 																	</div>
 																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">RG</label>
+																	<div class="col-lg-9 col-xl-6">
+																		<div class="input-group">
+																			<div class="input-group-prepend"><span class="input-group-text"></span></div>
+																			<input type="text" maxlength="12" class="form-control" id="rg" name="rg" value="<?php echo "$rg_banco"?>" placeholder="RG" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"></input>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-xl-3 col-lg-3 col-form-label">Data de nascimento:</label>
+																	<div class="col-lg-9 col-xl-6">
+																	<input type="date" class="form-control"id="data_nascimento" name="data_nascimento" value="<?php echo "$data_nascimento"?>" type="text"></input>
+																	</div>
+																</div>
+
 																
 																<div class="row">
 																	<label class="col-xl-3"></label>

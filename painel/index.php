@@ -40,11 +40,12 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 		$estado_banco = $aux["estado"];
 	}
 
-	$sql3 = mysqli_query($conn, "SELECT saldo FROM usuario WHERE id_usuario = ".$idX."") or die( 
+	$sql3 = mysqli_query($conn, "SELECT saldo, descricaoUsuario FROM usuario WHERE id_usuario = ".$idX."") or die( 
 		mysqli_error($sql3)
 	);
 	while($aux = mysqli_fetch_assoc($sql3)) { 
 		$saldo_banco = $aux["saldo"];
+		$descricao_banco = $aux["descricaoUsuario"];
 	}
 
 ?>
@@ -778,9 +779,45 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 																</div>
 															</div>
 														</div>
-														<div class="kt-widget12__chart" style="height:190;">
-	
+
+
+												<!-- INICIO DESCRIÇÃO -->
+												<form class="kt-form kt-form--label-right" method="post" action="conn/atualizar-descricao.php">
+														<div class="kt-portlet__head">
+															<div class="kt-portlet__head-label">
+															<h3 class="kt-portlet__head-title">Descrição</h3>
+															</div>
 														</div>
+														<textarea class="form-control" id="descricaoUsuario" name="descricaoUsuario" rows="5" cols="33"><?php echo "$descricao_banco"; ?></textarea>
+														
+														<?php 
+														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				if(strpos($fullUrl, "error=errotualizardescricao") == true){
+                      			echo '<p class="text-center text-danger">Ocorreu um erro!  Já verificou se está com a descrição igual a antiga?</p>';
+														}
+													?>
+
+													<?php 
+														$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    				if(strpos($fullUrl, "return=descricaoatualizada") == true){
+															echo '<p class="text-center text-success">Descrição atualizada com sucesso!</p>';
+														}
+													?>
+
+														</br></br>
+														<div class="row">
+																<div class="col-lg-3 col-xl-3">
+																</div>
+																<div class="col-lg-9 col-xl-9">
+																<button id="btaoalterar" class="btn btn-brand btn-bold">Salvar</button>&nbsp;
+																	<button type="reset" class="btn btn-secondary">Cancelar</button>
+																</div>
+															</div>
+															</form>
+													<!-- FIM DESCRICAO -->
+
+
+
 													</div>
 												</div>
 											</div>

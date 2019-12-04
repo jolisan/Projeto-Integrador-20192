@@ -1073,7 +1073,7 @@ OR die(mysqli_error($firstQuery) );
 							</div>
 							<div class="kt-widget__body">
 								<div class="kt-widget__section">
-									PARA FUTURA DESCRIÇÃO
+								Descrição de '.$aux["nome"].':  '.$aux["descricaoUsuario"].'
 								</div>
 								<div class="kt-widget__item">
 									<div class="kt-widget__contact">

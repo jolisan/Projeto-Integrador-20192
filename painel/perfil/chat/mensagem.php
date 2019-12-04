@@ -14,10 +14,10 @@ $idColaborador = $_POST['id_colaborador'];
 $sql = mysqli_query($conn, "INSERT INTO mensagem(conteudo, data_ocorrencia, id_usuario_envio, id_usuario_recebe) VALUES('$mensagem', CURDATE(), '$idx', '$idColaborador')");
 
 if($sql){
-    header('Location: index.php');
+    header('Location: index.php?id='.$idColaborador);
 }
 else{
-    header('Location: index.php');
+    header('Location: index.php?id='.$idColaborador);
 }
 
 ?>

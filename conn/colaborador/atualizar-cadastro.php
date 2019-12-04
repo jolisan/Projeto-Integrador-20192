@@ -14,6 +14,9 @@ $numero = $_POST['numero'];
 $cep = $_POST['cep'];
 $complemento = $_POST['complemento'];
 $pais = $_POST['pais'];
+$cpf = $_POST['cpf'];
+$rg = $_POST['rg'];
+$data_nascimento = $_POST['data_nascimento'];
 
 $idX = $_SESSION['usuarioId'];
 
@@ -25,7 +28,7 @@ $Tel->getTelefone($conn, $idX);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-if($telefone != $Tel->telefone || $ddi != $Tel->ddi || $ddi != $Tel->ddd || $rua != $End->rua || $numero != $End->numero || $cep != $End->cep || $complemento != $End->complemento ||$cidade != $End->cidade || $estado != $end->estado){
+if($telefone != $Tel->telefone || $ddi != $Tel->ddi || $ddi != $Tel->ddd || $rua != $End->rua || $numero != $End->numero || $cep != $End->cep || $complemento != $End->complemento ||$cidade != $End->cidade || $estado != $end->estado|| $cpf != $end->cpf|| $rg != $end->rg|| $data_nascimento != $end->data_nascimento){
   if ($telefone != $Tel->telefone)
   {
     $queryupdate = "UPDATE telefone JOIN usuario u LEFT JOIN telefone t ON t.id_usuario = u.id_usuario SET t.telefone = '$telefone' WHERE u.id_usuario = '$idX'";
@@ -49,6 +52,36 @@ if($telefone != $Tel->telefone || $ddi != $Tel->ddi || $ddi != $Tel->ddd || $rua
   if ($ddd != $Tel->ddd)
   {
     $queryupdate = "UPDATE telefone JOIN usuario u LEFT JOIN telefone t ON t.id_usuario = u.id_usuario SET t.ddd = '$ddd' WHERE u.id_usuario = '$idX'";
+    $result = mysqli_query($conn, $queryupdate);
+    if($result)
+    {
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+    }
+  }
+
+  if ($cpf != $End->cpf)
+  {
+    $queryupdate = "UPDATE usuario SET cpf = '$cpf' WHERE id_usuario = '$idX'";
+    $result = mysqli_query($conn, $queryupdate);
+    if($result)
+    {
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+    }
+  }
+
+  if ($rg != $End->rg)
+  {
+    $queryupdate = "UPDATE usuario SET rg = '$rg' WHERE id_usuario = '$idX'";
+    $result = mysqli_query($conn, $queryupdate);
+    if($result)
+    {
+      header('location:../../colaborador/painel/perfil/informacoes-pessoais/?return=dadosatualizados');
+    }
+  }
+
+  if ($data_nascimento != $End->data_nascimento)
+  {
+    $queryupdate = "UPDATE usuario SET data_aniversario = '$data_nascimento' WHERE id_usuario = '$idX'";
     $result = mysqli_query($conn, $queryupdate);
     if($result)
     {

@@ -1078,7 +1078,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 							</div>
 							<div class="kt-widget__body">
 								<div class="kt-widget__section">
-									PARA FUTURA DESCRIÇÃO
+								Descrição de '.$aux["nome"].':  '.$aux["descricaoUsuario"].'
 								</div>
 								<div class="kt-widget__item">
 									<div class="kt-widget__contact">

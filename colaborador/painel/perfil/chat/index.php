@@ -1,6 +1,7 @@
 <?php
 session_start();
-include('../../../../conn/conexao.php');
+//Incluindo a conexão com banco de dados
+include_once("../../../../conn/conexao.php");
 
 if(!$_SESSION['usuarioEmail']) {
 	header('Location: ../../../../login/');
@@ -25,18 +26,6 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 
 <!DOCTYPE html>
 
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <html lang="en">
 
 	<!-- begin::Head -->
@@ -125,12 +114,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="colaborador/painel/">
+				<a href="painel/">
 					<img alt="Logo" src="./assets/media/logos/logo-mycompanion-mobile.png" /> <!-- LOGO MOBILE -->
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
-			<button class="kt-header-mobile__toggler" id="kt_aside_mobile_toggler"><span></span></button>
+				<button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+				<button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
 				<button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
 			</div>
 		</div>
@@ -146,7 +136,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- begin:: Aside -->
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
-							<a href="colaborador/painel/">
+							<a href="painel/">
 								<img alt="Logo" src="./assets/media/logos/logo-mycompanion-web.png" /> <!-- LOGO WEB -->
 							</a>
 						</div>
@@ -180,7 +170,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/" class="kt-menu__link "><span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+								<li class="kt-menu__item " aria-haspopup="true"><a href="painel/" class="kt-menu__link "><span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 													<polygon id="Bound" points="0 0 24 0 24 24 0 24" />
 													<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" id="Shape" fill="#000000" fill-rule="nonzero" />
@@ -218,7 +208,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</svg></span><span class="kt-menu__link-text">Combinações</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Combinações</span></span></li>
+										<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Combinações</span></span></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/lista-combinacoes-pendentes/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações pendentes</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/lista-combinacoes-efetivas/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Combinações efetivas</span></a></li>
 											<li class="kt-menu__item " aria-haspopup="true"><a href="colaborador/painel/perfil/chat/" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mensagens</span></a></li>
@@ -1031,26 +1021,39 @@ License: You must have a valid license purchased only from themeforest(the above
 
 											<div class="kt-widget kt-widget--users kt-mt-20">
 												<div class="kt-scroll kt-scroll--pull">
-													<div class="kt-widget__items">
-														<div class="kt-widget__item">
-															<span class="kt-userpic kt-userpic--circle">
-																<img src="https://i.imgur.com/ALC4YFz.png" alt="image">
-															</span>
-															<div class="kt-widget__info">
-																<div class="kt-widget__section">
-																	<a href="#" class="kt-widget__username">Saco de Pão</a>
-																	<span class="kt-badge kt-badge--success kt-badge--dot"></span>
+												<?php
+												
+												$sql = mysqli_query($conn, "SELECT DISTINCT m.id_usuario_envio, m.id_usuario_recebe, u.nome, u.fotoperfil 
+																			FROM mensagem m 
+																			INNER JOIN usuario u ON(u.id_usuario = m.id_usuario_recebe) 
+																			WHERE m.id_usuario_envio = '$idX' ") or die(mysqli_error($sql));
+												
+												
+												while($row = mysqli_fetch_array($sql)){
+													
+														$row["id_usuario_envio"] == $idX ? $idColaborador = $row["id_usuario_recebe"] : $idColaborador = $row["id_usuario_envio"] ;
+														echo '
+															<div class="kt-widget__items">
+																<div class="kt-widget__item">
+																	<span class="kt-userpic kt-userpic--circle">
+																		<img src="'.$row["fotoperfil"].'" alt="image">
+																	</span>
+																	<div class="kt-widget__info">
+																		<div class="kt-widget__section">
+																			<a href="colaborador/painel/perfil/chat/index.php?id='.$idColaborador.'" class="kt-widget__username">'.$row["nome"].'</a>
+																			<span class="kt-badge kt-badge--success kt-badge--dot"></span>
+																		</div>
+																	</div>
 																</div>
-																<span class="kt-widget__desc">
-																	Salvador/BA
-																</span>
 															</div>
-															<div class="kt-widget__action">
-																<span class="kt-widget__date">Hoje</span>
-																<!-- <span class="kt-badge kt-badge--success kt-font-bold">1</span> -->
-															</div>
-														</div>
-													</div>
+													';
+													
+												}
+
+												
+												
+												?>
+													
 												</div>
 											</div>
 										</div>
@@ -1083,14 +1086,31 @@ License: You must have a valid license purchased only from themeforest(the above
 																<span class="kt-badge kt-badge--dot kt-badge--success"></span> Active
 															</span>
 														</div>
-														<div class="kt-chat__pic">
-															<span class="kt-userpic kt-userpic--sm kt-userpic--circle" data-toggle="kt-tooltip" data-placement="top" title="Alex Barna" data-original-title="Tooltip title">
-																<img src="https://i.imgur.com/35VL5yv.png" alt="image">
-															</span>
-															<span class="kt-userpic kt-userpic--sm kt-userpic--circle" data-toggle="kt-tooltip" data-placement="top" title="Saco de Pão" data-original-title="Tooltip title">
-																<img src="https://i.imgur.com/ALC4YFz.png" alt="image">
-															</span>
-														</div>
+
+														<?php
+														!empty($_GET["id"]) ? $idColaborador = $_GET["id"] : $idColaborador = 0 ;
+														$sql = mysqli_query($conn, "SELECT fotoperfil, nome FROM usuario WHERE id_usuario = '$idColaborador' ");
+														$dadoSql = mysqli_fetch_row($sql);
+
+														$sql2 = mysqli_query($conn, "SELECT fotoperfil, nome FROM usuario WHERE id_usuario = '$idX' ");
+														$dadoSql2 = mysqli_fetch_row($sql2);
+														if($idColaborador != 0){
+															echo '
+															<div class="kt-chat__pic">
+																<span class="kt-userpic kt-userpic--sm kt-userpic--circle" data-toggle="kt-tooltip" data-placement="top" title="'.$dadoSql2[1].'" data-original-title="Tooltip title">
+																	<img src="'.$dadoSql2[0].'" alt="image">
+																</span>
+																<span class="kt-userpic kt-userpic--sm kt-userpic--circle" data-toggle="kt-tooltip" data-placement="top" title="'.$dadoSql[1].'" data-original-title="Tooltip title">
+																	<img src="'.$dadoSql[0].'" alt="image">
+																</span>
+															</div>
+
+															';
+														}
+															
+														?>
+
+														
 													</div>
 													<div class="kt-chat__right">
 													</div>
@@ -1102,47 +1122,50 @@ License: You must have a valid license purchased only from themeforest(the above
 
 													<?php
 													
-													$idColaborador = 1;
-
-													$sql = mysqli_query($conn, "SELECT * FROM mensagem WHERE id_usuario_envio = '$idX' OR id_usuario_recebe = '$idX'") or die(mysqli_error($sql));
+													!empty($_GET["id"]) ? $idColaborador = $_GET["id"] : $idColaborador = 0 ;
+													$sql = mysqli_query($conn, "SELECT DISTINCT * FROM mensagem WHERE id_usuario_envio = '$idX' OR id_usuario_recebe = '$idX'") or die(mysqli_error($sql));
 													$query = mysqli_query($conn, "SELECT nome, fotoperfil FROM usuario WHERE id_usuario = '$idX'");
-													$query2 = mysqli_query($conn, "SELECT u.nome, u.fotoperfil FROM usuario u 
-																					INNER JOIN colaborador c ON(c.id_usuario = u.id_usuario) 
-																					WHERE c.id_colaborador = '$idColaborador'");
+													$query2 = mysqli_query($conn, "SELECT nome, fotoperfil FROM usuario  WHERE id_usuario = '$idColaborador'");
+																																		
 													$dados = mysqli_fetch_row($query);
 													$dados2 = mysqli_fetch_row($query2);
+
+
 													while($row = mysqli_fetch_array($sql)) {
 
-														if($row['id_usuario_envio'] == $idX){
-															echo '
-																<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-																	<div class="kt-chat__user">
-																		<span class="kt-chat__datetime">'.$row['data_ocorrencia'].'</span>
-																		<a href="#" class="kt-chat__username">'.$dados[0].'</span></a>
-																		<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-																			<img src="'.$dados[1].'" alt="image">
-																		</span>
+														if($row["id_usuario_envio"] == $idColaborador || $row["id_usuario_recebe"] == $idColaborador){
+															if($row['id_usuario_envio'] == $idX){
+																echo '
+																	<div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
+																		<div class="kt-chat__user">
+																			<span class="kt-chat__datetime">'.$row['data_ocorrencia'].'</span>
+																			<a  class="kt-chat__username">'.$dados[0].'</span></a>
+																			<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
+																				<img src="'.$dados[1].'" alt="image">
+																			</span>
+																		</div>
+																		<div class="kt-chat__text kt-bg-light-brand">'.$row['conteudo'].'</div>
 																	</div>
-																	<div class="kt-chat__text kt-bg-light-brand">'.$row['conteudo'].'</div>
-																</div>
-															';
+																';
+															}
+															else{
+																echo '
+																	<div class="kt-chat__message">
+																		<div class="kt-chat__user">
+																			<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
+																				<img src="'.$dados2[1].'" alt="image">
+																			</span>
+																			<a  class="kt-chat__username">'.$dados2[0].'</span></a>
+																			<span class="kt-chat__datetime">'.$row['data_ocorrencia'].'</span>
+																		</div>
+																		<div class="kt-chat__text kt-bg-light-success">
+																			'.$row['conteudo'].'
+																		</div>
+																	</div>
+																';
+															}
 														}
-														else{
-															echo '
-																<div class="kt-chat__message">
-																	<div class="kt-chat__user">
-																		<span class="kt-userpic kt-userpic--circle kt-userpic--sm">
-																			<img src="'.$dados2[1].'" alt="image">
-																		</span>
-																		<a href="#" class="kt-chat__username">'.$dados2[0].'</span></a>
-																		<span class="kt-chat__datetime">'.$row['data_ocorrencia'].'</span>
-																	</div>
-																	<div class="kt-chat__text kt-bg-light-success">
-																		'.$row['conteudo'].'
-																	</div>
-																</div>
-															';
-														}
+
 													}
 													?>
 
@@ -1163,32 +1186,26 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="kt-portlet__foot">
 												<div class="kt-chat__input">
 													<form action="colaborador/painel/perfil/chat/mensagem.php" id="enviarMensagem" method="post">
-														<div class="kt-chat__editor">
-															<input type="bigtextarea" name="mensagem" style="height: 50px; width: 100%;"  placeholder="Escreva aqui..."></input>
-														</div>
-														<div class="kt-chat__toolbar">
-															<div class="kt_chat__tools">
-																<a href="#"><i class="flaticon2-link"></i></a>
-																<a href="#"><i class="flaticon2-photograph"></i></a>
-																<a href="#"><i class="flaticon2-photo-camera"></i></a>
-															</div>
-															<?php
-																$id_result = mysqli_query($conn, "SELECT u.id_usuario 
-																											   FROM usuario u 
-																											   INNER JOIN colaborador c ON(c.id_usuario = u.id_usuario) 
-																											   WHERE c.id_colaborador = '$idColaborador'");
+														
+													<?php
+															!empty($_GET["id"]) ? $idColaborador = $_GET["id"] : $idColaborador = 0 ;
+															if($idColaborador != 0){
+																echo '
+																	<div class="kt-chat__editor">
+																		<input type="bigtextarea" name="mensagem" style="height: 50px; width: 70%;"  placeholder="Escreva aqui..."></input>
+																		<input type="submit" class="btn btn-brand btn-md btn-upper btn-bold kt-chat__reply" value="Responder"/>
+																	</div>
+																	<div class="kt-chat__toolbar">
+																		<input type="hidden" name="id_usuario" value="'.$idX.'"/>
+																		<input type="hidden" name="id_colaborador" value="'.$idColaborador.'"/>
+																	</div>
+																';
+															}
 															
-																$id_colaborador_usuario = mysqli_fetch_row($id_result);
-															?>
 
-
-
-															<input type="hidden" name="id_usuario" value="<?php echo $idX; ?>"/>
-															<input type="hidden" name="id_colaborador" value="<?php echo $id_colaborador_usuario[0]; ?>"/>
-															<div class="kt_chat__actions">
-																<input type="submit" class="btn btn-brand btn-md btn-upper btn-bold kt-chat__reply" value="Responder"/>
-															</div>
-														</div>
+														?>
+															
+														
 													</form>	
 												</div>
 											</div>

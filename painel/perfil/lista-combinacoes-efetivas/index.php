@@ -1030,7 +1030,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 
 			<?php
 
-			$sql = mysqli_query($conn, "SELECT e.cidade, e.estado, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN colaborador k ON( c.id_colaborador= k.id_colaborador) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_cliente = (SELECT id_cliente from cliente where id_usuario = ".$idX.")") or die( 
+			$sql = mysqli_query($conn, "SELECT e.cidade, e.estado, u.descricaoUsuario, u.nome, u.fotoperfil, u.email, t.ddd, t.telefone FROM combinacoes c INNER JOIN colaborador k ON( c.id_colaborador= k.id_colaborador) INNER JOIN usuario u ON(k.id_usuario = u.id_usuario) INNER JOIN telefone t ON (t.id_usuario = u.id_usuario) INNER JOIN endereco e ON (u.id_usuario = e.id_usuario) WHERE c.id_cliente = (SELECT id_cliente from cliente where id_usuario = ".$idX.")") or die( 
 				mysqli_error($sql) //caso haja um erro na consulta 
 			);
 			while($aux = mysqli_fetch_assoc($sql)) { 
@@ -1074,7 +1074,7 @@ if($_SESSION['tipoUsuario'] == 1) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 							</div>
 							<div class="kt-widget__body">
 								<div class="kt-widget__section">
-									PARA FUTURA DESCRIÇÃO
+								Descrição de '.$aux["nome"].':  '.$aux["descricaoUsuario"].'
 								</div>
 								<div class="kt-widget__item">
 									<div class="kt-widget__contact">
