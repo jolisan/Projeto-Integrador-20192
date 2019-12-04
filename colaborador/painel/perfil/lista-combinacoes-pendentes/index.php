@@ -1032,7 +1032,12 @@ if($_SESSION['tipoUsuario'] == 0) { // SE FOR USUÁRIO NORMAL, VOLTA PRO LOGIN
 
 $firstQuery = mysqli_query($conn, "SELECT DISTINCT * FROM pedidos_combinacoes c INNER JOIN usuario u ON (U.id_usuario = c.id_usuario) WHERE c.id_colaborador = (SELECT colaborador.id_colaborador FROM colaborador INNER JOIN usuario ON(colaborador.id_usuario = usuario.id_usuario) WHERE colaborador.id_usuario = ".$idX.")") 
 OR die(mysqli_error($firstQuery) ); 
+			
+
             while($aux = mysqli_fetch_assoc($firstQuery)) {
+            	$idus = $aux["id_usuario"];
+            	//$idClienteQuery = mysqli_query($conn, "SELECT id_cliente FROM cliente WHERE id_usuario = ".$idus."");
+            	//$aux2 = mysqli_fetch_assoc($idClienteQuery);
 				echo '
 				<div class="col-xl-3">
 
@@ -1100,6 +1105,10 @@ OR die(mysqli_error($firstQuery) );
 							<span id="valor" name="valor" class="form-control" type="text">R$'.$aux["valor"].'</span>
 
 							<div class="kt-widget__footer">
+							<input type="hidden" id="" name="id_cliente" value="'.$aux["id_usuario"].'"><br>
+							<input type="hidden" id="" name="id_colaborador" value="'.$aux["id_colaborador"].'"><br>
+							<input type="hidden" id="" name="descricao" value="'.$aux["descricao"].'"><br>
+							<input type="hidden" id="" name="valor" value="'.$aux["valor"].'"><br>
 							<button id="btaoalterar" class="btn btn-brand btn-bold">ACEITAR PROPOSTA</button>
 							</div>
 						</div>
